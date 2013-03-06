@@ -1,0 +1,414 @@
+a:hover{text-decoration: none}
+
+
+.project-icon-tiny, .avatar-tiny{
+	width: 16px;
+}
+
+.project-icon-small, .avatar-small{
+	width: 32px;
+}
+
+.project-icon-med, .avatar-med{
+	width: 64px;
+}
+
+.project-icon-large, .avatar-large{
+	width: 128px;
+}
+
+.project-icon-xlarge, .avatar-xlarge{
+	width: 256px;
+}
+
+.project-icon-inline, .avatar-inline{
+	height: 1em;
+}
+
+
+/* General */
+
+
+.sidebar .item.widget{
+	margin-bottom: 2em;
+	background: #f0f0f0;
+	border-radius: 0.5em;
+	padding: 0.5em;
+}
+
+/* Frontpage styling */
+
+.splash{
+	background: url(/img/community.jpg) no-repeat bottom center;
+	background-size: 100%;
+	margin-bottom: 2em;
+	border-bottom: 1px solid #eee;
+	padding-left: 1em;
+	padding-right: 1em;
+}
+
+.splash-inner{
+	padding: 2em;
+	border-radius: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	background: rgba(255,255,255,0.8);
+
+
+
+
+}
+
+.tagline{
+	text-align: center;
+	background: rgba(255,255,255,.8);
+	border-radius: 1em;
+	border: 1px solid rgba(255,255,255);
+	padding: .5em;
+}
+
+
+/*.featuredGoals .goal, .recentProjects .project, .currentGoal .goal, .projectGoals .goal{
+background: #e5e5e5; /* Old browsers */
+background: -moz-linear-gradient(top,  #e5e5e5 0%, #c9c9c9 10%, #c9c9c9 50%, #c9c9c9 90%, #e5e5e5 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e5e5e5), color-stop(10%,#c9c9c9), color-stop(50%,#c9c9c9), color-stop(90%,#c9c9c9), color-stop(100%,#e5e5e5)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #e5e5e5 0%,#c9c9c9 10%,#c9c9c9 50%,#c9c9c9 90%,#e5e5e5 100%);  Chrome10+,Safari5.1+ 
+background: -o-linear-gradient(top,  #e5e5e5 0%,#c9c9c9 10%,#c9c9c9 50%,#c9c9c9 90%,#e5e5e5 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #e5e5e5 0%,#c9c9c9 10%,#c9c9c9 50%,#c9c9c9 90%,#e5e5e5 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #e5e5e5 0%,#c9c9c9 10%,#c9c9c9 50%,#c9c9c9 90%,#e5e5e5 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e5e5e5', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+
+box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+ border-radius: 1em; 
+ margin-bottom: 2em; 
+ padding: 1em
+}*/
+
+
+
+
+
+/* Goal styling */
+
+
+.goal .media{text-align:center}
+
+.goal.mini .description{font-size: 0.9em}
+
+.goal .funding{text-align:right; margin-top: 2em}
+
+.goal .description{margin-top: 1em}
+
+.goal .stats{list-style:none; text-align:center}
+
+.goal.list .stats{margin-top: 1.25em}
+
+.goal .stats li{font-size: 0.9em; display: inline-block}
+
+.goal .stats li.divider-vertical{
+height: 2em;
+margin: 0 9px;
+border-left: 1px solid #eee;
+border-right: 1px solid #ffffff;
+
+}
+
+.goal .statBig{
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+
+/* Project styling */
+
+.project .subtitle{
+	font-weight: 300;
+}
+
+.project .media{
+	text-align: center;
+	margin-bottom: 2em
+}
+
+.project .description{
+	margin-top: 1em;
+	padding-top: 1em;
+	border-top: 1px solid #ddd;
+	font-size: 0.9em;
+}
+
+.project .details{
+	margin-top: 2em
+}
+
+.team li{
+padding: 1em;
+border-bottom: 1px solid #ddd;
+margin-bottom: 1em
+}
+
+
+.sidebar.currentGoal{
+border-left: 1px solid #eee;
+padding: 1em;
+height: 100%;
+}
+.sidebar .item.project .description{
+	margin: 1em;
+}
+
+
+.circled{display: inline-block; text-align: center; width: 1em; height: 1em; line-height: 1em; border-radius: 50%; border-width: .1em; border-style: solid; border-color: inherit;}
+
+
+/* Dropzone file upload styling */
+
+.dropbox{
+	width: 128px;
+	height: 128px;
+	cursor: pointer;
+	border: 1px solid #ddd;
+}
+
+
+
+/* Mark Ciccoria's edits 03-04-2013 */
+
+
+.row-fluid .back-arrow:hover {
+    display: inline-block;
+    color:#666;
+    font-weight: 100;
+}
+
+.row-fluid .back-arrow {
+    display: inline-block;
+    font-size:70px;
+    margin:15px 0 0 -90px;
+    line-height: 40px;
+    position: absolute;
+    color:#bbb;
+}
+
+.project-vitals .title, .project-vitals .subtitle {
+    font-weight: 200;
+}
+
+h1,h2,h3,p, h4 {
+    font-weight: 200;
+}
+
+.project-vitals .title {
+    line-height: 50px;
+    color:#666;
+}
+
+.project-vitals .subtitle {
+    color:#999;
+}
+
+.project-vitals {
+    overflow: hidden;
+    background-color: #dedede;
+    padding: 56px 20px 40px 20px;
+    margin: -56px -20px 20px -20px;
+    -moz-box-shadow: 0px 10px 10px -10px #000;
+    -webkit-box-shadow: 0px 10px 10px -10px #000;
+    box-shadow: 0px 10px 10px -10px #000;
+}
+
+.project-vitals .title, .project-vitals .subtitle {
+    margin-left: 100px;
+}
+
+.vitals {
+    color:#999;
+    padding:0 10px;
+}
+
+.goal-details, .generalInfo {
+    margin-top:-10px;
+    padding:0 20px 20px 20px;
+    background-color:transparent;
+}
+
+.goal-details h1, .generalInfo h1 {
+    padding:20px 0;
+    line-height: 70px;
+    text-align: left;
+}
+
+.generalInfo h3 {
+    margin: 0 auto;
+}
+
+.row-fluid .span4 {
+/*    margin-top:20px;*/
+}
+
+.rewards {
+    background-color:#F3F3F3;
+    padding:20px;
+    border-bottom:solid 1px #E6E6E6;
+    margin:0;
+}
+
+.rewards h3, .sidebar .item h3 {
+    margin-top:0;
+}
+
+.funding .label {
+    vertical-align: text-top;
+}
+
+.funding-vitals h3 {
+    margin:0;
+    float:left;
+    clear:right;
+    padding:1%;
+    width:30%;
+}
+
+.funding-vitals h3.center {
+    border-right:solid 1px #E6E6E6;
+    border-left:solid 1px #E6E6E6;
+}
+
+.funding-vitals h3 span {
+    display: block;
+    font-size:14px;
+    margin:-10px 0 0 0;
+}
+
+.funding-vitals {
+    overflow: hidden;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.rewards:hover {
+    background-color: #E6E6E6;
+    cursor: pointer;
+}
+
+.rewards.last {
+    border-bottom: none;
+    margin-bottom: 20px;
+}
+
+.rewards-summary {
+    margin: 0;
+}
+
+.rewards-summary a{
+    display: block;
+    color:#000;
+    padding:10px;
+}
+
+.rewards-summary a:hover {
+    background-color:#E6E6E6;
+}
+
+.sidebar .item.funding {
+    border-radius:0;
+    padding:20px;
+}
+
+.summary {
+    padding:20px;
+    margin:20px 0;
+    background-color:#F3F3F3;
+}
+
+
+
+.backers .avatar-small  {
+    width:80px;
+    margin-right:10px;
+}
+
+.avatar-medium {
+    display: inline-block;
+    width:40px;
+    margin:5px 5px 0 0;
+
+}
+
+strong {
+    font-weight: 500;
+}
+
+.btn-success, .btn-action {
+    padding:0 20px;
+    line-height: 50px;
+    margin:20px auto;
+    width:200px;
+    display: block;
+}
+
+.progress-past .bar {
+    background-color: #DDDDDD;
+    background-image: -moz-linear-gradient(top, #DDDDDD, #CCCCCC);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#DDDDDD), to(#CCCCCC));
+    background-image: -webkit-linear-gradient(top, #DDDDDD, #CCCCCC);
+    background-image: -o-linear-gradient(top, #DDDDDD, #CCCCCC);
+    background-image: linear-gradient(to bottom, #DDDDDD, #CCCCCC);
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdddddd', endColorstr='#ffcccccc', GradientType=0);
+}
+
+.social-buttons {
+    margin:10px 0;
+    text-align: center;
+}
+
+.project .media {
+    margin-bottom: 0px; /* Reverting style in bootstrap */
+}
+
+/* You can remove this stuff it's just for design/mockup element thingys */
+
+.social-buttons {
+    background-color:#F3F3F3;
+}
+
+
+/* Josh's additions to Mark's stuff, 03-04-2013 */
+
+.update{font-size: 14px;}
+
+.goal.success{
+	background-color: #f0fff0 !important;
+}
+
+.goal.failed{
+	background-color: #fff0f0 !important;
+}
+
+.featuredGoals .goal, .featuredProjects .project{
+	border-bottom: 1px solid #eee;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+.featuredProjects .summary{
+	background: none;
+	padding: 0 !important;
+	margin: 0 0 1em 0;
+	font-weight: 200 !important;
+}
+
+.leftBorder{
+	border-left: 1px solid #eee;
+	padding-left: 1em
+}
+
+.update{
+	padding: 1em;
+}
+
+.update.private{
+	background: #fff0f0;
+}

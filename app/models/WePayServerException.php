@@ -1,0 +1,1 @@
+<? class WePayServerException extends WePayException {}

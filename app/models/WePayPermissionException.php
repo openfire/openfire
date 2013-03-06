@@ -1,0 +1,1 @@
+<? class WePayPermissionException extends WePayException {}

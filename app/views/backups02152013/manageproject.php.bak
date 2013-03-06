@@ -1,0 +1,273 @@
+<? global $user; ?>
+<style>
+.wysihtml5-toolbar{list-style:none;}
+..wysihtml5-toolbar li{display: inline-block; float: left}
+</style><script>
+$(function() {
+
+
+$('#description').wysihtml5();
+
+	$('#tabMenu a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+});
+
+$('.tooltipped').tooltip();
+
+$('#inviteUserForm').ajaxForm({
+	dataType: 'json',
+	success: function(data){
+		$('#inviteUserForm').html("<b>" + data.msg + "</b>");
+	}
+});
+
+$('#publishButton').click(function(e){
+	if(confirm("Are you sure your project's ready to be published! It can't be undone!") == true){
+		$('#manageProjectForm').append("<input type='hidden' name='action' value='publish'>");
+		$('#manageProjectForm').submit();
+	}
+});
+
+
+
+
+
+// var reqURL = "/ajax/projectMessages?pid=" + $('#projectMessages').attr('data-uuid') + "&offset=" + $('#projectMessages').attr('data-offset') + "&num=" + $('#projectMessages').attr('data-num') + "&last=" + $('#projectMessages').attr('data-last');
+
+// $.get(reqURL,null,function(data){
+// 	$('#projectMessages').html(data);
+// 	$('#projectMessages').attr('data-last', Math.round((new Date()).getTime() / 1000));
+// });
+
+// $('.postMessage').ajaxForm(function(){
+
+// $.get(reqURL,null,function(data){
+// 	$('#projectMessages').html(data);
+// 	$('#projectMessages').attr('data-last', Math.round((new Date()).getTime() / 1000));
+// });
+
+
+// });
+
+// setInterval(function(){
+// $.get(reqURL,null,function(data){
+// 	$('#projectMessages').html(data);
+// 	$('#projectMessages').attr('data-last', Math.round((new Date()).getTime() / 1000));
+
+// });
+
+// }, 120000);
+
+
+
+
+
+});
+</script>
+
+<div class='span8'>
+<div style='margin-bottom: 2em; margin-top: 2em'>
+	<img class='pull-left' src='<?= $this->project->icon ?>' style='height:64px; margin-right: 1em'><h1 style='display:inline'><?= $this->project->title ?></h1><h2 style='display:inline'>: <?= $this->project->subtitle ?></h2>
+	<div class='clearfix'></div>
+</div>
+<ul class="nav nav-tabs" id="tabMenu">
+  <li class="active"><a href="#home">Home</a></li>
+  <li><a href="#overview">Project Overview</a></li>
+  <li><a href="#goals">Goals</a></li>
+  <li><a href="#team">Team</a></li>
+
+</ul>
+			<!-- <ul class='span8 nav nav-tabs'>
+				<li class='active'><a href='#home' data-toggle='tab'>Home</a></li>
+				<li><a href='#goals'  data-toggle='tab'>Goals</a></li>
+
+				</ul>
+-->
+			<div class='tab-content'>
+				<div class='tab-pane fade in active' id='home'>
+				<!-- <form class='well well-small span8 offset1 postMessage' action='/ajax/postMessage' method='post'>
+					<input type='hidden' name='projectID' value='<?= $this->project->uuid ?>'>
+				<div class='row-fluid'>
+					<div class='span2'><img src='<?= $user->avatar ?>' style='width: 64px'></div>
+					<div class='span10'>
+						<textarea name='body' style='width: 90%; height: 8em'></textarea>
+
+						<button type='submit' class='pull-right' style='margin-right: 5%'>Post Message</button>
+					</div>
+				</div>
+				</form> -->
+				<div id='projectMessages' data-uuid='<?= $this->project->uuid ?>' data-offset='0' data-num='10' data-start='<?= time() ?>' data-last='<?= time() ?>'>
+				</div>
+				</div>
+				<div class='tab-pane fade in' id='overview'>
+											<legend>Project Overview</legend>
+						<h4>Status: <span class='label<?
+
+					switch(true){
+
+
+						case($this->project->status == 'published'):
+						echo " label-success";
+						break;
+
+						case($this->project->status == 'rejected' || $this->project->status == 'pending approval'):
+						echo " label-important";
+						break;
+
+					}
+
+
+					?>'><?= ucwords($this->project->status) ?></span></h4>
+					<form action='' method='post' id='manageProjectForm' class='well well-small'>
+						<input type='hidden' name='uuid' value='<?= $this->project->uuid ?>'>
+
+						<fieldset>
+							<label for='title' style='font-size: 1.5em'>Title</label>
+							<? if($this->project->status == "draft" || $this->project->status == "pending approval"): ?><input type='text' class='input-xxlarge' style='font-size: 1.5em' name='title' value="<?= $this->project->title ?>"><? else: ?><h2><?= $this->project->title ?></h2><? endif; ?><span class='help-block'>Once your project has been published, the title cannot be changed.</span>
+				 		</fieldset>
+						<fieldset>
+							<label for='subtitle'>Tagline/Subtitle</label>
+							<input type='text' class='input-xxlarge' name='subtitle' value="<?= $this->project->subtitle ?>">
+				 		</fieldset>
+						<fieldset>
+							<label for='description'>Description</label>
+							 
+							<textarea name='description' id='description' class='input-xxlarge' style='height: 12em'><? if(!empty($this->project->description)): echo $this->project->description; else: echo $this->project->initialProposal; endif; ?></textarea>
+				 		</fieldset>
+						<fieldset>
+							<label for='icon'>Project Image</label>
+							<img src='<?= $this->project->icon ?>' style='width: 128px'><br>
+							<input type='file' name='icon'>
+							<span class='help-block'>This is your project's logo or image. Maximum file size 5MB, and we'll resize it to 256x256 pixels. If you don't upload one, you get the default one, which is spiffy, but not as cool as having your own.</span>
+						</fieldset> 
+				 		<div class="form-controls">
+				 			<button type='submit' name='action' value='update' class='btn'>Update<? if($this->project->status == "draft") echo " Draft" ?></button> <? if($this->project->status == "draft"): ?><button type='submit' id='publishButton' class='btn btn-success' name='action' value='publish'>Publish Project</button><? endif; ?>
+				 		</div>
+					</form>
+				</div>
+				<div class='tab-pane fade in' id='goals'>
+
+						<legend>Goals <a href='/manageProject/<?= $this->project->uuid ?>/addGoal' class='btn pull-right'><i class='icon-plus-sign' style='color: #5bb75b'></i> Add A Goal</a></legend>
+
+				<? foreach($this->project->goals as $goal): 
+
+					$goalPercentage = ($goal->currentAmount / $goal->targetAmount) * 100;
+
+				?>
+				<div class='well well-small'>
+					<div><h2 class='pull-left'><a href='/manageGoal/<?= $goal->uuid ?>'><?= $goal->name ?></a> <span class='label <?
+
+					switch(true){
+						case($goal->status == 'current'):
+						echo " label-info";
+						break;
+
+						case($goal->status == 'success'):
+						echo " label-success";
+						break;
+
+						case($goal->status == 'failed'):
+						echo " label-important";
+						break;
+
+					}
+
+
+					?>'><?= ucwords($goal->status) ?></span></h2><? if($goal->status != "success" && $goal->status != "failed"): ?><a class='btn pull-right' href='/goals/<?= $goal->uuid ?>'><i class='icon-eye-open'></i> View Goal</a><? endif; ?>
+					</div>
+					<div class='clearfix'></div>
+					<div><?= $goal->description ?></div>
+					<div style='margin-top: 1em'>
+						<h3>Funding</h3>
+							<div class="progress<?
+
+if($goal->status != "success") echo " progress-striped";
+
+							switch(true){
+
+								case($goalPercentage < 33):
+								echo " progress-danger";
+
+								break;
+
+								case($goalPercentage > 33 && $goalPercentage < 50):
+								echo " progress-warning";
+
+								break;
+
+								case($goalPercentage > 66):
+								echo " progress-success";
+								break;
+
+
+
+							}
+
+							?>">
+		      	<div class="bar" style="width: <?= $goalPercentage ?>%"></div>
+      				</div>
+		      		<h4>Target: $<?= number_format($goal->targetAmount, 2) ?> | Current Funding: $<?= number_format($goal->currentAmount,2) ?></h4>
+
+      </div>
+				</div>
+			<? endforeach; ?>
+						
+				</div>
+
+				<div class='tab-pane fade in' id='team'>
+
+						<legend>Team <a href='#inviteUser' class='btn pull-right' data-toggle="modal"><i class='icon-plus-sign' style='color: #5bb75b'></i> Invite User</a></legend>
+<ul class="thumbnails">
+
+				<? foreach($this->project->team as $teammember): ?>
+  <li class="span2">
+    <a href='#'>
+    	<div class="thumbnail" style='text-align:center'>
+      <img src="<?= $teammember->avatar ?>" alt="" style='width:64px'>
+      <b><?= $teammember->fullName ?></b>
+       <span class='label label-info'>Founder</span>
+    </div>
+</a>
+  </li>
+			<? endforeach; ?>
+</ul>						
+				</div>
+
+</div>
+</div>
+<div class='span3'>
+	<h3>Current Goal</h3>
+	<div class='well well-small'>
+<? $goal = new Goal($this->project->currentGoalID); ?>
+<h4><?= $goal->name ?></h4>
+<div><?= trimtopcount($goal->description, 2) ?></div>
+<ul style='font-weight: bold'><li>$<?= $goal->currentAmount ?> of $<?= $goal->targetAmount ?> raised from <?= count($goal->backers) ?> backers</li>
+<li><?= $goal->daysUntilTarget ?> days left</li></ul>
+
+
+	</div>
+</div>
+
+
+
+<div id="inviteUser" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3>Invite User</h3>
+  </div>
+  <div class="modal-body">
+  	<p>Enter your user's email address below. If they're not already an openfire member, they'll receive an email inviting them to join.</p>
+    <form class='form-inline' id='inviteUserForm' action='/ajax/inviteUser' method='post'>
+    	<fieldset>
+    		<input type='hidden' name='projectUUID' value='<?= $this->project->uuid ?>'>
+    	<input type='text' name='email' placeholder='Email address'> 
+    	<button type='submit'>Invite User</button>
+    </fieldset>
+
+    </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+  </div>
+</div>
