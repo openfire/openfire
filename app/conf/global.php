@@ -13,7 +13,12 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/addActivity.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/relativeTime.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/fixFilesArray.php');
 
-/* For PHP-Socializer */
+
+
+		define("SALT","MyDearSw33tBrotherNums3y666");
+		define("OUTGOINGEMAIL","sendgrid@importantmedia.org");
+		define("OUTGOINGEMAILPASS","s3ndgr1d99");
+		define("OUTGOINGEMAILNAME","Openfire");
 
 $server = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : 'www.openfi.re';
 
@@ -32,11 +37,8 @@ if (strstr($server, 'dev') || strstr($server, 'stage')) {
 
 
 
-		define("SALT","MyDearSw33tBrotherNums3y666");
 
-		define("OUTGOINGEMAIL","sendgrid@importantmedia.org");
-		define("OUTGOINGEMAILPASS","s3ndgr1d99");
-		define("OUTGOINGEMAILNAME","Openfire");
+
 
 		define("EMBEDLYKEY", "92dd1679846943baa1f1a2c9611d36e0");
 

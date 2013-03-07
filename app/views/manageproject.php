@@ -26,6 +26,8 @@ $('#inviteUserForm').ajaxForm({
 	dataType: 'json',
 	success: function(data){
 		$('.inviteThanks').html(data.msg);
+		$('#inviteEmail').val('');
+
 		$('.inviteThanks').show();
 	}
 });
@@ -123,34 +125,34 @@ var action = "action=updateUserRole&projectUUID=" + $(this).attr('data-projectUU
 
 	</div> -->
 	<div class='tab-pane active fade in' id='overview'>
-		<form enctype="multipart/form-data" action='' method='post' id='manageProjectForm'>
+		<form enctype="multipart/form-data" action='' method='post' id='manageProjectForm' form-validate='parsley'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="5000000" />
 						<input type='hidden' name='uuid' value='<?= $this->project->uuid ?>'>
 
 						<fieldset>
 							<legend>Project Overview</legend>
 							<label for='title'>Title</label>
-							<input type='text' class='input-xxlarge' name='title' value="<?= $this->project->title ?>" <? if(!in_array($this->project->status, array("draft","pending approval"))): ?> disabled='disabled' <?endif; ?>><? if(!in_array($this->project->status, array("draft","pending approval"))): ?><span class='help-block'>Once your project has been published, the title cannot be changed.</span><?endif;?>
+							<input type='text' data-required='true'  data-error-message='Your project must have a title.' class='input-xxlarge' name='title' value="<?= $this->project->title ?>" <? if(!in_array($this->project->status, array("draft","pending approval"))): ?> disabled='disabled' <?endif; ?>><? if(!in_array($this->project->status, array("draft","pending approval"))): ?><span class='help-block'>Once your project has been published, the title cannot be changed.</span><?endif;?>
 				 		</fieldset>
 						<fieldset>
 							<label for='subtitle'>Tagline/Subtitle</label>
-							<input type='text' class='input-xxlarge' name='subtitle' value="<?= $this->project->subtitle ?>">
+							<input type='text'  data-required='true'  data-error-message='Your project must have a subtitle.' class='input-xxlarge' name='subtitle' value="<?= $this->project->subtitle ?>">
 				 		</fieldset>
 						<fieldset>
-							<label for='mediaEmbed'>Media URL</label>
-							<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value="<?= $this->project->mediaEmbed ?>">
+							<label for='mediaEmbed'>Video URL</label>
+							<input type='text'  data-required='true'  data-error-message='Your project must have a video.' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value="<?= $this->project->mediaEmbed ?>">
 				 		</fieldset>
 				 		<br>
 						<fieldset>
 							<label for='summary'>Summary</label>
 							 
-							<textarea name='summary' id='summary' class='input-xxlarge' style='height: 8em'><?= $this->project->summary ?></textarea>
+							<textarea name='summary' id='summary' class='input-xxlarge' style='height: 8em' data-required='true' data-error-message='Your project must have a summary.'><?= $this->project->summary ?></textarea>
 				 		</fieldset>
 
 						<fieldset>
 							<label for='description'>Description</label>
 							 
-							<textarea name='description' id='description' class='input-xxlarge' style='height: 12em'><? if(!empty($this->project->description)): echo $this->project->description; else: echo $this->project->initialProposal; endif; ?></textarea>
+							<textarea name='description' id='description' class='input-xxlarge' style='height: 12em' data-required='true' data-error-message='Your project must have a description.'><? if(!empty($this->project->description)): echo $this->project->description; else: echo $this->project->initialProposal; endif; ?></textarea>
 				 		</fieldset>
 						<fieldset>
 							<label for='icon'>Project Icon</label>

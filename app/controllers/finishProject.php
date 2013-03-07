@@ -77,6 +77,7 @@ $project = new Project($result['id']);
 
 $params = array(
 	"subtitle" => $subtitle,
+	"summary" => $_POST['summary'],
 	"description" => $description,
 	"lastUpdated" => time(),
 	"mediaEmbed" => $mediaEmbed,

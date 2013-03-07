@@ -56,6 +56,7 @@ $params = array(
 	"userID" => $user->id,
 	"name" => $_POST['goalName'],
 	"mediaEmbed" => $_POST['mediaEmbed'],
+	"summary" => $_POST['summary'],
 	"description" => $_POST['description'],
 	"targetAmount" => $_POST['targetAmount'],
 	"targetDate" => $goalTarget,

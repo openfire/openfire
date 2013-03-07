@@ -412,3 +412,9 @@ strong {
 .update.private{
 	background: #fff0f0;
 }
+
+.parsley-error-list {
+    list-style:none;
+    font-size: 0.9em;
+    color: #f00;
+}

@@ -2,15 +2,16 @@
 
 $(function() {
 	$("#summary").wordCounter({limit: 60});
+	$("#goalSummary").wordCounter({limit: 60});
 
 });
 </script>
 <div class='span7 well well-small'>
-	<form action='' method='post'>
+	<form action='' method='post' data-validate='parsley'>
 		<legend><b><span class='circled'>1</span></b> Submit Project For Proposal <span class='muted'><br><span class='circled'>2</span> Complete Project Details<br><span class='circled'>3</span> Complete Initial Goal Details</span></legend>
 		<span class="help-block">Fields with <b>*</b> are required.</span>
 		<fieldset>
-			<label for='title' style='font-size: 1.25em' ><b>*</b> Project Title</label><input type='text'class='input-xxlarge' name='title' placeholder='Title'> 
+			<label for='title' style='font-size: 1.25em' ><b>*</b> Project Title</label><input type='text'class='input-xxlarge' name='title' placeholder='Title' data-required='true' data-error-message='Your project has to have a title.' > 
 			<span class="help-block">This is the name of your project. This is the first thing people will see, so make it informative. And probably snappy. Yeah, snappy's good. Remember: <b>once you publish your project, you won't be able to change this.</b></span>
 		</fieldset>
 		<fieldset>
@@ -27,11 +28,11 @@ $(function() {
 			<span class="help-block">Don't obsess on this, just pick the best fit.</span>
 		</fieldset>
 		<fieldset>
-			<label for='mediaEmbed'>Media URL</label><input type='text'class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://vimeo.com/58933055'><span class="help-inline" style='font-size:0.9em'>Optional</span>
-			<span class="help-block">Already got a video showing off your project? Put the URL here! (Not the embed code, we got ya covered.) If not, no big deal; it just helps us understand your project better.</span>
+			<label for='mediaEmbed'>Video URL</label><input type='text'class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://vimeo.com/58933055' data-required='true' data-error-message='Your project has to have a video file.' ><span class="help-inline" style='font-size:0.9em'>Optional</span>
+			<span class="help-block">You need to have a video explaining your project.</span>
 		</fieldset>
 		<fieldset>
-			<label for='summary'><b>*</b> Summary</label><textarea class='input-block-level' style='height: 12em' id='summary' name='summary' placeholder="60 words max."></textarea>
+			<label for='summary'><b>*</b> Summary</label><textarea class='input-block-level' style='height: 12em' id='summary' name='summary' placeholder="60 words max." data-required='true' data-error-message='Your project has to have a summary.' ></textarea>
 <span class="help-block">This is your elevator pitch. In sixty words or less, tell us what your project is about.</span>
 		</fieldset>
 		<hr>
@@ -40,20 +41,27 @@ $(function() {
 			<span class="help-block">In order to submit a project, you must have an initial goal already figured out. </span>
 			<label for='goalTitle'><b>*</b> Title</label>
 
-			<input type='text' name='goalTitle'  class='input-xxlarge' placeholder='title of initial goal'> 
+			<input type='text' name='goalTitle'  class='input-xxlarge' placeholder='title of initial goal' data-required='true' data-error-message='Your goal has to have a title.' > 
 									<span class="help-block">Every <b>project</b> begins with a <b>goal</b>: this is your first one. Tell us what your first goal is, how much you need to achieve it, and the date you want it to be finished.</span>
 		</fieldset>
 				<fieldset>
-			<label for='goalMediaEmbed'>Media URL</label><input type='text'class='input-xxlarge' name='goalMediaEmbed' placeholder="e.g. http://vimeo.com/58933055"> <span class="help-inline" style='font-size:0.9em'>Optional</span>
-			<span class='help-block'>This can be the same as your project's media embed, for now. Or empty if you don't have one yet. No biggie.</span>
+			<label for='goalMediaEmbed'>Media URL</label><input type='text'class='input-xxlarge' name='goalMediaEmbed' placeholder="e.g. http://vimeo.com/58933055" data-required='true' data-error-message='Your initial goal has to have a title.' > <span class="help-inline" style='font-size:0.9em'>Optional</span>
+			<span class='help-block'>This can be the same as your project's media embed, for now.</span>
 		</fieldset>
 		<fieldset>
-			<label for='goalDescription'><b>*</b> Description</label><textarea class='input-xxlarge' name='goalDescription' style='height:12em'></textarea> 
+			<label for='goalSummary'>Summary</label>
+			<textarea class='input-block-level' style='height: 12em' id='goalSummary' name='goalSummary' placeholder="60 words max." data-required='true' data-error-message='Your goal has to have a summary.' ></textarea>
+<span class="help-block">A short description of your goal, for easy display.</span>
+
+		<fieldset>
+			<label for='goalDescription'><b>*</b> Description</label><textarea class='input-xxlarge' name='goalDescription' style='height:12em' data-required='true' data-error-message='Your goal has to have a description.'></textarea> 
+			<span class="help-block">A complete description of your goal.</span>
+
 		</fieldset>
 		<fieldset>
-			<label for='targetAmount'><b>*</b> Funding Required</label><div class="input-prepend" style='display:inline'>
+			<label for='targetAmount'><b>*</b> Funding Target</label><div class="input-prepend" style='display:inline'>
   <span class="add-on">$</span>
-  <input class="input-xxl" name='targetAmount' type="text" placeholder="In US dollars"> 
+  <input class="input-xxl" name='targetAmount' type="text" placeholder="In US dollars"  data-required='true' data-error-message='Your goal has to have a funding target.'> 
 </div> 
 		</fieldset>
 		<fieldset>

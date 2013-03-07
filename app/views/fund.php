@@ -22,12 +22,12 @@ unavailable.first().find('input[name="rewardUUID"]').removeAttr('checked');
 <div class='span 8'>
 	<h1>Fund &quot;<?= $this->goal->name ?>&quot;</h1>
 	<p>Thanks for funding this goal! Use the form below to choose your funding amount and select your reward (if any).</p><p>Once you fill in this information, you'll be redirected to <a href='http://www.wepay.com'>WePay</a> to complete the transaction.</p>
-	<form action='/fundingRedirect' method='post'>
+	<form action='/fundingRedirect' method='post' data-validate='parsley'>
 		<input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>
  		<fieldset>
 			<label for='amount'>Funding Amount</label>
 			<div class="input-prepend input-append">
-  <span class="add-on">$</span><input type='text' style='text-align:right' class='span1' id='amount' name='amount' value='<? if(!empty($this->goal->minAmount) && empty($this->amount)): echo $this->goal->minAmount; elseif(!empty($this->amount)): echo $this->amount; else: echo "5"; endif; ?>'><span class="add-on">.00</span>
+  <span class="add-on">$</span><input type='text' style='text-align:right' class='span1' id='amount' name='amount'  data-required='true' data-error-message='You must enter an amount.' value='<? if(!empty($this->goal->minAmount) && empty($this->amount)): echo $this->goal->minAmount; elseif(!empty($this->amount)): echo $this->amount; else: echo "5"; endif; ?>'><span class="add-on">.00</span>
 </div>
 		</fieldset>
 		<? if(!empty($this->goal->rewards)): ?>

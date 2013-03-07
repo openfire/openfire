@@ -84,6 +84,7 @@ function post(){
 		"mediaEmbed" => $_POST['goalMediaEmbed'],
 		"name" => $goalTitle,
 		"slug" => slugify($goalTitle),
+		"summary" => $_POST['goalSummary'],
 		"description" => $goalDescription,
 		"targetAmount" => $targetAmount,
 		"targetDate" => $goalTarget,

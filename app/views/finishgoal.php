@@ -23,29 +23,33 @@ var i = 0;
 </script>
 <div class='span7'>
 	<legend><span class='muted'><span class='circled'>1</span>Submit Project For Proposal</span><br><span class='muted'><span class='circled'>2</span> Complete Project Details<br></span><b><span class='circled'>3</span></b> Complete Initial Goal Details</legend>
-		<form enctype="multipart/form-data" action='' method='post'>
+		<form enctype="multipart/form-data" action='' method='post' data-validate='parsley'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
 			<legend>Goal Details</legend>
 			<input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>
 			<fieldset>
 				<label for='goalName'>Title</label>
-				<input type='text' class='input-xxlarge' name='goalName' value='<?= $this->goal->name ?>'>
+				<input type='text' class='input-xxlarge' name='goalName' value='<?= $this->goal->name ?>'  data-required='true' data-error-message='Your goal must have a title.'>
 				<span class='help-block'>This is the title of your goal. Be specific, concise.</span>
 			</fieldset>
 			<fieldset>
-				<label for='mediaEmbed'>Media URL</label>
-				<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value='<?= $this->goal->mediaEmbed ?>'>
+				<label for='mediaEmbed'>Video URL</label>
+				<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value='<?= $this->goal->mediaEmbed ?>'  data-required='true' data-error-message='Your goal must have a video associated with it.'>
+			</fieldset>
+			<fieldset>
+				<label for='summary'>Summary (optional)</label>
+				<textarea style='height: 12em' class='input-xxlarge' name='summary'><?= $this->goal->summary ?></textarea>
 			</fieldset>
 			<fieldset>
 				<label for='description'>Description</label>
-				<textarea style='height: 12em' class='input-xxlarge' name='description'><?= $this->goal->description ?></textarea>
+				<textarea style='height: 12em' class='input-xxlarge' name='description'  data-required='true' data-error-message='Your goal must have a description.'><?= $this->goal->description ?></textarea>
 			</fieldset>
 
 			<fieldset>
-				<label for='targetAmount'>Target Amount</label>
+				<label for='targetAmount'>Funding Target</label>
 				<div class="input-prepend">
 		  <span class="add-on">$</span>
-		  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars" value='<?= $this->goal->targetAmount ?>'>
+		  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars" value='<?= $this->goal->targetAmount ?>'  data-required='true' data-error-message='Your goal must have a funding target.'>
 		</div>
 			</fieldset>
 		<fieldset>

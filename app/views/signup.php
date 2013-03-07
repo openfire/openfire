@@ -1,25 +1,25 @@
- <div class='span8 well well-small'>
-    <h2>Signup</h2>
+ <div class='span8' style='margin-top: 2em; margin-bottom: 2em'>
+    <h2>Create Account</h2>
     <form action='' method='post' data-validate="parsley">
 
     
 <fieldset>
 <label for='username'>Username</label>
-<input type='text' name='username' class='input-xlarge' data-required='true' data-type='alphanum' data-notblank='true' data-error-message="Totally invalid username." data-trigger='blur'>
+<input type='text' name='username' class='input-xlarge' data-type='alphanum' data-required='true' data-error-message='Invalid username'>
 </fieldset>
 <fieldset>
 <label for='email'>Email</label>
-<input type='email' name='email' data-type='email' class='input-xlarge' placeholder='Email' data-trigger='blur' data-remote='/ajax/checkEmail'>
+<input type='email' name='email' data-required='true' data-type='email' data-remote="/ajax/checkEmail" class='input-xlarge' placeholder='Email'>
 </fieldset>
 <fieldset>
 <label for='password'>Password</label>
-<input type='password' id='password' name='password' class='input-xlarge'>
+<input type='password' id='tpassword' data-required='true' name='password' class='input-xlarge'>
 <label for='password_confirm'>Confirm Password</label>
-<input type='password' id='password_confirm' name='password_confirm' class='input-xlarge' data-equalto='#password'>
+<input type='password' id='password_confirm' name='password_confirm' class='input-xlarge' data-required='true' data-equalto='#tpassword' data-error-message='Passwords must match.'>
 </fieldset>
 <fieldset>
 <label for='firstName'>Name</label>
-<input type='text' name='firstName' class='input-xlarge' placeholder='First'><br><input type='text' class='input-xlarge' name='lastName' placeholder='Last'>
+<input type='text' name='firstName' class='input-xlarge'  data-required='true' placeholder='First'><br><input type='text' class='input-xlarge' name='lastName'  data-required='true' placeholder='Last'>
 
 
 

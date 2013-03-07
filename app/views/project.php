@@ -92,8 +92,7 @@
 	<div class="funding item widget">
         <div class="goal mini">
         	<? $currentGoal = new Goal($this->project->currentGoalID) ?>
-            <h3> <a href="
-<p>/goals/<?= $currentGoal->uuid ?>"><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
+            <h3> <a href="/goals/<?= $currentGoal->uuid ?>"><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
         </div>
 
         <p><?= trimtowcount($currentGoal->description,60) ?>...</p>
@@ -108,8 +107,7 @@
             </div>
 
             <div style="text-align:center; margin-top: 1em">
-	           <a href="
-<p>/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success">Find Out More</a>
+	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success">Find Out More</a>
             </div>
 
   		</div>
@@ -117,8 +115,7 @@
 		<h3>Rewards</h3>
         <div class="rewards-summary">
         	<? foreach($currentGoal->rewards as $reward): ?>
-            <a href="
-<p>/goals/<?= $currentGoal->uuid ?>/fund?amount=<?= $reward->minAmount ?>">
+            <a href="/goals/<?= $currentGoal->uuid ?>/fund?amount=<?= $reward->minAmount ?>">
                 <strong><?= $reward->name ?></strong> - <i>$<?= $reward->minAmount ?>+</i> <?= trimtowcount($reward->description,60) ?>...
             </a>
            <? endforeach; ?>
@@ -130,8 +127,7 @@
     	<? foreach($this->project->goals as $goal): if($goal->isCurrent != 1 && $goal->status !="draft"): ?>
     <div class="funding item widget goal mini <? if(in_array($goal->status, array("success", "failed"))): echo $goal->status . " muted"; endif; ?>">
 
-            <h3> <a href="
-<p>/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a><? if(in_array($goal->status, array("success", "failed"))): ?> <span class="label label-default<? if($goal->status == "success") echo " label-success"; if($goal->status == "failed") echo " label-important"; ?>"><?= ucwords($goal->status) ?></span><? endif; ?></h3>
+            <h3> <a href="/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a><? if(in_array($goal->status, array("success", "failed"))): ?> <span class="label label-default<? if($goal->status == "success") echo " label-success"; if($goal->status == "failed") echo " label-important"; ?>"><?= ucwords($goal->status) ?></span><? endif; ?></h3>
 
         <p><?= trimtowcount($goal->description,60) ?>...</p>
               <div class="funding">

@@ -23,28 +23,32 @@ var i = 0;
 </script>
 <div class='span8'>
 
-		<form enctype="multipart/form-data" action='' method='post'>
+		<form enctype="multipart/form-data" action='' method='post' data-validate='parsley'>
 			<input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
 	<legend>Add Goal</legend>
 	<input type='hidden' name='projectUUID' value='<?= $this->project->uuid ?>'>
 	<fieldset>
 		<label for='goalName'>Name</label>
-		<input type='text' class='input-xxlarge' name='goalName'>
+		<input type='text' class='input-xxlarge' name='goalName'  data-required='true' data-error-message='Your goal must have a name.'>
 	</fieldset>
 	<fieldset>
 		<label for='mediaEmbed'>Media URL</label>
-		<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0'>
+		<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0'  data-required='true' data-error-message='Your goal must have a video URL.'>
+	</fieldset>
+	<fieldset>
+		<label for='summary'>Summary (optional)</label>
+		<textarea style='height: 12em' class='input-xxlarge' name='summary'></textarea>
 	</fieldset>
 	<fieldset>
 		<label for='description'>Description</label>
-		<textarea style='height: 12em' class='input-xxlarge' name='description'></textarea>
+		<textarea style='height: 12em' class='input-xxlarge' name='description' data-required='true' data-error-message='Your goal must have a description.'></textarea>
 	</fieldset>
 
 	<fieldset>
-		<label for='targetAmount'>Target Amount</label>
+		<label for='targetAmount'>Funding Target</label>
 		<div class="input-prepend">
   <span class="add-on">$</span>
-  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars">
+  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars" data-required='true' data-error-message='Your goal must have a funding target.'>
 </div>
 	</fieldset>
 <fieldset>
@@ -75,19 +79,19 @@ var i = 0;
 <fieldset>
 					<legend>Rewards</legend>
 					<span class='help-block'>Rewards are your thanks to people who support your goals and project. Unlike other crowdfunding platforms, Openfire goal rewards don't have to be tangible. But they can be.</span>
-					<div class='btn btn-success' id='addReward'><i class='icon-plus-sign'></i> Add A Reward</div>
+					<div class='btn' id='addReward'><i class='icon-plus-sign'></i> Add A Reward</div>
 					<div id='rewardList'></div>
 				</fieldset>
 	<div class='form-actions'>
 <button class='btn btn-info' type='submit' name='status' value='draft'>Save As Draft</button>
-<button class='btn btn-success' type='submit' name='status' value='publish'>Publish</button>
+<button class='btn' type='submit' name='status' value='publish'>Publish</button>
 
 	</div>
 
 </form>
 
 </div>
-<div class='span4'>
+<div class='span3'>
 	<h3><i class='icon-info-sign'></i> Adding A Goal</h3>
 <p><b>Goals</b> are the most important part of your project: they're how you raise money and bring in collaborators for your project.</p>
 <p>When creating a goal for your project, remember that a goal must be specific, finite, realistic, and achievable with the target funding amount you set. An example of a bad goal might be &quot;Change The World&quot; or &quot;End World Hunger&quot;. (Unless you can actually do these things in a finite amount of time with a realistic amount of money, in which case, we're really excited to see your plan.)</p>

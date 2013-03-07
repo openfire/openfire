@@ -86,28 +86,28 @@ console.log(data.action);
 	</div>
 
 	<div id='details' class='tab-pane fade in'>
-		<form action='' method='post'>
+		<form action='' method='post' data-validate='parsley'>
 			<input type='hidden' name='action' value='updateGoal'>
 			<legend>Goal Details</legend>
 			<input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>
 			<fieldset>
 				<label for='goalName'>Name</label>
-				<input type='text' class='input-xxlarge' name='goalName' value='<?= $this->goal->name ?>'>
+				<input type='text' class='input-xxlarge' name='goalName' value='<?= $this->goal->name ?>' data-required='true' data-error-message='Your goal must have a name.'>
 			</fieldset>
 			<fieldset>
-				<label for='mediaEmbed'>Media URL</label>
-				<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value='<?= $this->goal->mediaEmbed ?>'>
+				<label for='mediaEmbed'>Video URL</label>
+				<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value='<?= $this->goal->mediaEmbed ?>' data-required='true' data-error-message='Your goal must have a video.'>
 			</fieldset>
 			<fieldset>
 				<label for='description'>Description</label>
-				<textarea style='height: 12em' class='input-xxlarge' name='description'><?= $this->goal->description ?></textarea>
+				<textarea style='height: 12em' class='input-xxlarge' name='description' data-required='true' data-error-message='Your goal must have a description.'><?= $this->goal->description ?></textarea>
 			</fieldset>
 
 			<fieldset>
-				<label for='targetAmount'>Target Amount</label>
+				<label for='targetAmount'>Funding Target</label>
 				<div class="input-prepend">
 		  <span class="add-on">$</span>
-		  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars" value='<?= $this->goal->targetAmount ?>'>
+		  <input class="input-xlarge" name='targetAmount' type="text" placeholder="In US dollars" value='<?= $this->goal->targetAmount ?>' data-required='true' data-error-message='Your goal must have a funding target.'>
 		</div>
 			</fieldset>
 		<fieldset>
@@ -175,14 +175,14 @@ console.log(data.action);
 					    <div class="controls">
 					      <div class="input-prepend">
 							  <span class="add-on">$</span>
-							  <input name='minAmount' class='span6' type="text" placeholder="Minimum Amount" value='<?= $reward->minAmount ?>'>
+							  <input name='minAmount' class='span6' type="text" placeholder="Minimum Amount" value='<?= $reward->minAmount ?>' data-required='true' data-error-message='Your reward must have a minimum amount.'>
 							</div>
 					    </div>
 				  </div>
 				  <div class="control-group">
 				    <label class="control-label" for="name">Name</label>
 					    <div class="controls">
-							  <input name='name' class='input-block-level' type="text" placeholder="Reward Name" value='<?= $reward->name ?>'>
+							  <input name='name' class='input-block-level' type="text" placeholder="Reward Name" value='<?= $reward->name ?>' data-required='true' data-error-message='Your reward must have a name.'>
 					    </div>
 				  </div>
 
@@ -194,18 +194,19 @@ console.log(data.action);
 				    	<img src='<?= $reward->image ?>' class='span6'></div><? endif; ?>
 					    </div>
 				  </div>
-
 				  <div class="control-group">
 				    <label class="control-label" for="description">Description</label>
 					    <div class="controls">
-							  <textarea class='input-block-level' style='height: 8em' name='description'><?= nl2br($reward->description) ?></textarea>
+							  <textarea class='input-block-level' style='height: 8em' name='description' data-required='true' data-error-message='Your reward must have a description.'><?= nl2br($reward->description) ?></textarea>
 					    </div>
 				  </div>
 				   <div class="control-group">
 				    <label class="control-label" for="numTotal">Number Total</label>
 					    <div class="controls">
 							  <input name='numTotal' class='input-block-level' type="text" placeholder="Number Total" value='<?= $reward->numTotal ?>'>
+					    <span class='help-block'>If your reward is intangible, don't enter anything here or in the &quot;Number Still Available&quot; field below.</span>
 					    </div>
+
 				  </div>
 				   <div class="control-group">
 				    <label class="control-label" for="numStillAvailable">Number Still Available</label>

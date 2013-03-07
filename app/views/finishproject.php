@@ -20,31 +20,36 @@
 						<fieldset>
 							
 							<label for='title'><b>*</b> Title</label>
-							<input type='text' class='input-xxlarge' name='title' value="<?= $this->project->title ?>" <? if(!in_array($this->project->status, array("draft","pending approval"))): ?> disabled='disabled' <?endif; ?>><? if(!in_array($this->project->status, array("draft","pending approval"))): ?><?endif;?><span class='help-block'>This is the first thing people see when they see your project, so make it catchy. Once your project has been published, the title cannot be changed.</span>
+							<input type='text' class='input-xxlarge' name='title'  data-required='true' data-error-message='Your project must have a title.' value="<?= $this->project->title ?>" <? if(!in_array($this->project->status, array("draft","pending approval"))): ?> disabled='disabled' <?endif; ?>><? if(!in_array($this->project->status, array("draft","pending approval"))): ?><?endif;?><span class='help-block'>This is the first thing people see when they see your project, so make it catchy. Once your project has been published, the title cannot be changed.</span>
 				 		</fieldset>
 						<fieldset>
 							<label for='subtitle'><b>*</b> Tagline/Subtitle</label>
-							<input type='text' class='input-xxlarge' name='subtitle' value="<?= $this->project->subtitle ?>">
+							<input type='text' class='input-xxlarge' name='subtitle' value="<?= $this->project->subtitle ?>"  data-required='true' data-error-message='Your project must have a subtitle.'>
 									<span class="help-block">This is the <i>second</i> thing people see when they see your project. Make it a short, informative capsule description of what your project is and what it aims to achieve. For example, if your project's title is "Marvin The Paranoid Android", your subtitle would be "Your plastic pal who's fun to be with."</span>
 
 				 		</fieldset>
 						<fieldset>
-							<label for='mediaEmbed'>Media URL</label>
-							<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value="<?= $this->project->mediaEmbed ?>">
-							<span class="help-block">Having a video isn't absolutely required, but evidence suggests it's a very, very good thing to have.</span>
+							<label for='mediaEmbed'>Video URL</label>
+							<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value="<?= $this->project->mediaEmbed ?>" data-required='true' data-error-message='Your project must have a video.'>
+
 				 		</fieldset>
 				 		<br>
+				 								<fieldset>
+							<label for='summary'><b>*</b> Summary</label>
+							 
+							<textarea name='summary' id='summary' class='input-xxlarge' style='height: 12em'><?= $this->project->summary ?></textarea>
+				 		</fieldset>
 						<fieldset>
 							<label for='description'><b>*</b> Description</label>
 							 
-							<textarea name='description' id='description' class='input-xxlarge' style='height: 12em'><? if(!empty($this->project->description)): echo $this->project->description; else: echo $this->project->initialProposal; endif; ?></textarea>
+							<textarea name='description' id='description' class='input-xxlarge' style='height: 12em'><? if(!empty($this->project->description)): echo $this->project->description; else: echo $this->project->summary; endif; ?></textarea>
 							<span class="help-block">This is the overview of your project that people will see. (We've gone ahead and pasted your initial proposal text in here, to be helpful.) Focus not on any individual goal, but what your project <i>as a whole</i> is supposed to be about.</span>
 				 		</fieldset>
-				 		<fieldset>
+<!-- 				 		<fieldset>
 				 			<label for='tags'>Tags</label>
 				 			<input type='text' name='tags' class='input-xxlarge' placeholder='disruptive, new york, cookies'>
 				 			<span class='help-block'>A list of tags for your project, comma-separated.</help>
-				 			</fieldset>
+				 			</fieldset> -->
 				 		<fieldset>
 				 			<label for='facebook'><i class='icon-facebook'></i> Facebook Page</label>
 				 			<input type='text' name='facebook' placeholder="Your project's Facebook page URL" <? if(!empty($this->project->facebook)): ?>value='<?= $this->project->facebook->url ?>'<?endif;?>>
