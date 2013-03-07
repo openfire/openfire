@@ -92,10 +92,10 @@ if (strstr($server, 'dev')) {
 		define('FACEBOOK_SECRET','11d605495d3f28a20fc776eb42afac6a');
 
 		// This is for dev, switch to other for prod, will handle with server check
-		define('WEPAY_CLIENT_ID','70362');
-		define('WEPAY_CLIENT_SECRET', 'c0cdb5865d');
-		define('WEPAY_ACCESS_TOKEN', 'STAGE_9672fc394c1470b2d9dce2340122f32177b5eb03a9e9de990626273cc0f80b76');
-		define('WEPAY_ACCOUNT_ID', '155429649');
+		define('WEPAY_CLIENT_ID','156003');
+		define('WEPAY_CLIENT_SECRET', 'e0c77e9747');
+		define('WEPAY_ACCESS_TOKEN', 'PRODUCTION_a7849a5898fd29b4958cffc177ab9145a2ccca03cc2d446627aa2e15d8c81e34');
+		define('WEPAY_ACCOUNT_ID', '747839398');
 	
 }
 
