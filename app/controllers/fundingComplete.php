@@ -17,10 +17,14 @@ $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
 $user = new User($result['id']);
 
+if($rewardUUID != 0){
+
 $sth = $dbh->prepare("SELECT id FROM rewards where uuid='$rewardUUID' limit 1");
 $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
 $reward = new Reward($result['id']);
+
+}
 
 $backer = new Backer();
 
@@ -29,9 +33,9 @@ $params = array(
 "userID" => $user->id,
 "goalID" => $goal->id,
 "amount" => $amount,
-"rewardID" => $reward->id,
 "WePayCheckoutID" => $checkoutID
 	);
+if($rewardUUID != 0 ) $params['rewardID'] = $reward->id;
 
 $backer->insert($params);
 
@@ -39,8 +43,9 @@ $goal->update(array("currentAmount" => ($goal->currentAmount + $amount)));
 
 if($goal->currentAmount >= $goal->targetAmount) $goal->update(array("status" => 'goal met'));
 
+if($rewardUUID != 0 ){
 if($reward->numTotal != 0) $reward->update(array("numStillAvailable" => ($reward->numTotal - 1)));
-
+}
 
 // Load page
 

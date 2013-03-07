@@ -15,6 +15,8 @@ $goal = new Goal($result['id']);
 
 $project = new Project($goal->projectID);
 
+$rewardUUID = 0;
+if(!empty($_POST['rewardUUID'])) $rewardUUID = $_POST['rewardUUID'];
 
 
 $amount = $_POST['amount'];
@@ -24,7 +26,7 @@ echo $recipientID;
 $short_description = "Funding For Openfire Goal: " . $goal->name . " (Project: ". $project->title . ")";
 $type = "DONATION";
 $mode = "regular";
-$redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/fundingComplete/" . $goal->uuid . "/" . $user->uuid . "/" . $_POST['rewardUUID'] . "/" . $amount;
+$redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/fundingComplete/" . $goal->uuid . "/" . $user->uuid . "/" . $rewardUUID . "/" . $amount;
 
 
     // change to useProduction for live environments

@@ -79,7 +79,7 @@ s.parentNode.insertBefore(ga, s);
   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><? if(empty($user->id)): ?>Sign Up/Login<? else: echo "<img src='" . $user->avatar . "' style='height: 16px'> " . $user->fullName . " (" . $user->username . ")"; endif; ?><b class='caret'></b></a>
 
   	<? if(empty($user->id)): ?>
-  	  <ul class="dropdown-menu span4" role="menu" aria-labelledby="dLabel"  style='padding: 1em'>
+  	  <ul class="dropdown-menu span4" role="menu" aria-labelledby="dLabel"  style='padding: 1em;'>
   	  	  	<li>
               <h4>Login</h4>
   	<form action='/login' method='post'>
