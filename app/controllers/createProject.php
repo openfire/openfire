@@ -31,7 +31,7 @@ $categories[] = $category;
 
 
 	if(empty($user->id)){
-	 $error = "You must be logged in to create a project.";
+	 echo "<div class='alert'>You must be logged in to create a project.</div>";
 	}else{
 
 	$template = new Templater();

@@ -64,7 +64,7 @@ $mail = new emailMessage();  // create a new object
 
 	$mail->subject = "Welcome to Openfire!";
 	$mail->body = "Welcome to Openfire! We just need you to verify your account for us. Please visit http://" . $_SERVER['SERVER_NAME'] . "/confirmSignup/" . $user->uuid . " to get started!";
-	$mail->to($user->email);
+	$mail->to = $user->email;
 	$mail->send();
 
 $message = "Thank you! Your account has been created. Check your email for a confirmation link.";

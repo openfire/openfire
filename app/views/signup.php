@@ -9,7 +9,7 @@
 </fieldset>
 <fieldset>
 <label for='email'>Email</label>
-<input type='email' name='email' data-required='true' data-type='email' data-remote="/ajax/checkEmail" class='input-xlarge' placeholder='Email'>
+<input type='email' name='email' data-required='true' data-remote="/ajax/checkEmail" class='input-xlarge' placeholder='Email'>
 </fieldset>
 <fieldset>
 <label for='password'>Password</label>

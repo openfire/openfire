@@ -14,8 +14,8 @@
 			$response['success'] = "This email address is available!";
 			}else{
 			$response['error'] = "Sorry, this email address is already in use.";
-			echo json_encode($response);
 			}
+			echo json_encode($response);
 }
 
 }
