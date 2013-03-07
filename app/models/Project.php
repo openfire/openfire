@@ -39,7 +39,7 @@ $c = $sth->fetch(PDO::FETCH_ASSOC);
 
 
 // This will retrieve project goals
-        $sth = $dbh->prepare("SELECT id FROM goals where projectID='" . $this->id . "' order by isCurrent desc, dateAdded desc");
+        $sth = $dbh->prepare("SELECT id FROM goals where projectID='" . $this->id . "' order by isCurrent desc, dateAdded asc");
 $sth->execute();
 $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $goal){

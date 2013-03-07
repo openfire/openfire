@@ -60,6 +60,7 @@ foreach($result as $p){
 
 $template = new Templater();
 $template->load('header');
+$template->bodyClass = "home";
 $template->publish();
 
 $template = new Templater();

@@ -418,3 +418,105 @@ strong {
     font-size: 0.9em;
     color: #f00;
 }
+
+/* Mark's home page stuff */
+
+body.home .splash {
+    background:none;
+    text-align: center;
+    max-width: 1200px;
+    border:none;
+    margin: 20px auto;
+}
+
+body.home .splash-row .row-fluid { 
+    background-color:rgba(255,255,255,.85);
+    border-top:solid 2px #ff7e00;
+}
+
+body.home .splash-row {
+    overflow: hidden;
+    margin: 0 -20px;
+    background: url("/img/community.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body.home .splash h1 {
+    line-height: 75px;
+}
+
+body.home .row-fluid.max1000 {
+    max-width: 1000px;
+    margin:0 auto;
+}
+
+body.home .featuredProjects, .featuredGoals{
+    margin-top:20px;
+    overflow:hidden;
+    margin-bottom:40px;
+}
+
+body.home .featuredProjects h2, .featuredGoals h2  {
+    /*text-align: center;*/
+}
+
+body.home .featuredProjects h3, .featuredGoals h3 {
+    line-height:32px;
+    text-overflow:ellipsis;
+    width:280px;
+    white-space: nowrap;
+    overflow: hidden;
+    color:#0088cc;
+}
+
+body.home .featuredProjects .project, .featuredGoals .goal {
+    width:280px;
+    overflow: hidden;
+    float:left;
+    padding:20px;
+    margin:20px 20px 0 0;
+    min-height:500px;
+    background-color:#F3F3F3;
+    position: relative;
+}
+
+body.home .featuredGoals .goal .summary, .featuredProjects .project .summary {
+    height:190px;
+    overflow: hidden;
+    padding:0;
+}
+
+
+body.home .featuredProjects .project.last, .featuredGoals .goal.last {
+    margin-right: 0;
+}
+
+
+
+body.home .goal .goal-progress {
+    background-color:#E3E3E3;
+    height:5px;
+    width:100%;
+    display: inline-block;
+    top:0;
+    left:0;
+    position: absolute;
+}
+
+body.home .goal .media, body.home .project .media{
+    min-height: 200px;
+}
+
+body.home .goal-progress .gprogress {
+    width:320px;
+    background-color:#ff7e00;
+    height:5px;
+}
+
+body.home .goal .project-info img{
+    vertical-align: middle;
+    margin-right: 10px;
+}

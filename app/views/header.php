@@ -42,7 +42,7 @@ bootstrap_tab_bookmark('a');
 
 
 </head>
-<body <? if(!empty($this->bodyID)): ?>id="<?= $this->bodyID ?>"<? endif; ?>>
+<body <? if(!empty($this->bodyClass)): ?>class="<?= $this->bodyClass ?>"<? endif; ?>>
 	<script type="text/javascript">
 
   var _gaq = _gaq || [];

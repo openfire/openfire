@@ -80,11 +80,27 @@ userRole = $(this).siblings('input[name="role"]').val();
 
 var action = "action=updateUserRole&projectUUID=" + $(this).attr('data-projectUUID') + "&userUUID=" + $(this).attr('data-userUUID') +"&role=" + userRole;
 	success = function(data){
-		$('body').prepend("<div class='alert' style='position:fixed; top:0; left: 0; width:90%'>" + data.message + "</div>");
+		$('#userAlert').remove();
+		$('body').prepend("<div id='userAlert' class='alert' style='position:fixed; top:0; left: 0; width:90%; z-index: 99999'>" + data.message + "</div>");
 	}
  	$.ajax('/ajax/userActions', {data: action, type: 'POST', success: success, dataType: 'json'});
 
  });
+
+
+$('.isAdmin').click(function(){
+var doIt = "removeUserAdmin";
+if($(this).is(':checked') == true){ doIt = "makeUserAdmin"}
+
+var action = "action=" + doIt + "&projectUUID=" + $(this).attr('data-projectUUID') + "&userUUID=" + $(this).attr('data-userUUID');
+	success = function(data){
+		$('#userAlert').remove();
+
+		$('body').prepend("<div id='userAlert' class='alert' style='position:fixed; top:0; left: 0; width:90% width:90%; z-index: 99999'>" + data.message + "</div>");	}
+ 	$.ajax('/ajax/userActions', {data: action, type: 'POST', success: success, dataType: 'json'});
+
+ });
+
 
 });
 
@@ -193,7 +209,7 @@ var action = "action=updateUserRole&projectUUID=" + $(this).attr('data-projectUU
 					<input type='text' name='role' value='<?= $member->role ?>'>
 					<span class="btn updateUserRole" data-projectUUID ='<?= $this->project->uuid ?>' data-userUUID='<?= $member->uuid ?>' type="button">Update</span>
 			</div>
-</td><td><input type='checkbox' name='isAdmin[]' value='<?= $member->id ?>' <? if($member->isAdmin == '1') echo "checked='checked'"; ?>></td><td><span class='btn btn-danger btn-mini deleteMember' data-projectUUID ='<?= $this->project->uuid ?>' data-userUUID='<?= $member->uuid ?>'>Remove Member</span></td></tr>
+</td><td><? if($member->id != $this->project->creatorID): ?><input type='checkbox' name='isAdmin' class='isAdmin' data-projectUUID ='<?= $this->project->uuid ?>' data-userUUID='<?= $member->uuid ?>' <? if($member->isAdmin == '1') echo "checked='checked'"; ?>><? endif; ?></td><td><? if($member->id != $this->project->creatorID): ?><span class='btn btn-danger btn-mini deleteMember' data-projectUUID ='<?= $this->project->uuid ?>' data-userUUID='<?= $member->uuid ?>'>Remove Member</span><? endif; ?></td></tr>
 	<? endforeach; ?>
 </tbody>
 </table>

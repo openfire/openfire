@@ -124,12 +124,13 @@
     </div>
 </div>
 <div class="span4 sidebar">
-    	<? foreach($this->project->goals as $goal): if($goal->isCurrent != 1 && $goal->status !="draft"): ?>
-    <div class="funding item widget goal mini <? if(in_array($goal->status, array("success", "failed"))): echo $goal->status . " muted"; endif; ?>">
+    	<? foreach($this->project->goals as $goal): if($goal->isCurrent != 1 && !in_array($goal->status, array("draft", "failed"))): ?>
+    <div class="funding item widget goal mini <? if(in_array($goal->status, array("success", "failed","future"))): echo $goal->status . " muted"; endif; ?>">
 
-            <h3> <a href="/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a><? if(in_array($goal->status, array("success", "failed"))): ?> <span class="label label-default<? if($goal->status == "success") echo " label-success"; if($goal->status == "failed") echo " label-important"; ?>"><?= ucwords($goal->status) ?></span><? endif; ?></h3>
+            <h3> <a href="/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a><? if(in_array($goal->status, array("success", "failed","future"))): ?> <span class="label label-default<? if($goal->status == "success") echo " label-success"; if($goal->status == "failed") echo " label-important"; ?>"><?= ucwords($goal->status) ?></span><? endif; ?></h3>
 
         <p><?= trimtowcount($goal->description,60) ?>...</p>
+        <? if($goal->status !='future'): ?>
               <div class="funding">
             <div class="funding-vitals">
                 <h3>$<?= $goal->currentAmount ?><span>of $<?= $goal->targetAmount ?> raised</span></h3> 
@@ -140,6 +141,7 @@
                 <div class="bar" style="width: <? if($goal->percentComplete < 100): echo $goal->percentComplete; else: echo "100"; endif; ?>%;"></div>
             </div>
         </div>
+    <? endif; ?>
         </div>
     <? endif; endforeach; ?>
 

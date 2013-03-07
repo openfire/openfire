@@ -1,3 +1,10 @@
+<? $rewardform = "\"<form id='addRewardForm' enctype='multipart/form-data' action='/ajax/addReward' method='post'><input type='hidden' name='MAX_FILE_SIZE' value='10000000' /><input type='hidden' name='goalID' value='" . $this->goal->id . "'><div class='reward well well-small' id='reward\" + i + \"'><fieldset><label for='reward[\" + i + \"][name]'>Reward Name</label><input type='text' name='reward[\" + i + \"][name]' class='input-xxlarge'></fieldset><fieldset><label for='image'>Reward Image</label><input type='file' name='rewardimages[\" + i + \"]'></fieldset><fieldset><label for='description'>Description</label><textarea name='reward[\" + i + \"][description]' class='input-xxlarge'></textarea></fieldset><fieldset><label for='reward[\" + i + \"][minAmount]'>Funding Amount</label>$<input type='text' name='reward[\" + i + \"][minAmount]' value='10'></fieldset><fieldset><label for='numTotal'>Number Available</label><input type='text' name='reward[\" + i + \"][numTotal]'></fieldset><div class='form-actions'>";
+
+if($this->goal->status == 'published') $rewardform .= "<button class='btn btn-success' name='action' value='published' type='submit'>Publish Reward</button>"; 
+$rewardform .="<button class='btn btn-success' name='action' value='draft' type='submit'>Save As Draft</button> <span class='removeReward btn' data-parent='reward\" + i + \"'>Cancel</span></div></form>\"";
+
+?>
+
 <script>
 
 $(function() {
@@ -6,7 +13,7 @@ $(function() {
 
 
 	$('#addReward').click(function(){
-		$('#rewardList').prepend("<form id='addRewardForm' enctype='multipart/form-data' action='/ajax/addReward' method='post'><input type='hidden' name='MAX_FILE_SIZE' value='10000000' /><input type='hidden' name='goalID' value='<?= $this->goal->id ?>'><div class='reward well well-small' id='reward" + i + "'><fieldset><label for='reward[" + i + "][name]'>Reward Name</label><input type='text' name='reward[" + i + "][name]' class='input-xxlarge'></fieldset><fieldset><label for='image'>Reward Image</label><input type='file' name='rewardimages[" + i + "]'></fieldset><fieldset><label for='description'>Description</label><textarea name='reward[" + i + "][description]' class='input-xxlarge'></textarea></fieldset><fieldset><label for='reward[" + i + "][minAmount]'>Funding Amount</label>$<input type='text' name='reward[" + i + "][minAmount]' value='10'></fieldset><fieldset><label for='numTotal'>Number Available</label><input type='text' name='reward[" + i + "][numTotal]'></fieldset><div class='form-actions'><button class='btn btn-success' name='action' value='published' type='submit'>Publish Reward</button> <button class='btn btn-success' name='action' value='draft' type='submit'>Save As Draft</button> <span class='removeReward btn' data-parent='reward" + i + "'>Cancel</span></div></form>");
+		$('#rewardList').prepend(<?php echo $rewardform ?>);
 		i++;
 
 	$('.removeReward').on('click', function(){
