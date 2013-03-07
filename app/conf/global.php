@@ -22,7 +22,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/fixFilesArray.php');
 
 $server = (isset($_SERVER['SERVER_NAME'])) ? $_SERVER['SERVER_NAME'] : 'www.openfi.re';
 
-if (strstr($server, 'dev') || strstr($server, 'stage')) {
+if (strstr($server, 'dev')) {
 
 		$dsn = "mysql:dbname=development;host=localhost";
 		$dbuser = "development";
@@ -66,8 +66,8 @@ if (strstr($server, 'dev') || strstr($server, 'stage')) {
 
 }else{
 
-		$dsn = "mysql:dbname=development;host=localhost";
-		$dbuser = "development";
+		$dsn = "mysql:dbname=production;host=localhost";
+		$dbuser = "production";
 		$dbpass = "californiaGold";
 
 
