@@ -34,11 +34,11 @@ unavailable.first().find('input[name="rewardUUID"]').removeAttr('checked');
 	<legend>Rewards</legend>
 	<fieldset>
 		<? foreach($this->goal->rewards as $reward): ?>
-		<div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>'>
+		<div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount || empty($this->amount) || ($reward->numTotal > 0 && $reward->numStillAvailable == 0)): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>'>
 
-					<h3><input type='radio' <? if(!empty($this->amount) && $reward->minAmount < $this->amount): ?>disabled='disabled'<? endif; ?> <? if(!empty($this->amount) && $reward->minAmount == $this->amount): ?>checked='checked'<? endif; ?> name='rewardUUID' value='<?= $reward->uuid ?>'>  $<?= $reward->minAmount ?>: <?= $reward->name ?></h3>
+					<h3><? if($reward->numTotal > 0 && $reward->numStillAvailable != 0): ?><input type='radio' <? if((!empty($this->amount) && $reward->minAmount < $this->amount) || empty($this->amount)): ?>disabled='disabled'<? endif; ?> <? if(!empty($this->amount) && $reward->minAmount == $this->amount): ?>checked='checked'<? endif; ?> name='rewardUUID' value='<?= $reward->uuid ?>'><? endif; ?>  $<?= $reward->minAmount ?>: <?= $reward->name ?></h3>
 					<div><?= $reward->description ?></div>
-
+<h3 style='text-align:right'><? if($reward->numTotal > 0): ?><? if($reward->numTotal > 0 && $reward->numStillAvailable != 0): ?><b><?= $reward->numStillAvailable ?></b> of <b><?= $reward->numTotal ?></b> still available<? else: ?>All Gone!<?endif; ?><? else: ?>Unlimited<? endif; ?></h3>
 		</div>
 	<? endforeach; ?>
 	</fieldset>
