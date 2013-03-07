@@ -52,13 +52,13 @@
 				 			</fieldset> -->
 				 		<fieldset>
 				 			<label for='facebook'><i class='icon-facebook'></i> Facebook Page</label>
-				 			<input type='text' name='facebook' placeholder="Your project's Facebook page URL" <? if(!empty($this->project->facebook)): ?>value='<?= $this->project->facebook->url ?>'<?endif;?>>
+				 			<input type='text' class='input-xxlarge' name='facebook' placeholder="Your project's Facebook page URL" <? if(!empty($this->project->facebook)): ?>value='<?= $this->project->facebook->url ?>'<?endif;?>>
 				 			<label for='twitter'><i class='icon-twitter'></i> Twitter Profile</label>
-				 			<input type='text' name='twitter' placeholder="Your project's Twitter profile's URL" <? if(!empty($this->project->twitter)): ?>value='<?= $this->project->twitter->url ?>'<?endif;?>>
+				 			<input type='text' class='input-xxlarge' name='twitter' placeholder="Your project's Twitter profile's URL" <? if(!empty($this->project->twitter)): ?>value='<?= $this->project->twitter->url ?>'<?endif;?>>
 				 			<label for='linkedin'><i class='icon-linkedin'></i> LinkedIn Profile</label>
-				 			<input type='text' name='linkedin' placeholder="Your project's LinkedIn profile's URL">
+				 			<input type='text' class='input-xxlarge' name='linkedin' placeholder="Your project's LinkedIn profile's URL">
 				 			<label for='homepage'><i class='icon-home'></i> Project Homepage</label>
-				 			<input type='text' name='homepage' placeholder="Your project's homepage URL">
+				 			<input type='text' class='input-xxlarge' name='homepage' placeholder="Your project's homepage URL">
 				 		</fieldset>
 						<fieldset>
 							<label for='icon'>Project Icon</label>

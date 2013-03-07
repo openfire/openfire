@@ -89,13 +89,14 @@
 </div>
 
 <div class="span4 sidebar">
+    <h1>Goals</h1>
 	<div class="funding item widget">
         <div class="goal mini">
         	<? $currentGoal = new Goal($this->project->currentGoalID) ?>
             <h3> <a href="/goals/<?= $currentGoal->uuid ?>"><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
         </div>
 
-        <p><?= trimtowcount($currentGoal->description,60) ?>...</p>
+        <p><? if(!empty($currentGoal->summary)): echo trimtowcount($currentGoal->description, 60) . "..."; else: echo nl2br($currentGoal->summary); endif ?></p>
         <div class="funding">
             <div class="funding-vitals">
                 <h3>$<?= $currentGoal->currentAmount ?><span>of $<?= $currentGoal->targetAmount ?> raised</span></h3> 
@@ -107,7 +108,7 @@
             </div>
 
             <div style="text-align:center; margin-top: 1em">
-	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success">Find Out More</a>
+	           <a href="/goals/<?= $currentGoal->uuid ?>" class="btn btn-large btn-success">Find Out More</a>
             </div>
 
   		</div>
@@ -116,7 +117,7 @@
         <div class="rewards-summary">
         	<? foreach($currentGoal->rewards as $reward): ?>
             <a href="/goals/<?= $currentGoal->uuid ?>/fund?amount=<?= $reward->minAmount ?>">
-                <strong><?= $reward->name ?></strong> - <i>$<?= $reward->minAmount ?>+</i> <?= trimtowcount($reward->description,60) ?>...
+                <strong><span style='font-size: 1.5em'>$<?= $reward->minAmount ?>+</span> <?= $reward->name ?></strong> 
             </a>
            <? endforeach; ?>
 

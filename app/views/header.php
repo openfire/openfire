@@ -71,7 +71,7 @@ s.parentNode.insertBefore(ga, s);
 		      <li><a href="/projects">Explore</a></li>
 		        <li class="divider-vertical"></li>
 
-		      <li><a href="/create">Create</a></li>
+		      <li><a href="/create">Submit</a></li>
 
 		    </ul>
 		    <ul class='nav pull-right'>

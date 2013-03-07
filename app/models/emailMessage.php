@@ -33,6 +33,7 @@ $mail = new PHPMailer();  // create a new object
 	}else{
 		$mail->addAddress($this->to);
 	}
+	if(!empty($this->from)) $mail->setFrom($this->from['email'],$this->from['name']);
 	if(!$mail->Send()) {
 		$error = 'Mail error: '.$mail->ErrorInfo; 
 		return false;

@@ -40,6 +40,7 @@ Toro::serve(array(
     "create" => "Create",
     "privacy" => "Privacy",
     "team" => "Team",
+    "contactus" => "ContactUs",
     "signup" => "Signup",
     "confirmSignup/:alpha" => "confirmSignup",
     "login" => "Login",

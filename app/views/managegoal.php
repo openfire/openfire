@@ -106,6 +106,10 @@ console.log(data.action);
 				<input type='text' class='input-xxlarge' name='mediaEmbed' placeholder='e.g. http://www.youtube.com/watch?v=oHg5SJYRHA0' value='<?= $this->goal->mediaEmbed ?>' data-required='true' data-error-message='Your goal must have a video.'>
 			</fieldset>
 			<fieldset>
+				<label for='summary'>Summary</label>
+				<textarea style='height: 12em' class='input-xxlarge' name='summary' data-required='true' data-error-message='Your goal must have a summary.'><?= $this->goal->summary ?></textarea>
+			</fieldset>
+			<fieldset>
 				<label for='description'>Description</label>
 				<textarea style='height: 12em' class='input-xxlarge' name='description' data-required='true' data-error-message='Your goal must have a description.'><?= $this->goal->description ?></textarea>
 			</fieldset>

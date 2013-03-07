@@ -2,7 +2,7 @@
 <div class="row-fluid project-vitals">
 
     <div class="span8">
-        <h1 class="title" style="text-align:left"><a title="Back to Project" class="back-arrow" href="#back">&larr;</a><?= $this->project->title ?></h1>
+        <h1 class="title" style="text-align:left"><a title="Back to Project" class="back-arrow" href="/projects/<?= $this->project->slug ?>">&larr;</a><?= $this->project->title ?></h1>
         <h3 class="subtitle" style="text-align:left"><?= $this->project->subtitle ?></h3>
     </div>
 
@@ -35,7 +35,7 @@
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512e9539719dfdf8"></script>
 <!-- AddThis Button END -->
 </div>
-            <p class="lead summary"><?= nl2br($this->goal->description) ?></p>
+            <p class="lead summary"><?if(!empty($this->goal->summary)):?><?= $this->goal->summary ?><br><br><hr><? endif; ?></p><div class='description'><?= nl2br($this->goal->description) ?></div>
             
             <p>
                 <a class="btn btn-primary btn-large" href='/projects/<?= $this->project->slug ?>'>

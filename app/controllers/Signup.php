@@ -72,21 +72,23 @@ $message = "Thank you! Your account has been created. Check your email for a con
 
 }
 
-$template = new Templater();
-$template->load('alert');
-if(!empty($error)){ $template->type = "error"; $template->message = $error;}
-else{ $template->type = "success"; $template->message = $message;}
-$template->publish();
+header("Location: /");
 
-$template = new Templater();
-$template->load('signup');
-$template->publish();
+// $template = new Templater();
+// $template->load('alert');
+// if(!empty($error)){ $template->type = "error"; $template->message = $error;}
+// else{ $template->type = "success"; $template->message = $message;}
+// $template->publish();
+
+// $template = new Templater();
+// $template->load('signup');
+// $template->publish();
 
 
 
-$template = new Templater();
-$template->load('footer');
-$template->publish();
+// $template = new Templater();
+// $template->load('footer');
+// $template->publish();
 
 
 
