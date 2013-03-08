@@ -464,7 +464,7 @@ body.home .featuredProjects h2, .featuredGoals h2  {
 body.home .featuredProjects h3, .featuredGoals h3 {
     line-height:32px;
     text-overflow:ellipsis;
-    width:280px;
+    width:240px;
     white-space: nowrap;
     overflow: hidden;
     color:#0088cc;
