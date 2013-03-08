@@ -16,7 +16,6 @@ if (strstr($server, 'dev')) {
 WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
 }else{
 WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-
 }
 
 if (!empty($_GET['error'])) {
