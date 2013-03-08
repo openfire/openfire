@@ -471,7 +471,7 @@ body.home .featuredProjects h3, .featuredGoals h3 {
 }
 
 body.home .featuredProjects .project, .featuredGoals .goal {
-    width:280px;
+    width:240px;
     overflow: hidden;
     float:left;
     padding:20px;
