@@ -63,7 +63,7 @@
             <p>Goal created on <strong><?= date("F jS, Y", $this->goal->dateAdded) ?></strong>
             <br/>Funding ends on <strong><?= date("F jS, Y", $this->goal->targetDate) ?></strong></p>
     	</div>
-    	<? foreach($this->goal->rewards as $reward): ?>
+    	<? foreach($this->goal->rewards as $reward): if($reward->status == "published"): ?>
     	<div class="rewards item">
             <h3><a href='/goals/<?= $this->goal->uuid ?>/fund?amount=<?= $reward->minAmount ?>'>Pledge $<?= $reward->minAmount ?> or more</a></h3>
 
@@ -72,7 +72,7 @@
             <p><?= nl2br($reward->description) ?></p>
 
     	</div>
-<? endforeach; ?>
+<? endif; endforeach; ?>
         <div class="backers item">
          	<h3>Backers</h3>
          			<ul class="unstyled">

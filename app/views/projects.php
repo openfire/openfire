@@ -1,7 +1,7 @@
 <? global $user; global $embedly; $partials = new Templater(); ?>
 <div class='span8'>
 <h2>Projects</h2>
-	<? foreach($this->projects as $project): ?>
+	<? foreach($this->projects as $project): if($project->status == 'published'): ?>
 	<div class='well well-small'>
 	<div class='row-fluid'>
 		<div class='span2'><a href='/projects/<?= $project->slug ?>'><img src='<?= $project->icon ?>' class='pull-left' style='height: 128px'></a></div>
@@ -14,7 +14,7 @@
 	<div class='clearfix'></div>
 	</div>
 
-<? endforeach; ?>
+<? endif; endforeach; ?>
 </div>
 <div class='span4'>
 	<h3>Categories</h3>

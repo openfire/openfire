@@ -13,7 +13,7 @@
 
 <div class='span4 sidebar'>
 <h3>Projects</h3>
-<? foreach($this->displayUser->projects as $project): ?>
+<? foreach($this->displayUser->projects as $project): if$(project->status == 'published'): ?>
 <div class='well well-small'>
 	<div class='row-fluid'>
 		<div class='span2'>
@@ -25,7 +25,7 @@
 		</div>
 		</div>
 </div>
-<? endforeach; ?>
+<? endif; endforeach; ?>
 <h3>Backed Goals</h3>
 <? foreach($this->displayUser->backedGoals as $goal): $gproject = new Project($goal->projectID) ?>
 <div class='well well-small'>

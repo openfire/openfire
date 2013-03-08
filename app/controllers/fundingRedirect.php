@@ -30,7 +30,13 @@ $redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/fundingComplete/" . $goa
 
 
     // change to useProduction for live environments
-    WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
+global $server;
+
+if (strstr($server, 'dev')) {
+WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
+}else{
+WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
+}
 
     $wepay = new WePay($project->wePayAccessToken);
 
