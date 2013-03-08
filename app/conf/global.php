@@ -62,7 +62,7 @@ if (strstr($server, 'dev')) {
 		// define('WEPAY_ACCOUNT_ID', '240546');
 
 
-
+define('WEPAYAPIURL', 'https://stage.wepay.com/v2/oauth2/authorize?client_id=' . WEPAY_CLIENT_ID . '&redirect_uri=http://' . $_SERVER['SERVER_NAME'] .'/wePayProjectAccountHandler/');
 
 }else{
 
@@ -96,6 +96,8 @@ if (strstr($server, 'dev')) {
 		define('WEPAY_CLIENT_SECRET', 'e0c77e9747');
 		define('WEPAY_ACCESS_TOKEN', 'PRODUCTION_a7849a5898fd29b4958cffc177ab9145a2ccca03cc2d446627aa2e15d8c81e34');
 		define('WEPAY_ACCOUNT_ID', '747839398');
+
+define('WEPAYAPIURL', 'https://www.wepay.com/v2/oauth2/authorize?client_id=' . WEPAY_CLIENT_ID . '&redirect_uri=http://' . $_SERVER['SERVER_NAME'] .'/wePayProjectAccountHandler/');
 	
 }
 

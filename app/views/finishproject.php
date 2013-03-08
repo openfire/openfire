@@ -9,7 +9,7 @@
 							<? if(empty($this->project->wePayAccountID)): ?>
 							<legend>Set Up WePay Account To Receive Funds</legend>
 							<span class='help-block'>First things first. In order to receive funds through openfire, you need to create a WePay account to actually get the funds.</span>
-							<a class='btn btn-info' href='https://stage.wepay.com/v2/oauth2/authorize?client_id=<?= WEPAY_CLIENT_ID ?>&redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>/wePayProjectAccountHandler/<?= $this->project->uuid ?>&scope=manage_accounts,collect_payments,refund_payments,preapprove_payments,view_balance'>Create WePay Account</a><br><br><?= WEPAY_CLIENT_ID ?>
+							<a class='btn btn-info' href='<?= WEPAYAPIURL ?><?= $this->project->uuid ?>&scope=manage_accounts,collect_payments,refund_payments,preapprove_payments,view_balance'>Create WePay Account</a><br><br><?= WEPAY_CLIENT_ID ?>
 						</fieldset>
 						<? else: ?>
 						<!-- <b>WePay User ID: <?=$this->project->wePayAccountID ?></b> -->
