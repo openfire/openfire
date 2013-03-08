@@ -87,9 +87,9 @@ define('WEPAYAPIURL', 'https://stage.wepay.com/v2/oauth2/authorize?client_id=' .
 		define('TWITTER_ACCESS_TOKEN', '565925798-uDufFnFbp4N4138EjRzg0BGbxdWCvfrwyCvD0nuZ');
 		define('TWITTER_ACCESS_TOKEN_SECRET', 'cVmemhawjWOGER7INjQZ5VWVQa1yTXaNDhPNgI2nEg');
 
-		define('FACEBOOK_APP_ID','132286753608939');
+		define('FACEBOOK_APP_ID','437263403016601');
 		define('FACEBOOK_KEY', '468309289847671');
-		define('FACEBOOK_SECRET','11d605495d3f28a20fc776eb42afac6a');
+		define('FACEBOOK_SECRET','961f76da1c77b80efdec421dd2f197a5');
 
 		// This is for dev, switch to other for prod, will handle with server check
 		define('WEPAY_CLIENT_ID','156003');
