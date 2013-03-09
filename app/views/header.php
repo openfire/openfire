@@ -64,7 +64,7 @@ s.parentNode.insertBefore(ga, s);
   })();
 
 </script>
-
+<div class='wrap'>
 		<div class="navbar navbar-static-top">
 		  <div class="navbar-inner">
 		    <a class="brand" href="/"><img src='/img/logo_textual.png' style='height:32px'></a>
@@ -135,5 +135,5 @@ s.parentNode.insertBefore(ga, s);
 
 </ul>
 </div>
-<div class='row-fluid'>
+<div class='row-fluid' style='min-height: 100%; padding-bottom: 4em'>
 	<? endif; ?>

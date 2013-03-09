@@ -1,7 +1,12 @@
 </div>
 
 </div>
-	<div class='navbar navbar-static-top'>
+
+<div id='push'></div>
+</div>
+<div id='footer'>
+	<div class='container'>
+	<div class='navbar'>
 		<div class='navbar-inner'>
 		    <a class="brand" href="/"><img src='/img/logo_textual.png' style='height:32px'></a>
 
@@ -18,5 +23,7 @@
 							</div>
 		</div>
 	</div>
+	</div>
+</div>
 </body>
 </html>
