@@ -132,14 +132,19 @@ function getBackers($offset = 0, $num = 10){
 
         $inarray = array();
 
-$sth = $dbh->prepare("SELECT userID FROM backers where goalID in (select id from goals where projectID='$this->id') limit $offset, $num");
+$sth = $dbh->prepare("SELECT userID, amount, goalID, rewardID, status FROM backers where goalID in (select id from goals where projectID='$this->id') limit $offset, $num");
 $sth->execute();
 $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
-foreach($result as $u){
-    if(!in_array($u['userID'], $inarray)){
-$this->backers[] = new User($u['userID']);
-    $inarray[] = $u['userID'];
+foreach($result as $b){
+    if(!in_array($b['userID'], $inarray)){
+   $tuser = new User($b['userID']);
+   $tuser->goal = new Goal($b['goalID']);
+    $tuser->amount = $b['amount'];
+    $tuser->reward = new Reward($b['rewardID']);
+    $tuser->rewardStatus = $b['status'];
+$this->backers[] = $tuser;
+    $inarray[] = $b['userID'];
     }
 }
 

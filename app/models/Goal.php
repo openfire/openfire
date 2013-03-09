@@ -24,14 +24,18 @@
         $this->daysUntilTarget = floor(($this->targetDate - time()) / 86400);
         if($this->daysUntilTarget < 0) $this->daysUntilTarget = 0;
 
-$sth = $dbh->prepare("SELECT userID FROM backers where goalID='$this->id'");
+$sth = $dbh->prepare("SELECT userID, amount, rewardID, status FROM backers where goalID='$this->id'");
 $sth->execute();
 $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 $inarray = array();
 foreach($result as $b){
 if(!in_array($b['userID'],$inarray)){
-$this->backers[] = new User($b['userID']);
+    $tuser = new User($b['userID']);
+    $tuser->amount = $b['amount'];
+    $tuser->reward = new Reward($b['rewardID']);
+    $tuser->rewardStatus = $b['status'];
+$this->backers[] = $tuser;
 $inarray[] = $b['userID'];
 }
 

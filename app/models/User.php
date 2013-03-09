@@ -22,18 +22,12 @@
 
     		global $dbh;
 
-    		$sth = $dbh->prepare("SELECT projectID,type,isAdmin FROM projectUsers where userID='$this->id' order by dateAdded");
+    		$sth = $dbh->prepare("SELECT projectID,role,isAdmin FROM projectUsers where userID='$this->id' order by dateAdded");
 $sth->execute();
 $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 foreach($result as $p){
 $project = new Project($p['projectID']);
 $project->isAdmin = $p['isAdmin'];
-
-
-    		$stg = $dbh->prepare("SELECT name from projectUserTypes where id='" . $p['type'] . "'");
-$stg->execute();
-$nresult = $stg->fetch(PDO::FETCH_ASSOC);
-$project->userRole = $nresult['name'];
 
 $this->projects[] = $project;
 

@@ -120,7 +120,8 @@ var action = "action=" + doIt + "&projectUUID=" + $(this).attr('data-projectUUID
 		<li class='active'><a href='#overview' data-toggle=tab>Project Overview</a>
 		<li><a href='#goals' data-toggle=tab>Goals</a>
 		<li><a href='#team' data-toggle=tab>Team</a>
-		<li><a href='#updates' data-toggle=tab>Updates</a>
+		<li><a href='#updates' data-toggle=tab>Updates <? if(count($this->project->updates > 0)): ?>(<?= count($this->project->updates) ?>)<? endif; ?></a>
+		<li><a href='#backers' data-toggle=tab>Backers <? if(count($this->project->backers > 0)): ?>(<?= count($this->project->backers) ?>)<? endif; ?></a>
 
 		<li><a href='#press' data-toggle=tab>Press</a>
 
@@ -282,6 +283,23 @@ var action = "action=" + doIt + "&projectUUID=" + $(this).attr('data-projectUUID
 	</ul>
 		
 	</div>
+
+	<div class='tab-pane fade in' id='backers'>
+		<legend>Backers</legend>
+		<table class='table table-striped'>
+			<thead>
+				<tr>
+					<th>User</th><th>Goal</th><th>Amount</th><th>Reward</th><th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+  <?foreach($this->project->backers as $backer): ?>
+  <tr><td><a href='/users/<?= $backer->username ?>'><img src='<?= $backer->avatar ?>' class='avatar-tiny'> <?= $backer->username ?></td><td><a href='/manageGoal/<?= $backer->goal->uuid ?>'><?= $backer->goal->name ?></a></td><td>$<?= $backer->amount ?></td><td><?= $backer->reward->name ?></td><td><?= $backer->rewardStatus ?></td></tr>
+<? endforeach; ?>
+</tbody>
+</table>
+	</div>
+
 </div>
 
 <div class='span3'>

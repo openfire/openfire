@@ -11,6 +11,7 @@ $sth = $dbh->prepare("SELECT id FROM projects where uuid='$uuid' limit 1");
 $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
 $project = new Project($result['id']);
+$project->getBackers();
 if(empty($user->id)){$error = "Sorry, you must be logged in to manage this project.";}else{
 $sth = $dbh->prepare("SELECT * FROM projectUsers where projectID='$project->id' and userID='$user->id' and isAdmin='1' limit 1");
 $sth->execute();
@@ -63,6 +64,7 @@ $sth = $dbh->prepare("SELECT id FROM projects where uuid='$uuid' limit 1");
 $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
 $project = new Project($result['id']);
+$project->getBackers();
 if(empty($user->id)){$error = "Sorry, you must be logged in to manage this project.";}else{
 $sth = $dbh->prepare("SELECT * FROM projectUsers where projectID='$project->id' and userID='$user->id' and isAdmin='1' limit 1");
 $sth->execute();

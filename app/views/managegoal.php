@@ -74,7 +74,7 @@ console.log(data.action);
 			<ul class='nav nav-pills nav-stacked'>
 				<li class='active'><a href='#overview' data-toggle=tab>Overview</a></li>
 		<li><a href='#details' data-toggle=tab>Goal Details</a>
-		<li><a href='#backers' data-toggle=tab>Backers</a>
+		<li><a href='#backers' data-toggle=tab>Backers <? if(count($this->goal->backers > 0)): ?>(<?= count($this->goal->backers) ?>)<? endif; ?></a>
 		<li><a href='#rewards' data-toggle=tab>Rewards</a>
 
 	</ul>
@@ -160,16 +160,18 @@ console.log(data.action);
 
 	<div id='backers' class='tab-pane fade in'>
 		<legend>Backers</legend>
-		<ul class="thumbnails">
-  <?foreach($this->goal->backers as $backer): ?><li class="span2">
-    <div class="thumbnail">
-      <img src='<?= $backer->avatar ?>' style='height: 64px' alt="">
-      <h5 style='text-align:center'><a href='/users/<?= $backer->username ?>'><?= $backer->username ?></a></h5>
-
-    </div>
-  </li>
+		<table class='table table-striped'>
+			<thead>
+				<tr>
+					<th>User</th><th>Amount</th><th>Reward</th><th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+  <?foreach($this->goal->backers as $backer): ?>
+  <tr><td><a href='/users/<?= $backer->username ?>'><img src='<?= $backer->avatar ?>' class='avatar-tiny'> <?= $backer->username ?></td><td>$<?= $backer->amount ?></td><td><?= $backer->reward->name ?></td><td><?= $backer->rewardStatus ?></td></tr>
 <? endforeach; ?>
-</ul>
+</tbody>
+</table>
 	</div>
 
 	<div id='rewards' class='tab-pane fade in'>
