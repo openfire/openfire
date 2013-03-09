@@ -3,7 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<link href="/app/libraries/min/b=css&f=bootstrap.min.css,elusive-webfont.css,style.css" rel="stylesheet" media="screen">
+<link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="/css/elusive-webfont.css" rel="stylesheet" media="screen">
+<link href="/css/style.css" rel="stylesheet" media="screen">
+
+
 
 <? if(!empty($this->css)): foreach($this->css as $url): ?>
 <link rel="stylesheet" href="<?= $url ?>">
