@@ -19,6 +19,7 @@ $Opauth = new Opauth( $opconfig, false );
 */
 $response = null;
 
+
 switch($Opauth->env['callback_transport']) {
 	case 'session':
 		session_start();
@@ -73,71 +74,168 @@ else{
 // echo "<pre>";
 //  print_r($response);
 
+$params = array();
+$update = array();
 
 switch($response['auth']['provider']){
 
 	case("Twitter"):
+	
+		$params['type'] = "twitter";
+		$params['token'] = $response['auth']['credentials']['token'];
+		$params['secret'] = $response['auth']['credentials']['secret'];
 
-$token = $response['auth']['credentials']['token'];
-$secret = $response['auth']['credentials']['secret'];
+		$params['username'] = $response['auth']['info']['nickname'];
+		$params['avatar'] = $response['auth']['info']['image'];
+		$params['location'] = $response['auth']['info']['location'];
+		$params['bio'] = $response['auth']['info']['description'];
+		$name = explode(" ", $response['auth']['info']['name']);
+		$params['firstName'] = $name[0];
+		$params['lastName'] = $name[count($name) - 1];
 
-$username = $response['auth']['info']['nickname'];
-$avatar = $response['auth']['info']['image'];
-$location = $response['auth']['info']['location'];
-$bio = $response['auth']['info']['description'];
-$name = explode(" ", $response['auth']['info']['name']);
-$firstName = $name[0];
-$lastName = $name[count($name) - 1];
+		$update['twitterAuthToken'] = $response['auth']['credentials']['token'];
+		$update['twitterAuthSecret'] = $response['auth']['credentials']['secret'];
 
-if(empty($user->id)){
+		$query = "select id from users where twitterAuthToken='" . $params['token'] . "' and twitterAuthSecret = '" . $params['secret'] . "' limit 1";
 
-	$sth = $dbh->prepare("select id from users where twitterAuthToken='$token' and twitterAuthSecret = '$secret' limit 1");
+
+
+	break;
+
+	case("Facebook"):
+
+		$params['type'] = "facebook";
+		$params['token'] = $response['auth']['credentials']['token'];
+
+		$params['username'] = $response['auth']['info']['nickname'];
+		$params['avatar'] = $response['auth']['info']['image'];
+		$params['location'] = $response['auth']['info']['location'];
+		$params['bio'] = $response['auth']['raw']['bio'];
+
+		$params['firstName'] = $response['auth']['info']['first_name'];
+		$params['lastName'] = $response['auth']['info']['last_name'];
+
+		$update['facebookToken'] = $response['auth']['credentials']['token'];
+		$query = "select id from users where facebookToken='" . $params['token'] . "' limit 1";
+
+
+
+
+	break;
+
+}
+
+// Check to see if the user is logged in. If so, log them in and update them.
+
+if(!empty($user->id)){
+
+	$user->update($update);
+
+		if(empty($user->email)){ 
+		header("Location: /completeProfile");
+		}else{
+			header('Location: /profile');
+		}
+
+}else{
+
+	$sth = $dbh->prepare($query);
 	$sth->execute();
 	$result = $sth->fetch(PDO::FETCH_ASSOC);
 
 	if(!empty($result['id'])){
-
 		$user = new User($result['id']);
+
 
 		setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
 		setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
 
-		$params = array("lastLogin" => time());
-		$user->update($params);
+		$newparams = array("lastLogin" => time());
+		$user->update($newparams);
 
 		addActivity("$user->username ($user->email) logged in");
 		$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
 		$sth->execute();
 
-if(empty($user->email)){ 
-	header("Location: /completeProfile");
-	}else{
+		if(empty($user->email)){ 
+		header("Location: /completeProfile");
+		}else{
 		header("Location: /");
+		}
+	
+
+
 	}
 
-	}else{
+}
 
-	$sth = $dbh->prepare("select count from users where username='$username'");
+
+	$sth = $dbh->prepare("select id from users where username='". $params['username'] ."'");
+	$sth->execute();
+	$result = $sth->fetch(PDO::FETCH_ASSOC);
+
+
+	$sth = $dbh->prepare("select count(*) from users where username='". $params['username'] ."'");
 	$sth->execute();
 	$result = $sth->fetch(PDO::FETCH_ASSOC);
 	if($result['count(*)'] > 0){
-		$username = $username . $result['count(*)'];
+		$params['username'] = $params['username'] . $result['count(*)'];
+		$params['doesExist'] = "true";
 		}
 
-	$params = array(
-		"username" => $username,
-		"uuid" => md5(microtime()),
-		"firstName" => $firstName,
-		"lastName" => $lastName,
-		"twitterAuthToken" => $token,
-		"twitterAuthSecret" => $secret,
-		"location" => $location,
-		"bio" => $bio,
-		"active" => 1
-		);
+$template = new Templater();
+$template->load('header');
+$template->title = "Create Profile";
+$template->publish();
 
-	$user = new User();
-	$user->insert($params);
+
+$template = new Templater();
+$template->load('createProfile');
+$template->params = $params;
+$template->publish();
+
+$template = new Templater();
+$template->load('footer');
+$template->publish();
+
+}
+
+function post(){
+
+	global $dbh;
+
+$pwdHasher = new PasswordHash(8, FALSE);
+$password = $pwdHasher->HashPassword( $_POST['password'] );
+
+$user = new User();
+
+$avatar = $_POST['avatar'];
+
+$params = array(
+"username" => $_POST['username'],
+"email" => $_POST['email'],
+"password" => $password,
+"lastName" => $_POST['lastName'],
+"firstName" => $_POST['firstName'],
+"location" => $_POST['location'],
+"bio" => $_POST['bio'],
+"uuid" => MD5(microtime()),
+"active" => 0
+	);
+
+if($_POST['type'] == "twitter"){
+	$params['twitterAuthToken'] = $_POST['token'];
+	$params['twitterAuthSecret']  = $_POST['secret'];
+
+}
+
+if($_POST['type'] == "facebook"){
+	$params['facebookToken'] = $_POST['token'];
+	
+}
+
+$user->insert($params);
+
 
 	$saveto = $_SERVER['DOCUMENT_ROOT'] . "/../assets.openfi.re/images/avatars/".$user->uuid.".png";
     $ch = curl_init ($avatar);
@@ -154,200 +252,23 @@ if(empty($user->email)){
     fclose($fp);
 	$newavatar = imageToPNG($saveto,$saveto, 256);
 
-
-	setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
-				setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
-
-				$params = array("lastLogin" => time());
-				$user->update($params);
-
-				addActivity("$user->username ($user->email) logged in");
-
-				global $dbh;
-
-				$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
-				$sth->execute();
-
-				header("Location: /completeProfile");
-
-
-	}
-
-
-
-
-
-}else{
-
-
-	$params = array(
-		"twitterAuthToken" => $token,
-		"twitterAuthSecret" => $secret
-		);
-
-$user->update($params);
-
-
-setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
-		setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
-
-		$params = array("lastLogin" => time());
-		$user->update($params);
-
-		addActivity("$user->username ($user->email) logged in");
-		$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
-		$sth->execute();
-
-if(empty($user->email)){ 
-	header("Location: /completeProfile");
-	}else{
-		header("Location: /");
-	}
-
-}
-
-
-
-
-
-break;
-
-case("Facebook"):
-
-$token = $response['auth']['credentials']['token'];
-
-$username = $response['auth']['info']['nickname'];
-$avatar = $response['auth']['info']['image'];
-$location = $response['auth']['info']['location'];
-$bio = $response['auth']['raw']['bio'];
-
-$firstName = $response['auth']['info']['first_name'];
-$lastName = $response['auth']['info']['last_name'];
-
-if(empty($user->id)){
-
-	$sth = $dbh->prepare("select id from users where facebookToken='$token' limit 1");
-	$sth->execute();
-	$result = $sth->fetch(PDO::FETCH_ASSOC);
-
-	if(!empty($result['id'])){
-
-		$user = new User($result['id']);
-
 		setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
 		setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
 
-		$params = array("lastLogin" => time());
-		$user->update($params);
-
-		addActivity("$user->username ($user->email) logged in");
+		addActivity("$user->username ($user->email) created an account");
 		$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
 		$sth->execute();
 
-if(empty($user->email)){ 
-	header("Location: /completeProfile");
-	}else{
+		if(empty($user->email)){ 
+		header("Location: /completeProfile");
+		}else{
 		header("Location: /");
-	}
-
-	}else{
-
-	$sth = $dbh->prepare("select count from users where username='$username'");
-	$sth->execute();
-	$result = $sth->fetch(PDO::FETCH_ASSOC);
-	if($result['count(*)'] > 0){
-		$username = $username . $result['count(*)'];
 		}
 
-	$params = array(
-		"username" => $username,
-		"uuid" => md5(microtime()),
-		"firstName" => $firstName,
-		"lastName" => $lastName,
-		"facebookToken" => $token,
-		"location" => $location,
-		"bio" => $bio,
-		"active" => 1
-		);
-
-	$user = new User();
-	$user->insert($params);
-
-	$saveto = $_SERVER['DOCUMENT_ROOT'] . "/../assets.openfi.re/images/avatars/".$user->uuid.".png";
-    $ch = curl_init ($avatar);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    $raw=curl_exec($ch);
-    curl_close ($ch);
-    if(file_exists($saveto)){
-        unlink($saveto);
-    }
-    $fp = fopen($saveto,'x');
-    fwrite($fp, $raw);
-    fclose($fp);
-	$newavatar = imageToPNG($saveto,$saveto, 256);
-
-
-	setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
-				setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
-
-				$params = array("lastLogin" => time());
-				$user->update($params);
-
-				addActivity("$user->username ($user->email) logged in");
-
-				global $dbh;
-
-				$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
-				$sth->execute();
-
-				header("Location: /completeProfile");
-
-
-	}
-
-
-
-
-
-}else{
-
-
-	$params = array(
-		"facebookToken" => $token
-		);
-
-$user->update($params);
-
-
-setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
-		setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
-
-		$params = array("lastLogin" => time());
-		$user->update($params);
-
-		addActivity("$user->username ($user->email) logged in");
-		$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
-		$sth->execute();
-
-if(empty($user->email)){ 
-	header("Location: /completeProfile");
-	}else{
-		header("Location: /");
-	}
 
 }
 
 
-break;
-
-}
-
-
-}
 
 
 }

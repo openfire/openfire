@@ -1,7 +1,6 @@
  <div class='span8' style='margin-top: 2em; margin-bottom: 2em'>
     <h2>Create Account</h2>
     <form action='' method='post' data-validate="parsley">
-
     
 <fieldset>
 <label for='username'>Username</label>

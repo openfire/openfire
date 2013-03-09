@@ -59,9 +59,13 @@ $('.tooltipped').tooltip();
 	</fieldset>
 	<div class="form-actions">
   <button type="submit" class="btn btn-primary">Save changes</button>
+<br><br>
+		<a class='btn btn-info' href='/auth/facebook' style='background: #596F90; margin-top: 0.5em; margin-bottom: 0.5em'><i class='icon-facebook'></i> Connect With Facebook</a><? if(!empty($this->user->facebookToken)): ?> <b>connected</b><? endif; ?><br>
+  		<a class='btn btn-info' href='/auth/twitter'><i class='icon-twitter'></i> Connect With Twitter</a><? if(!empty($this->user->twitterAuthToken)): ?> <b>connected</b><? endif; ?>
+
 </div>
 	</form>
-	</div>
+
 
 	<div class='tab-pane fade in' id='projects'>
 		<h2>My Projects</h2>
