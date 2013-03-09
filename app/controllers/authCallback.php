@@ -220,7 +220,7 @@ $params = array(
 "location" => $_POST['location'],
 "bio" => $_POST['bio'],
 "uuid" => MD5(microtime()),
-"active" => 0
+"active" => 1
 	);
 
 if($_POST['type'] == "twitter"){

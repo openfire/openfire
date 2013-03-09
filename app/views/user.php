@@ -30,7 +30,7 @@
 <? foreach($this->displayUser->backedGoals as $goal): $gproject = new Project($goal->projectID) ?>
 <div class='well well-small'>
 
-				<h4><a href='/projects/<?= $gproject->slug ?>'><?= $project->title ?></a> | <a href='/goals/<?= $goal->uuid ?>'><?= $goal->name ?></a></h4>
+				<h4><a href='/projects/<?= $gproject->slug ?>'><?= $gproject->title ?></a> | <a href='/goals/<?= $goal->uuid ?>'><?= $goal->name ?></a></h4>
 </div>
 <? endforeach; ?>
 	</div>
