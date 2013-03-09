@@ -114,6 +114,7 @@ var action = "action=" + doIt + "&projectUUID=" + $(this).attr('data-projectUUID
 	<div class='span2'>
 	<ul>
 		<li>Total Funding: <b>$<? $this->project->getTotalFunding; echo $this->project->totalFunding; ?></b></li>
+		<li>WePay Account: <b><a href='https://www.wepay.com/account/<?= $this->project->wePayAccountID ?>'><?= $this->project->wePayAccountID ?></a></b></li>
 	</ul>
 			<ul class='nav nav-pills nav-stacked'>
 		<!-- <li class='active'><a href='#messages' data-toggle='tab'>Messages</a> -->
