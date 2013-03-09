@@ -108,7 +108,7 @@
             </div>
 
             <div style="text-align:center; margin-top: 1em">
-	           <a href="/goals/<?= $currentGoal->uuid ?>" class="btn btn-large btn-success">Find Out More</a>
+	           <a href="/goals/<?= $currentGoal->uuid ?>" class="btn btn-large btn-success" onClick="_gaq.push(['_trackEvent', 'Find Out More', 'Find Click', 'Clicked',, false]);">Find Out More</a>
             </div>
 
   		</div>
