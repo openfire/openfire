@@ -58,7 +58,7 @@
         		<div class="bar" style="width: <? if($this->goal->percentComplete < 100): echo $this->goal->percentComplete; else: echo "100"; endif; ?>%;"></div>
             </div>
         	
-            <p style="text-align:right"><a href="/goals/fb519fa15086214f55819db9591f4ac8/fund" class="btn btn-success" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a></p>
+            <p style="text-align:right"><a href="/goals/<?= $this->goal->uuid ?>/fund" class="btn btn-success" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a></p>
 
             <p>Goal created on <strong><?= date("F jS, Y", $this->goal->dateAdded) ?></strong>
             <br/>Funding ends on <strong><?= date("F jS, Y", $this->goal->targetDate) ?></strong></p>
