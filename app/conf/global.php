@@ -12,6 +12,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/get_enum_values.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/addActivity.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/relativeTime.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/fixFilesArray.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/checkCSRF.php');
 
 
 
@@ -115,14 +116,29 @@ define('WEPAYAPIURL', 'https://www.wepay.com/v2/oauth2/authorize?client_id=' . W
 		}
 
 		function my_autoloader($class) {
-			if(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php')){
-		    include $_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php';
-		}else{
 
-			    include $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php';
+			switch(true){
+
+				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php')):
+				include $_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php';
+				break;
+
+				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php')):
+				include $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php';
+				break;
+
+				// case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php')):
+				// include $_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php';
+				// break;
+
+
+
+
+						}
 
 		}
-		}
+
+
 
 		spl_autoload_register('my_autoloader');
 

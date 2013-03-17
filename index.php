@@ -74,7 +74,8 @@ Toro::serve(array(
     "users/:alpha" => "Users",
     "wePayProjectAccountHandler/:alpha" => "wePayProjectAccountHandler",
     "fundingRedirect" => "fundingRedirect",
-    "fundingComplete/:alpha/:alpha/:alpha/:alpha" => "fundingComplete"
+    "fundingComplete/:alpha/:alpha/:alpha/:alpha" => "fundingComplete",
+    "exportDBToMongo" => "exportDBToMongo"
 ));
 
 ?>
