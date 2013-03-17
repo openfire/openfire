@@ -15,7 +15,7 @@
 		        <li class="divider-vertical"></li>
 				<li><a href='/team'>Team</a></li>
 		        <li class="divider-vertical"></li>
-				<li><a href='/contactus'>Contact Us</a></li>
+				<li><a href='https://getsatisfaction.com/openfire'>Contact Us</a></li>
 		    </ul>
 							<div class='muted clearfix' style='clear:both; width: 100% !important; font-size:0.8em; text-align:center'>
 								<p>We respect your right to privacy. We will not give your name or personal information to third parties. No one will ever see your credit card information besides our payment processor, not even us.</p>
