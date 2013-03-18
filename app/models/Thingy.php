@@ -26,8 +26,10 @@ abstract class Thingy {
             if($this->table != null){
             $query = "DESCRIBE " . $this->table;
             $result = $dbh->query($query);
-            foreach($result as $fieldinfo) {
+            if(!empty($result)){
+                foreach($result as $fieldinfo) {
                 $this->$fieldinfo['Field'] = '';
+                }
             }
         }
 }
