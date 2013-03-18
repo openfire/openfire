@@ -45,7 +45,7 @@ $user->update($params);
 addActivity("$user->fullname ($user->email) updated their profile");
 
 
-if(!empty($_FILES['avatar'])){
+if(!empty($_FILES['avatar']['tmp_name'])){
 
 $destFile = $_SERVER['DOCUMENT_ROOT'] . "/../assets.openfi.re/images/avatars/".$user->uuid.".png";
 
