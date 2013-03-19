@@ -10,13 +10,6 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 $project = new Project($result['id']);
 $redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/wePayProjectAccountHandler/" . $project->uuid;
 
-global $server;
-
-if (strstr($server, 'dev')) {
-WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-}else{
-WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-}
 
 if (!empty($_GET['error'])) {
     // user did not grant permissions

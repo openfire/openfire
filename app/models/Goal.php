@@ -35,6 +35,7 @@ if(!in_array($b['userID'],$inarray)){
     $tuser->amount = $b['amount'];
     $tuser->reward = new Reward($b['rewardID']);
     $tuser->rewardStatus = $b['status'];
+ //   $tuser->checkoutID = $b['wePayCheckoutID'];
 $this->backers[] = $tuser;
 $inarray[] = $b['userID'];
 }

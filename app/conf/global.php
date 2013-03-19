@@ -15,6 +15,34 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/fixFilesArray.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/app/functions/checkCSRF.php');
 
 
+		function my_autoloader($class) {
+
+			switch(true){
+
+				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php')):
+				include $_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php';
+				break;
+
+				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php')):
+				include $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php';
+				break;
+
+				// case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php')):
+				// include $_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php';
+				// break;
+
+
+
+
+						}
+
+		}
+
+
+
+		spl_autoload_register('my_autoloader');
+
+
 
 		define("SALT","MyDearSw33tBrotherNums3y666");
 		define("OUTGOINGEMAIL","sendgrid@importantmedia.org");
@@ -51,10 +79,13 @@ if (strstr($server, 'dev')) {
 		define('FACEBOOK_SECRET','11d605495d3f28a20fc776eb42afac6a');
 
 		// This is for dev, switch to other for prod, will handle with server check
+
+
 		define('WEPAY_CLIENT_ID','70362');
 		define('WEPAY_CLIENT_SECRET', 'c0cdb5865d');
 		define('WEPAY_ACCESS_TOKEN', 'STAGE_9672fc394c1470b2d9dce2340122f32177b5eb03a9e9de990626273cc0f80b76');
 		define('WEPAY_ACCOUNT_ID', '155429649');
+		WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
 
 		// Production. Commented out for now.
 		// define('WEPAY_CLIENT_ID','147593');
@@ -93,10 +124,12 @@ define('WEPAYAPIURL', 'https://stage.wepay.com/v2/oauth2/authorize?client_id=' .
 		define('FACEBOOK_SECRET','961f76da1c77b80efdec421dd2f197a5');
 
 		// This is for dev, switch to other for prod, will handle with server check
+
 		define('WEPAY_CLIENT_ID','156003');
 		define('WEPAY_CLIENT_SECRET', 'e0c77e9747');
 		define('WEPAY_ACCESS_TOKEN', 'PRODUCTION_a7849a5898fd29b4958cffc177ab9145a2ccca03cc2d446627aa2e15d8c81e34');
 		define('WEPAY_ACCOUNT_ID', '747839398');
+		WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
 
 define('WEPAYAPIURL', 'https://www.wepay.com/v2/oauth2/authorize?client_id=' . WEPAY_CLIENT_ID . '&redirect_uri=http://' . $_SERVER['SERVER_NAME'] .'/wePayProjectAccountHandler/');
 	
@@ -115,32 +148,7 @@ define('WEPAYAPIURL', 'https://www.wepay.com/v2/oauth2/authorize?client_id=' . W
 		    return $dbh->quote(trim($data));
 		}
 
-		function my_autoloader($class) {
 
-			switch(true){
-
-				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php')):
-				include $_SERVER['DOCUMENT_ROOT'] . '/app/models/' . $class . '.php';
-				break;
-
-				case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php')):
-				include $_SERVER['DOCUMENT_ROOT'] . '/app/controllers/' . $class . '.php';
-				break;
-
-				// case(file_exists($_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php')):
-				// include $_SERVER['DOCUMENT_ROOT'] . '/app/api/' . $class . '.php';
-				// break;
-
-
-
-
-						}
-
-		}
-
-
-
-		spl_autoload_register('my_autoloader');
 
 
 		$embedly = new Embedly(array(
@@ -154,5 +162,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/auth/Strategy/TwitterStrategy.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/auth/Strategy/FacebookStrategy.php');
 
 global $dbh;
+
+
 
 ?>

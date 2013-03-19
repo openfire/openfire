@@ -22,23 +22,23 @@ if(!empty($_POST['rewardUUID'])) $rewardUUID = $_POST['rewardUUID'];
 $amount = $_POST['amount'];
 $appFee = $amount * .04;
 $recipientID = $project->wePayAccountID;
-echo $recipientID;
 $short_description = "Funding For Openfire Goal: " . $goal->name . " (Project: ". $project->title . ")";
 $type = "DONATION";
 $mode = "regular";
 $redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/fundingComplete/" . $goal->uuid . "/" . $user->uuid . "/" . $rewardUUID . "/" . $amount;
 
 
-    // change to useProduction for live environments
-global $server;
+//     // change to useProduction for live environments
+// global $server;
 
-if (strstr($server, 'dev')) {
-WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-}else{
-WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-}
+// if (strstr($server, 'dev')) {
+// WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
+// }else{
+// WePay::useProduction(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
+// }
 
     $wepay = new WePay($project->wePayAccessToken);
+    print_r($wepay);
 
     // create the checkout
     $response = $wepay->request('checkout/create', array(

@@ -2,8 +2,6 @@
 
 function get($uuid){
 
-	WePay::useStaging(WEPAY_CLIENT_ID, WEPAY_CLIENT_SECRET);
-
 global $user;
 global $dbh;
 

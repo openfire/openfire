@@ -58,7 +58,17 @@
         		<div class="bar" style="width: <? if($this->goal->percentComplete < 100): echo $this->goal->percentComplete; else: echo "100"; endif; ?>%;"></div>
             </div>
         	
-            <p style="text-align:right"><a href="/goals/<?= $this->goal->uuid ?>/fund" class="btn btn-success" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a></p>
+
+            <p style="text-align:right">
+                <? if(!in_array($this->goal->status, array("success", "failed", "future"))): ?>
+                <a href="/goals/<?= $this->goal->uuid ?>/fund" class="btn btn-success" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a>
+            <? else:?>
+            <? if($this->goal->status == 'success'): ?><span class='btn btn-success disabled'>Goal Successfully Funded</span><? endif; ?>
+            <? if($this->goal->status == 'failed'): ?><span class='btn btn-warning disabled'>Goal Failed</span><? endif; ?>
+        <? endif; ?>
+            <? if($this->goal->status == 'failed'): ?><span class='btn disabled'>Goal Has Not Started Yet</span><? endif; ?>
+        <? endif; ?>
+            </p>
 
             <p>Goal created on <strong><?= date("F jS, Y", $this->goal->dateAdded) ?></strong>
             <br/>Funding ends on <strong><?= date("F jS, Y", $this->goal->targetDate) ?></strong></p>
