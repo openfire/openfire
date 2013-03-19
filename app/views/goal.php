@@ -65,7 +65,6 @@
             <? else:?>
             <? if($this->goal->status == 'success'): ?><span class='btn btn-success disabled'>Goal Successfully Funded</span><? endif; ?>
             <? if($this->goal->status == 'failed'): ?><span class='btn btn-warning disabled'>Goal Failed</span><? endif; ?>
-        <? endif; ?>
             <? if($this->goal->status == 'failed'): ?><span class='btn disabled'>Goal Has Not Started Yet</span><? endif; ?>
         <? endif; ?>
             </p>
