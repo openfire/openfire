@@ -1,0 +1,124 @@
+a:hover{text-decoration: none}
+
+
+h1, h2, h3, h4, h5{font-weight: 300}
+
+
+/* Josh's changes. Should wipe everything before this. */
+
+.logo{height: 1em;}
+
+img.avatar{height: 1em;}
+
+.splash{
+    background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 97%, #f2f2f2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(97%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+
+border-radius: 0;
+    border: 1px solid #eee;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.help-icon{
+	display: inline-block;
+	font-size: 14px;
+	color: #ccc;
+	padding-top: -50%;
+}
+
+.featuredProjects .stats, .featuredGoals .stats{
+	margin-top: 1em;
+	font-weight: 300;
+}
+
+.featuredProjects .summary, .featuredGoals .summary{
+	font-size: 0.9em;
+	line-height: 1.5em;
+	height: 12em;
+	min-height: 12em !important;
+}
+
+.featuredProjects h3, .featuredGoals h3{
+	line-height: 1.5em;
+	min-height: 3em;
+}
+
+.goal .stats li{
+	display: inline-block;
+	height: 40px;
+margin-top: 0;
+}
+
+.goal .stats li b{
+	font-size: 1.25em;
+}
+
+.goal .stats li.divider-vertical{
+height: 40px;
+margin: 0 9px;
+border-left: 1px solid #f2f2f2;
+border-right: 1px solid #ffffff;
+}
+
+.sidebar .widget{
+    margin-bottom: 2em;
+}
+
+body.project h1.title, body.project h2.subtitle{
+	line-height: 1.25em;
+	margin: 0;
+	padding: 0;
+}
+
+body.project .media{
+	text-align:center;
+	margin-bottom: 1em;
+}
+
+body.project .summary, body.project .description{
+	font-weight: 300;
+	margin-top: 2em;
+}
+
+body.project .update{
+	margin-bottom: 2em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid #ddd;
+}
+
+body.project .update h4{
+	font-weight: bold;
+}
+
+body.project .update .meta{
+	font-size: 0.9em;
+	margin-left: 28px;
+	font-weight: bold;
+}
+body.project .update .body{
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
+
+
+body.project .update .privateOnly{
+	font-weight: 300;
+	font-style: italic;
+}
+
+body.project .teamMember, body.project .backer{
+	text-align:center;
+}
+
+.teamMember .role{
+	font-weight: bold;
+}
+
