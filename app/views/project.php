@@ -96,7 +96,7 @@
             <h3> <a href="/goals/<?= $currentGoal->uuid ?>"><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
         </div>
 
-        <p><? if(!empty($currentGoal->summary)): echo trimtowcount($currentGoal->description, 60) . "..."; else: echo nl2br($currentGoal->summary); endif ?></p>
+        <p><? if(empty($currentGoal->summary)): echo trimtowcount($currentGoal->description, 60) . "..."; else: echo nl2br($currentGoal->summary); endif ?></p>
         <div class="funding">
             <div class="funding-vitals">
                 <h3>$<?= $currentGoal->currentAmount ?><span>of $<?= $currentGoal->targetAmount ?> raised</span></h3> 

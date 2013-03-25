@@ -66,7 +66,7 @@ if (strstr($server, 'dev')) {
 
 
 		define("EMBEDLYKEY", "92dd1679846943baa1f1a2c9611d36e0");
-
+		define("FILEPICKER_KEY", "APmnFWcYWT5G1Zv4GImDoz");
 
 		define('TWITTER_CONSUMER_KEY','3wYy4j14iRIliRLqcf5A');
 		define('TWITTER_CONSUMER_SECRET','auY88voEBWP6XfDlkeLo8J5IiEGyDdUnixKjtNAc');
@@ -111,6 +111,7 @@ define('WEPAYAPIURL', 'https://stage.wepay.com/v2/oauth2/authorize?client_id=' .
 
 
 		define("EMBEDLYKEY", "92dd1679846943baa1f1a2c9611d36e0");
+		define("FILEPICKER_KEY", "APmnFWcYWT5G1Zv4GImDoz");
 
 
 		define('TWITTER_CONSUMER_KEY','JtCd38gGOkDOTvuCE2ZT1A');

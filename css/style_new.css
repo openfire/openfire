@@ -122,3 +122,15 @@ body.project .teamMember, body.project .backer{
 	font-weight: bold;
 }
 
+body.project .project .stats{
+	font-size: 1.25em;
+	font-weight: 300;
+}
+
+body.project .project .stats b{
+	font-weight: 500;
+	}
+
+	body.project .sidebar ul.rewards li.reward{
+		margin-bottom: 2em;
+	}

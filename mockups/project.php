@@ -96,7 +96,7 @@ $(function() {
 </ul>
 <div class='row-fluid'>
 
-	<div class='span8'>
+	<div class='span8 project'>
 		<div class='titling'>
 				<h1 class='title'>This Project <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h1>
 				<h2 class='subtitle'>the subtitle for this project</h2>
@@ -127,7 +127,11 @@ $(function() {
 <div class="tab-content">
 
 	<div id='summary' class='summary tab-pane active'>
-		<h3>Summary</h3>
+		<ul class='stats unstyled'>
+			<li>Creator: <b><a href='#'>jzellis</a></b></li>
+			<li>Launched: <b>Mar 01,2013</b></li>
+			<li>Total Funds Raised: <b>$5000</b></li>
+		</ul>
 				<p>Goodbye, friends. I never thought I'd die like this. But I always really hoped. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! And I'd do it again! And perhaps a third time! But that would be it. Ooh, name it after me!</p>
 				<p>Kif might! Oh, you're a dollar naughtier than most. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can.</p>
 	</div>
@@ -288,6 +292,10 @@ $(function() {
 				<p>Bender, you risked your life to save me! You guys aren't Santa! You're not even robots. How dare you lie in front of Jesus? Then throw her in the laundry room, which will hereafter be referred to as "the brig". We're rescuing ya. I guess because my parents keep telling me to be more ladylike. As though!</p>
 <p>I'll get my kit! Fry, we have a crate to deliver. You, minion. Lift my arm. AFTER HIM! You seem malnourished. Are you suffering from intestinal parasites?</p>
 			</div>
+															<div class="progress">
+  <div class="bar bar-success" style="width: 71.2%;"></div>
+</div>
+
 									<ul class='stats'>
 							<li><b>$5000</b><br>goal</li>
 												<li class="divider-vertical"></li>
@@ -298,16 +306,28 @@ $(function() {
 												<li class="divider-vertical"></li>
 							<li><b>24</b><br> days left</li>
 						</ul>
+						<br>
+<div style='text-align:center'><a href='#' class='btn btn-success btn-large'>Fund This Goal</a></div>
 <hr>
 						<h3>Rewards <a href="#faq_rewards" role="button" data-toggle="modal" class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h2></h3>
 						<ul class='rewards unstyled'>
 							<li class='reward'>
-								<h4><b>$5</b> Reward Title</h4>
+								<h4>$5: <b>Reward Title</b></h4>
 									<div class='summary'>
 										<p>And this isn't my nose. This is a false one. Now, look here, my good man. Camelot! Look, my liege! Bloody Peasant! On second thoughts, let's not go there. It is a silly place.</p>
 <p>And this isn't my nose. This is a false one. She looks like one. Who's that then? Did you dress her up like this? Why do you think that she is a witch?</p>
 <p>The nose? Be quiet! She looks like one.</p>
 									</div>
+									<div style='text-align:center'><a class='btn btn-small btn-success' href='#'>Claim This Reward</a></div>
+							</li>
+							<li class='reward'>
+								<h4>$25: <b>Another, Rather Longer Reward Title</b></h4>
+									<div class='summary'>
+										<p>And this isn't my nose. This is a false one. Now, look here, my good man. Camelot! Look, my liege! Bloody Peasant! On second thoughts, let's not go there. It is a silly place.</p>
+<p>And this isn't my nose. This is a false one. She looks like one. Who's that then? Did you dress her up like this? Why do you think that she is a witch?</p>
+<p>The nose? Be quiet! She looks like one.</p>
+									</div>
+									<div style='text-align:center'><a class='btn btn-small btn-success' href='#'>Claim This Reward</a></div>
 							</li>
 						</ul>
 
