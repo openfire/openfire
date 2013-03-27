@@ -1,3 +1,4 @@
+<? $project = new Project($this->goal->projectID) ?>
 <script>
 $(function() {
 	$('#amount').blur(function(){
@@ -20,7 +21,7 @@ unavailable.first().find('input[name="rewardUUID"]').removeAttr('checked');
 });
 </script>
 <div class='span 8'>
-	<h1>Fund &quot;<?= $this->goal->name ?>&quot;</h1>
+	<h1>Fund <?= $project->title ?> goal &quot;<?= $this->goal->name ?>&quot;</h1>
 	<p>Thanks for funding this goal! Use the form below to choose your funding amount and select your reward (if any).</p><p>Once you fill in this information, you'll be redirected to <a href='http://www.wepay.com'>WePay</a> to complete the transaction.</p>
 	<form action='/fundingRedirect' method='post' data-validate='parsley'>
 		<input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>

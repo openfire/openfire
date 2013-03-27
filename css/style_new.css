@@ -71,7 +71,12 @@ border-right: 1px solid #ffffff;
     margin-bottom: 2em;
 }
 
-body.project h1.title, body.project h2.subtitle{
+body.project .titling{
+	text-align:center;
+	margin-bottom: 2em;
+}
+
+body.project h1.title, body.project h3.subtitle{
 	line-height: 1.25em;
 	margin: 0;
 	padding: 0;
@@ -125,6 +130,7 @@ body.project .teamMember, body.project .backer{
 body.project .project .stats{
 	font-size: 1.25em;
 	font-weight: 300;
+	margin-top: 2em;
 }
 
 body.project .project .stats b{
@@ -133,4 +139,27 @@ body.project .project .stats b{
 
 	body.project .sidebar ul.rewards li.reward{
 		margin-bottom: 2em;
+	}
+
+
+	body.project #goals ul li.goal.current h3{
+		font-weight:bold;
+	}
+
+	body.project #goals ul li.goal.success{
+		background-color: #eeffee;
+	}
+
+	body.project #goals ul li.goal.failed{
+		background-color: #ffeeee;
+	}
+
+	body.project #goals ul li.goal.future{
+		opacity: 0.5;
+
+	}
+
+	body.project #goals ul li.goal.future * {
+		font-size: 1.5em;
+
 	}

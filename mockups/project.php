@@ -11,17 +11,13 @@
 <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
 
 <script src="/js/bootstrap.min.js"></script>
-<script>
-$(function() {
-	$('.tooltipped').tooltip();
-});
-</script>
+
 </head>
 
 <body class='project'>
-<div class='container-fluid'>
+<div class='container'>
 	<!-- Header -->
-	<div class='row-fluid'>
+	<div class='row'>
 		<div class='navbar navbar-static-top'>
 			<div class='navbar-inner'>
 				<a class='brand' href='/'><img src='/img/logo_textual.png' class='logo'></a>
@@ -94,16 +90,14 @@ $(function() {
   <li><a href="#">Projects</a> <span class="divider">/</span></li>
   <li class="active">This Project</li>
 </ul>
-<div class='row-fluid'>
+<div class='row'>
 
 	<div class='span8 project'>
 		<div class='titling'>
-				<h1 class='title'>This Project <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h1>
-				<h2 class='subtitle'>the subtitle for this project</h2>
+				<h1 class='title'>Code For Appalachia <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h1>
+				<h3 class='subtitle'>A project to bring code to the hollers of Appalachia</h3>
 		</div>
-		<div class='media'>
-			<iframe width="560" height="315" src="http://www.youtube.com/embed/ZBAGEeOms-8?rel=0" frameborder="0" allowfullscreen></iframe>
-		</div>
+
 
 <!-- 		<div class='share'>
 <div class="addthis_toolbox addthis_default_style ">
@@ -115,30 +109,45 @@ $(function() {
 <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512e9539719dfdf8"></script>
 		</div> -->
-<ul class='nav nav-tabs'>
-	<li class='active'><a href='#summary' data-toggle='tab'>Summary</a></li>
-	<li><a href='#description' data-toggle='tab'>About</a></li>
-	<li><a href='#updates' data-toggle='tab'>Updates</a></li>
-	<li><a href='#team' data-toggle='tab'>Team</a></li>
-	<li><a href='#backers' data-toggle='tab'>Backers</a></li>
+<ul class='nav nav-tabs project-nav'>
+
+	<li class='active'><a href='#about' data-toggle='tab'>Details</a></li>
+	<li><a href='#goals' data-toggle='tab'>Goals <span class='badge'>3</span></a></li>
+	<li><a href='#updates' data-toggle='tab'>Updates <span class='badge'>15</span></a></li>
+	<li><a href='#team' data-toggle='tab'>Team <span class='badge'>12</span></a></li>
+	<li><a href='#backers' data-toggle='tab'>Backers <span class='badge'>230</span></a></li>
 
 </ul>
 
 <div class="tab-content">
 
-	<div id='summary' class='summary tab-pane active'>
-		<ul class='stats unstyled'>
+	<div id='about' class='about tab-pane active fade in'>
+
+		<div class='media'>
+			<iframe width="560" height="315" src="http://www.youtube.com/embed/ZBAGEeOms-8?rel=0" frameborder="0" allowfullscreen></iframe>
+		</div>
+		<div class='share well well-small'>
+	<h4 style='display:inline-block; margin-top: 0.5em; margin-right: 1em !important'><i class='icon-share'></i> Share</h4>
+<a class='btn btn-info'><i class='icon-twitter'></i> Twitter</a> <a class='btn btn-info' style='background: #596F90'><i class='icon-facebook'></i> Facebook</a> <a class='btn'><i class='icon-googleplus' style='color: #d34836'></i> Google+</a> <a class='btn'><i class='icon-envelope'></i> Email</a>
+</div>
+
+			<ul class='stats unstyled'>
 			<li>Creator: <b><a href='#'>jzellis</a></b></li>
 			<li>Launched: <b>Mar 01,2013</b></li>
 			<li>Total Funds Raised: <b>$5000</b></li>
 		</ul>
+
+
+				<div class='summary'>
 				<p>Goodbye, friends. I never thought I'd die like this. But I always really hoped. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! And I'd do it again! And perhaps a third time! But that would be it. Ooh, name it after me!</p>
 				<p>Kif might! Oh, you're a dollar naughtier than most. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can.</p>
-	</div>
-
-	<div id='description' class='description tab-pane'>
-		<h3>About This Project</h3>
 				<p>No, no, no! Yes, yes. A bit. But she's got a wart. Now, look here, my good man. He hasn't got shit all over him. Listen. Strange women lying in ponds distributing swords is no basis for a system of government. Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony.</p>
+			</div>
+
+					<div style='text-align:center; margin-top: 2em'><a href="#" role="button" data-toggle="modal" class='btn btn-success btn-large'>Fund This Project<br><span style='font-size: 0.75em; font-weight: 300'>$5 Minimum Pledge</small></a></div>
+
+				<hr>
+				<div class='description'>
 <p>I don't want to talk to you no more, you empty-headed animal food trough water! I fart in your general direction! Your mother was a hamster and your father smelt of elderberries! Now leave before I am forced to taunt you a second time! She looks like one. Listen. Strange women lying in ponds distributing swords is no basis for a system of government. Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony. And the hat. She's a witch! Look, my liege! You don't vote for kings.</p>
 <p>Shut up! &hellip;Are you suggesting that coconuts migrate? Oh! Come and see the violence inherent in the system! Help, help, I'm being repressed! Camelot!</p>
 <p>What do you mean? Well, we did do the nose. Where'd you get the coconuts?</p>
@@ -148,9 +157,74 @@ $(function() {
 <p>We want a shrubbery!! &hellip;Are you suggesting that coconuts migrate? And this isn't my nose. This is a false one.</p>
 <p>You don't vote for kings. Burn her anyway! Shut up! What do you mean? Look, my liege!</p>
 <p>Now, look here, my good man. Bloody Peasant! And the hat. She's a witch! Shh! Knights, I bid you welcome to your new home. Let us ride to Camelot!</p>
+</div>
 	</div>
 
-	<div id='updates' class='tab-pane'>
+<div id='goals' class='tab-pane fade in'>
+	<h2>Goals</h2>
+
+	<ul class='unstyled'>
+		<li class='goal future well well-small'>
+			<h3>A Future Goal <span style='font-size:0.75em' class='muted'>future</span></h3>
+		</li>
+					<li class='goal current well well-small'>
+					<h3><a href='#'>A Really Long And Annoying Goal Title</a> <span style='font-size:0.75em' class='muted'>current</span></h3>
+<div class="progress progress-striped">
+  <div class="bar bar-success" style="width: 71.2%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$3560</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+												<li class="divider-vertical"></li>
+							<li><b>24</b><br> days left</li>
+						</ul>
+
+					</li>
+
+					<li class='goal muted well well-small success'>
+					<h3><a href='#'>A Past Goal</a> <span style='font-size:0.75em' class='muted'>successful</span></h3>
+<div class="progress progress-success">
+  <div class="bar" style="width: 100%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$5500</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+
+						</ul>
+					</li>
+
+					<li class='goal muted well well-small failed'>
+					<h3><a href='#'>A Failed Goal</a> <span style='font-size:0.75em' class='muted'>failed</span></h3>
+					<div class="progress">
+  <div class="bar bar-danger" style="width: 25%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$1250</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+
+						</ul>
+
+					</li>
+
+	</ul>
+</div>
+
+	<div id='updates' class='tab-pane fade in'>
 		<h3>Updates</h3>
 		<ul class='updates unstyled'>
 			<li class='update'>
@@ -183,7 +257,7 @@ $(function() {
 		<h4 style='text-align:center; margin-bottom: 2em'><a href='#'>See All Updates</a></h4>
 	</div>
 
-	<div id='team' class='tab-pane'>
+	<div id='team' class='tab-pane fade in'>
 		<h3>Team</h3>
 		<ul class='thumbnails'>
 			<li class='teamMember span3'>
@@ -231,7 +305,7 @@ $(function() {
 		</ul>
 	</div>
 
-	<div id='backers' class='tab-pane'>
+	<div id='backers' class='tab-pane fade in'>
 		<h3>Backers</h3>
 		<ul class='thumbnails'>
 
@@ -282,15 +356,15 @@ $(function() {
 </div>
 	</div>
 <div class='span4 sidebar'>
-	<h2>Goals <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h2>
+	<h2>Current Goal <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title="What's the difference between a project and a goal?"><i class='icon-question-sign help-icon'></i></a></h2>
 	<ul class='goals unstyled'>
 		<li class='goal well well-small'>
 			<h3><a href='#'>A Really Long And Annoying Goal Title</a></h3>
-			<h4 class='muted'>Current Goal</h4>
 
 			<div class='summary'>
 				<p>Bender, you risked your life to save me! You guys aren't Santa! You're not even robots. How dare you lie in front of Jesus? Then throw her in the laundry room, which will hereafter be referred to as "the brig". We're rescuing ya. I guess because my parents keep telling me to be more ladylike. As though!</p>
 <p>I'll get my kit! Fry, we have a crate to deliver. You, minion. Lift my arm. AFTER HIM! You seem malnourished. Are you suffering from intestinal parasites?</p>
+<div style='text-align:right'><a href='#'>More Info</a></div><br>
 			</div>
 															<div class="progress">
   <div class="bar bar-success" style="width: 71.2%;"></div>
@@ -307,38 +381,16 @@ $(function() {
 							<li><b>24</b><br> days left</li>
 						</ul>
 						<br>
-<div style='text-align:center'><a href='#' class='btn btn-success btn-large'>Fund This Goal</a></div>
-<hr>
-						<h3>Rewards <a href="#faq_rewards" role="button" data-toggle="modal" class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h2></h3>
-						<ul class='rewards unstyled'>
-							<li class='reward'>
-								<h4>$5: <b>Reward Title</b></h4>
-									<div class='summary'>
-										<p>And this isn't my nose. This is a false one. Now, look here, my good man. Camelot! Look, my liege! Bloody Peasant! On second thoughts, let's not go there. It is a silly place.</p>
-<p>And this isn't my nose. This is a false one. She looks like one. Who's that then? Did you dress her up like this? Why do you think that she is a witch?</p>
-<p>The nose? Be quiet! She looks like one.</p>
-									</div>
-									<div style='text-align:center'><a class='btn btn-small btn-success' href='#'>Claim This Reward</a></div>
-							</li>
-							<li class='reward'>
-								<h4>$25: <b>Another, Rather Longer Reward Title</b></h4>
-									<div class='summary'>
-										<p>And this isn't my nose. This is a false one. Now, look here, my good man. Camelot! Look, my liege! Bloody Peasant! On second thoughts, let's not go there. It is a silly place.</p>
-<p>And this isn't my nose. This is a false one. She looks like one. Who's that then? Did you dress her up like this? Why do you think that she is a witch?</p>
-<p>The nose? Be quiet! She looks like one.</p>
-									</div>
-									<div style='text-align:center'><a class='btn btn-small btn-success' href='#'>Claim This Reward</a></div>
-							</li>
-						</ul>
-
+<div style='text-align:center'><a href='#' class='btn btn-success btn-large'>Fund This Goal<br><span style='font-size: 0.75em; font-weight: 300'>$5 Minimum Pledge</small></a></div>
 		</li>
 	</ul>
+	<div style='text-align:right'><a href='#goals' data-toggle='tab'>Show All Goals</a></div>
 </div>
 </div>
 
 <!-- /main body -->
 </div>
-<div class='container-fluid'>
+<div class='container'>
 	<footer class='navbar'>
 		<div class='navbar-inner'>
 			<a class='brand'><img src='/img/logo.png' style='height:1em'></a>
@@ -381,4 +433,52 @@ $(function() {
 </div>
 
 
+
+<!-- <div id="fundProject" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2 id="myModalLabel" style='display:inline'>Fund Project</h2> <small class='muted' style='margin-left: 1em'>Your funding will go towards this project's current goal.</small>
+  </div>
+  <div class="modal-body">
+   
+<div class='goal well well-small'>
+   	<h3><a href='#'>A Really Long And Annoying Goal Title</a></h3>
+
+<div class="progress">
+  <div class="bar bar-success" style="width: 71.2%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$3560</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+												<li class="divider-vertical"></li>
+							<li><b>24</b><br> days left</li>
+						</ul>
+</div>
+<form action='/fundingRedirect' method='post' data-validate='parsley'>
+	<fieldset>
+		<label for='amount'><b>Funding Amount</b></label>
+		<div class="input-prepend">
+  <span class="add-on">$</span>
+		<input type='text' name='amount' class='input input-large'>
+	</div>
+	</fieldset>
+</form>
+  </div>
+</div> -->
+
+<script>
+$(function() {
+	$('.tooltipped').tooltip();
+	// $("*:not(ul.nav):not(ul.nav li a) [data-toggle='tab']").on('click', function(){
+	// 	var link = $(this).attr('href');
+	// 	$('.nav li').removeClass('active');
+	// 	$('.nav a[href="' + link + '"][data-toggle="tab"]').parent().addClass('active');
+	// });
+});
+</script>
 </html>

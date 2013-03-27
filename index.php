@@ -4,6 +4,9 @@ require_once('app/conf/opauth.conf.php');
 
 $user = new User();
 
+
+
+
 ToroHook::add("404",  function() {
 
 $template = new Templater();
@@ -30,6 +33,8 @@ if(!empty($result['id'])) $user = new User($result['id']);
 }
 
 });
+
+
 
  
 Toro::serve(array(

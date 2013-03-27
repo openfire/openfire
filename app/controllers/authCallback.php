@@ -160,7 +160,7 @@ if(!empty($user->id)){
 		if(empty($user->email)){ 
 		header("Location: /completeProfile");
 		}else{
-		header("Location: /");
+			header("Location: " . $_COOKIE['user']['lastPage']);
 		}
 	
 
@@ -237,6 +237,7 @@ if($_POST['type'] == "facebook"){
 $user->insert($params);
 
 
+if(!empty($params['avatar'])){
 	$saveto = $_SERVER['DOCUMENT_ROOT'] . "/../assets.openfi.re/images/avatars/".$user->uuid.".png";
     $ch = curl_init ($avatar);
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -251,7 +252,7 @@ $user->insert($params);
     fwrite($fp, $raw);
     fclose($fp);
 	$newavatar = imageToPNG($saveto,$saveto, 256);
-
+}
 		setcookie("user[username]", $user->username, time()+60*60*24*30, "/","openfi.re");
 		setcookie("user[key]", $user->uuid, time()+60*60*24*30, "/","openfi.re");
 
@@ -262,7 +263,7 @@ $user->insert($params);
 		if(empty($user->email)){ 
 		header("Location: /completeProfile");
 		}else{
-		header("Location: /");
+			header("Location: " . $_COOKIE['user']['lastPage']);
 		}
 
 

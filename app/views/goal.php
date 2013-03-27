@@ -24,16 +24,27 @@
                <? if(!empty($this->goal->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 320; $objs = $embedly->oembed(array('url' => $this->goal->mediaEmbed, 'maxwidth' => '640')); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>    
             </div>
             <div class="social-buttons">
-             <!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style ">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_pinterest_pinit"></a>
-<a class="addthis_counter addthis_pill_style"></a>
+<a class='btn btn-info' href="https://twitter.com/share?url=<?= urlencode('http://' . $_SERVER['SERVER_NAME'] .  '/goals/' . $this->goal->uuid) ?>
+&text=<?= urlencode($this->project->title . ": " . $this->goal->name . ' via @joinopenfire') ?>" target='_new'><i class='icon-twitter'></i>Share on Twitter</a> <a class='btn btn-info' style='background: #596F90' href='https://www.facebook.com/dialog/feed?app_id=<?= FACEBOOK_APP_ID ?>&
+  link=http://<?= $_SERVER['SERVER_NAME'] ?>/goals/<?= $this->goal->uuid ?>&
+  picture=http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png&
+  name=<? urlencode($this->goal->name) ?>&
+  caption=<?= urlencode($this->goal->name) ?>&
+  description=<?= urlencode($this->goal->summary) ?>&
+  redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
+<a class='btn' target='_blank' href='https://plus.google.com/share?url=http://<?= $_SERVER['SERVER_NAME'] ?>/goals/<?= $this->goal->uuid ?>'><i class='icon-googleplus'  style='color: #d34836'></i> Share on Google+</a>
+<!-- <div class='btn btn-link'>
+    <script src="https://apis.google.com/js/plusone.js"></script>
+<g:plus action="share" height="24" annotation="none"></g:plus>
+</div> -->
+<div style='display:none'>
+    <span itemprop="name"><?= $this->goal->name ?></span>
+<span itemprop="description"><?= $this->goal->summary ?></span>
+<img itemprop="image" src="http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png">
+<meta property="og:title" content="openfire: <?= $this->goal->name ?>" />
+<meta property="og:image" content="http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png" />
+<meta property="og:description" content="<?= $this->goal->summary ?>" />
 </div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512e9539719dfdf8"></script>
-<!-- AddThis Button END -->
 </div>
             <p class="lead summary"><?if(!empty($this->goal->summary)):?><?= $this->goal->summary ?><br><br><hr><? endif; ?></p><div class='description'><?= nl2br($this->goal->description) ?></div>
             

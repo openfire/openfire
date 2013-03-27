@@ -427,7 +427,7 @@ body.home .splash {
     margin: 20px auto;
 }
 
-body.home .splash-row .row-fluid { 
+/*body.home .splash-row .row-fluid { 
     background-color:rgba(255,255,255,.85);
     border-top:solid 2px #ff7e00;
 }
@@ -444,7 +444,7 @@ body.home .splash-row {
 
 body.home .splash h1 {
     line-height: 75px;
-}
+}*/
 
 body.home .row-fluid.max1000 {
     max-width: 1000px;
@@ -549,3 +549,21 @@ body.home .goal .project-info img{
           padding-right: 20px;
         }
       }
+
+
+.project .summary p, .project .description p{
+
+    margin-after: 1.5em;
+}
+
+#fundProjectButton{
+    font-size: 1.1em;
+}
+
+.project #fundProject .reward{
+    font-size: 0.8em;
+}
+
+.project #fundProject .funding{
+    font-size: 0.8em;
+}

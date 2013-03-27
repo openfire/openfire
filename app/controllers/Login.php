@@ -16,6 +16,7 @@ $template->publish();
 		<fieldset>
 			<input type='password' name='password' placeholder='Password'>
 		</fieldset>
+		<input type='hidden' name='referrer' value='<?= $_SERVER['HTTP_REFERER'] ?>'>
 		<fieldset>
 			<button type='submit' class='btn'>Login</button>
 	</form>
@@ -70,7 +71,15 @@ if(empty($check)){
 				$sth = $dbh->prepare("insert into userLogins (userID, loginTime, ipAddress) values('" . $user->id . "','" . time() . "','" . $_SERVER['REMOTE_ADDR'] . "')");
 				$sth->execute();
 
-				header("Location: /");
+if(!empty($_COOKIE['user']['lastPage'])){
+	$return = $_COOKIE['user']['lastPage'];
+}
+else{
+	$return = 				header("Location: " . $_SERVER['HTTP_REFERER']);
+;
+}
+
+			header("Location: " . $return);
 
 			break;
 

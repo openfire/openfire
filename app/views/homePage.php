@@ -2,17 +2,20 @@
      <div class="splash-row">
         <div class="row-fluid">
           
-          <div class="span10 splash hero-unit offset1">
+          <div class="span10 splash offset1">
+           <div class='row-fluid'>
+            <div class='span2'>
             <img width="200" src="img/logo.png">
-            
-            <br/>
-            <br/>
+          </div>
+          <div class='span10'>
             <h1>
               <strong>
                 openfire
               </strong>
               is a crowdfunding platform for long-term, socially valuable projects.
             </h1>
+          </div>
+        </div>
           </div>
           
       </div>
@@ -83,5 +86,5 @@
 
 
       </div>
-      
+      <img src="http://ad.retargeter.com/seg?add=659127&t=2" width="1" height="1" />
     </div>

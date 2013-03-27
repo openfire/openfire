@@ -8,7 +8,7 @@ setcookie ("user[key]", "", time() - 3600,"/","openfi.re");
 
 				addActivity("$user->username ($user->email) logged out");
 
-header("Location: /");
+				header("Location: " . $_SERVER['HTTP_REFERER']);
 
 }
 
