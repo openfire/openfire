@@ -51,7 +51,8 @@ $template->load('alert');
 $template->alertType = "error";
 $template->message = "You must be logged in to do this.";
 $template->publish(); 
-?> <div class='row-fluid'><div class='span4 offset4' style='text-align:center'> <?
+?> <div class='row-fluid'><div class='span8 offset2' style='text-align:center'> 
+<?
 $template->load('loginForm');
 $template->publish(); 
 ?> </div></div> <?
