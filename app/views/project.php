@@ -15,11 +15,11 @@
 <a class='btn btn-info' href="https://twitter.com/share?url=<?= urlencode('http://' . $_SERVER['SERVER_NAME'] .  '/projects/' . $this->project->slug) ?>
 &text=<?= urlencode($this->project->title . ': ' . $this->project->subtitle . ' via @joinopenfire') ?>" target='_new'><i class='icon-twitter'></i>Share on Twitter</a> <a class='btn btn-info' style='background: #596F90' href='https://www.facebook.com/dialog/feed?app_id=<?= FACEBOOK_APP_ID ?>&
   link=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>&
-  picture=http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png&
+  picture=<?= $this->project->icon ?>&
   name=<? urlencode($this->project->title) ?>&
   caption=<?= urlencode($this->project->title . ": " . $this->project->subtitle) ?>&
   description=<?= urlencode($this->project->summary) ?>&
-  redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
+  redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
 <a class='btn' href='https://plus.google.com/share?url=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>'><i class='icon-googleplus'  style='color: #d34836'></i> Share on Google+</a>
 <!-- <div class='btn btn-link'>
     <script src="https://apis.google.com/js/plusone.js"></script>

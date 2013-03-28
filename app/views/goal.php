@@ -32,11 +32,11 @@
 <a class='btn btn-info' href="https://twitter.com/share?url=<?= urlencode('http://' . $_SERVER['SERVER_NAME'] .  '/goals/' . $this->goal->uuid) ?>
 &text=<?= urlencode($this->project->title . ": " . $this->goal->name . ' via @joinopenfire') ?>" target='_new'><i class='icon-twitter'></i>Share on Twitter</a> <a class='btn btn-info' style='background: #596F90' href='https://www.facebook.com/dialog/feed?app_id=<?= FACEBOOK_APP_ID ?>&
   link=http://<?= $_SERVER['SERVER_NAME'] ?>/goals/<?= $this->goal->uuid ?>&
-  picture=http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png&
+  picture=<?= $this->project->icon ?>&
   name=<? urlencode($this->goal->name) ?>&
-  caption=<?= urlencode($this->goal->name) ?>&
+  caption=<?= urlencode($this->project->name) ?>&
   description=<?= urlencode($this->goal->summary) ?>&
-  redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
+  redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>/goals/<?= $this->goal->uuid ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
 <a class='btn' target='_blank' href='https://plus.google.com/share?url=http://<?= $_SERVER['SERVER_NAME'] ?>/goals/<?= $this->goal->uuid ?>'><i class='icon-googleplus'  style='color: #d34836'></i> Share on Google+</a>
 <!-- <div class='btn btn-link'>
     <script src="https://apis.google.com/js/plusone.js"></script>

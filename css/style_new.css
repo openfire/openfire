@@ -142,24 +142,31 @@ body.project .project .stats b{
 	}
 
 
-	body.project #goals ul li.goal.current h3{
+body.project li.goal.current{
+	background-color: #eee;
+}
+
+	body.project li.goal.current h3{
 		font-weight:bold;
 	}
 
-	body.project #goals ul li.goal.success{
+	body.project li.goal.success{
 		background-color: #eeffee;
 	}
 
-	body.project #goals ul li.goal.failed{
+	body.project li.goal.failed{
 		background-color: #ffeeee;
 	}
 
-	body.project #goals ul li.goal.future{
+	body.project li.goal.future{
 		opacity: 0.5;
 
 	}
 
-	body.project #goals ul li.goal.future * {
-		font-size: 1.5em;
+	body.project li.goal .summary{
+		margin-bottom: 1em;
+	}
 
+	body.project li.member .bio{
+		font-size: 0.9em;
 	}

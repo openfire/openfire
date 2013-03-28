@@ -112,11 +112,10 @@
 <ul class='nav nav-tabs project-nav'>
 
 	<li class='active'><a href='#about' data-toggle='tab'>Details</a></li>
-	<li><a href='#goals' data-toggle='tab'>Goals <span class='badge'>3</span></a></li>
 	<li><a href='#updates' data-toggle='tab'>Updates <span class='badge'>15</span></a></li>
 	<li><a href='#team' data-toggle='tab'>Team <span class='badge'>12</span></a></li>
-	<li><a href='#backers' data-toggle='tab'>Backers <span class='badge'>230</span></a></li>
-
+<!-- 	<li><a href='#backers' data-toggle='tab'>Backers <span class='badge'>230</span></a></li>
+ -->
 </ul>
 
 <div class="tab-content">
@@ -126,6 +125,7 @@
 		<div class='media'>
 			<iframe width="560" height="315" src="http://www.youtube.com/embed/ZBAGEeOms-8?rel=0" frameborder="0" allowfullscreen></iframe>
 		</div>
+							<div style='text-align:center; margin-top: 2em; margin-bottom: 2em'><a href="#" role="button" data-toggle="modal" class='btn btn-success btn-large'>Fund This Project's Current Goal<br><span style='font-size: 0.75em; font-weight: 300'>$5 Minimum Pledge</small></a></div>
 		<div class='share well well-small'>
 	<h4 style='display:inline-block; margin-top: 0.5em; margin-right: 1em !important'><i class='icon-share'></i> Share</h4>
 <a class='btn btn-info'><i class='icon-twitter'></i> Twitter</a> <a class='btn btn-info' style='background: #596F90'><i class='icon-facebook'></i> Facebook</a> <a class='btn'><i class='icon-googleplus' style='color: #d34836'></i> Google+</a> <a class='btn'><i class='icon-envelope'></i> Email</a>
@@ -134,17 +134,18 @@
 			<ul class='stats unstyled'>
 			<li>Creator: <b><a href='#'>jzellis</a></b></li>
 			<li>Launched: <b>Mar 01,2013</b></li>
-			<li>Total Funds Raised: <b>$5000</b></li>
+			<li>Total Funds Raised: <b>$5000</b> from <b>234</b> backers</li>
 		</ul>
 
 
 				<div class='summary'>
+					<h4>Summary</h4>
 				<p>Goodbye, friends. I never thought I'd die like this. But I always really hoped. THE BIG BRAIN AM WINNING AGAIN! I AM THE GREETEST! NOW I AM LEAVING EARTH, FOR NO RAISEN! And I'd do it again! And perhaps a third time! But that would be it. Ooh, name it after me!</p>
 				<p>Kif might! Oh, you're a dollar naughtier than most. OK, this has gotta stop. I'm going to remind Fry of his humanity the way only a woman can.</p>
 				<p>No, no, no! Yes, yes. A bit. But she's got a wart. Now, look here, my good man. He hasn't got shit all over him. Listen. Strange women lying in ponds distributing swords is no basis for a system of government. Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony.</p>
 			</div>
 
-					<div style='text-align:center; margin-top: 2em'><a href="#" role="button" data-toggle="modal" class='btn btn-success btn-large'>Fund This Project<br><span style='font-size: 0.75em; font-weight: 300'>$5 Minimum Pledge</small></a></div>
+
 
 				<hr>
 				<div class='description'>
@@ -160,69 +161,6 @@
 </div>
 	</div>
 
-<div id='goals' class='tab-pane fade in'>
-	<h2>Goals</h2>
-
-	<ul class='unstyled'>
-		<li class='goal future well well-small'>
-			<h3>A Future Goal <span style='font-size:0.75em' class='muted'>future</span></h3>
-		</li>
-					<li class='goal current well well-small'>
-					<h3><a href='#'>A Really Long And Annoying Goal Title</a> <span style='font-size:0.75em' class='muted'>current</span></h3>
-<div class="progress progress-striped">
-  <div class="bar bar-success" style="width: 71.2%;"></div>
-</div>
-
-									<ul class='stats'>
-							<li><b>$5000</b><br>goal</li>
-												<li class="divider-vertical"></li>
-
-							<li><b>$3560</b><br> raised</li>
-												<li class="divider-vertical"></li>
-							<li><b>18</b><br> backers</li>
-												<li class="divider-vertical"></li>
-							<li><b>24</b><br> days left</li>
-						</ul>
-
-					</li>
-
-					<li class='goal muted well well-small success'>
-					<h3><a href='#'>A Past Goal</a> <span style='font-size:0.75em' class='muted'>successful</span></h3>
-<div class="progress progress-success">
-  <div class="bar" style="width: 100%;"></div>
-</div>
-
-									<ul class='stats'>
-							<li><b>$5000</b><br>goal</li>
-												<li class="divider-vertical"></li>
-
-							<li><b>$5500</b><br> raised</li>
-												<li class="divider-vertical"></li>
-							<li><b>18</b><br> backers</li>
-
-						</ul>
-					</li>
-
-					<li class='goal muted well well-small failed'>
-					<h3><a href='#'>A Failed Goal</a> <span style='font-size:0.75em' class='muted'>failed</span></h3>
-					<div class="progress">
-  <div class="bar bar-danger" style="width: 25%;"></div>
-</div>
-
-									<ul class='stats'>
-							<li><b>$5000</b><br>goal</li>
-												<li class="divider-vertical"></li>
-
-							<li><b>$1250</b><br> raised</li>
-												<li class="divider-vertical"></li>
-							<li><b>18</b><br> backers</li>
-
-						</ul>
-
-					</li>
-
-	</ul>
-</div>
 
 	<div id='updates' class='tab-pane fade in'>
 		<h3>Updates</h3>
@@ -259,106 +197,52 @@
 
 	<div id='team' class='tab-pane fade in'>
 		<h3>Team</h3>
-		<ul class='thumbnails'>
-			<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
+		<ul class='teamMembers unstyled'>
+			<li class='member well well-small'>
+				<div class='row-fluid'>
+					<div class='span2'>
+						<a href='#'><img src='http://lorempixel.com/128/128'></a>
+					</div>
+					<div class='span10'>
+						<h3 style='margin:0; line-height: 1em; font-weight:bold'><a href='#'>Joshua Ellis</a></h3>
+						<h4>Project Founder</h4>
+						<div class='bio'>
+							Joshua Ellis is the CTO of openfire, a writer, musician, and dork.
+						</div>
+					</div>
+				</div>
 			</li>
-			<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
-			</li>
-						<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
-			</li>
-						<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
-			</li>
-						<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
-			</li>
-						<li class='teamMember span3'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-      <h5><b>Project Creator</b></h5>
-    </div>
+			<li class='member well well-small'>
+				<div class='row-fluid'>
+					<div class='span2'>
+						<a href='#'><img src='http://lorempixel.com/128/128?q=a'></a>
+					</div>
+					<div class='span10'>
+						<h3 style='margin:0; line-height: 1em; font-weight:bold'><a href='#'>David Anderson</a></h3>
+						<h4>Vice President In Charge Of Fishing Lures</h4>
+						<div class='bio'>
+							<p>David Anderson is ultimate frisbee world champion. Below in his hammock, Ahab did not hear of this till grey dawn, when he came to the deck; it was then recounted to him by Flask, not unaccompanied with hinted dark meanings. He hollowly laughed, and thus explained the wonder.</p>
+
+<p>Those rocky islands the ship had passed were the resort of great numbers of seals, and some young seals that had lost their dams, or some dams that had lost their cubs, must have risen nigh the ship and kept company with her, crying and sobbing with their human sort of wail. But this only the more affected some of them, because most mariners cherish a very superstitious feeling about seals, arising not only from their peculiar tones when in distress, but also from the human look of their round heads and semi-intelligent faces, seen peeringly uprising from the water alongside. In the sea, under certain circumstances, seals have more than once been mistaken for men.</p>
+						</div>
+					</div>
+				</div>
 			</li>
 		</ul>
 	</div>
 
-	<div id='backers' class='tab-pane fade in'>
-		<h3>Backers</h3>
-		<ul class='thumbnails'>
 
-			<li class='backer span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-    </div>
-			</li>
-			<li class='backer span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-    </div>
-			</li>
-			<li class='backer span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-    </div>
-			</li>
-			<li class='backer span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-    </div>
-			</li>
-			<li class='backer span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-
-    </div>
-			</li>
-			<li class='teamMember span2'>
-				<div class="thumbnail  well well-small">
-					<h4><a href='#'>jzellis</a></h4>
-      <img src="http://lorempixel.com/128/128" alt="">
-    </div>
-			</li>
-
-
-		</ul>
-	</div>
 
 
 
 </div>
 	</div>
 <div class='span4 sidebar'>
-	<h2>Current Goal <a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title="What's the difference between a project and a goal?"><i class='icon-question-sign help-icon'></i></a></h2>
+	<h2>Goals</h2>
+	<p style='text-align:center'><small><a href="#faq_goal" role="button" data-toggle="modal"><i class='icon-question-sign help-icon'></i> What's the difference between a project and a goal?</a></small></p>
 	<ul class='goals unstyled'>
-		<li class='goal well well-small'>
+		<li class='goal current well well-small'>
+			<h4>Current Goal</h4>
 			<h3><a href='#'>A Really Long And Annoying Goal Title</a></h3>
 
 			<div class='summary'>
@@ -383,8 +267,54 @@
 						<br>
 <div style='text-align:center'><a href='#' class='btn btn-success btn-large'>Fund This Goal<br><span style='font-size: 0.75em; font-weight: 300'>$5 Minimum Pledge</small></a></div>
 		</li>
+
+<hr>
+		<li class='goal future well well-small'>
+			<h3 title='This goal has not been started yet.'><a href='#'>A Future Goal</a> <span style='font-size:0.75em' class='muted'>future</span></h3>
+			<p><small><i>This goal has not been started yet.</i></small></p>
+			<div class='summary'>"What do ye do when ye see a whale, men?" "Sing out for him!" was the impulsive rejoinder from a score of clubbed voices. "Good!" cried Ahab, with a wild approval in his tones; observing the hearty animation into which his unexpected question had so magnetically thrown them.</div>
+		</li>
+
+					<li class='goal muted well well-small success'>
+					<h3><a href='#'>A Past Goal</a> <span style='font-size:0.75em' class='muted'>successful</span></h3>
+					<div class='summary'>"What do ye do when ye see a whale, men?" "Sing out for him!" was the impulsive rejoinder from a score of clubbed voices. "Good!" cried Ahab, with a wild</div>
+<div class="progress progress-success">
+  <div class="bar" style="width: 100%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$5500</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+
+						</ul>
+					</li>
+
+					<li class='goal muted well well-small failed'>
+					<h3><a href='#'>A Failed Goal</a> <span style='font-size:0.75em' class='muted'>failed</span></h3>
+					<div class='summary'>"What do ye do when ye see a whale, men?" "Sing out for him!" was the impulsive rejoinder from a score of clubbed voices. "Good!" cried Ahab, with a wild approval in his tones; observing the hearty animation into which his unexpected question had so magnetically thrown them. "And what do ye next, men?" "Lower away, and</div>
+					<div class="progress">
+  <div class="bar bar-danger" style="width: 25%;"></div>
+</div>
+
+									<ul class='stats'>
+							<li><b>$5000</b><br>goal</li>
+												<li class="divider-vertical"></li>
+
+							<li><b>$1250</b><br> raised</li>
+												<li class="divider-vertical"></li>
+							<li><b>18</b><br> backers</li>
+
+						</ul>
+
+					</li>
+
+
+
 	</ul>
-	<div style='text-align:right'><a href='#goals' data-toggle='tab'>Show All Goals</a></div>
 </div>
 </div>
 
