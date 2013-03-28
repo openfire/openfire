@@ -29,7 +29,7 @@ $('.tooltipped').tooltip();
       id="my-awesome-dropzone">
       <input type='hidden' name='userUUID' value='<?= $this->user->uuid ?>'></form> -->
 
-<form enctype="multipart/form-data" action='' method='post'>
+<form enctype="multipart/form-data" action='' method='post' data-validate='parsley'>
 	<input type="hidden" name="MAX_FILE_SIZE" value="10000000" />
 <fieldset>
 		<label for='avatar'>Avatar</label>
@@ -39,15 +39,23 @@ $('.tooltipped').tooltip();
 	<br>
 	<fieldset>
 		<label for='email'>Email</label>
-		<input type='email' class='input-xxlarge' name='email' value='<?= $this->user->email ?>'>
+		<input type='email' class='input-xxlarge' name='email' value='<?= $this->user->email ?>'data-required='true' >
+	</fieldset>
+	<fieldset>
+		<label for='password'>New Password</label>
+		<input type='password' class='input-xxlarge' name='password' id='tpassword'>
+	</fieldset>
+	<fieldset>
+		<label for='password2'>Confirm New Password</label>
+		<input type='password' class='input-xxlarge' name='password2' data-equalto='#tpassword' data-error-message='Passwords must match.'>
 	</fieldset>
 	<fieldset>
 		<label for='firstName'>First Name</label>
-		<input type='text' class='input-xxlarge' name='firstName' value='<?= $this->user->firstName ?>'>
+		<input type='text' class='input-xxlarge' name='firstName' value='<?= $this->user->firstName ?>'data-required='true' >
 	</fieldset>
 	<fieldset>
 		<label for='lastName'>Last Name</label>
-		<input type='text' class='input-xxlarge' name='lastName' value='<?= $this->user->lastName ?>'>
+		<input type='text' class='input-xxlarge' name='lastName' value='<?= $this->user->lastName ?>'data-required='true' >
 	</fieldset>
 	<fieldset>
 		<label for='location'>Location</label>

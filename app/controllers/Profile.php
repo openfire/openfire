@@ -31,6 +31,8 @@ function post(){
 
 global $user;
 
+
+
 $params = array(
 "email" => $_POST['email'],
 "firstName" => $_POST['firstName'],
@@ -39,6 +41,14 @@ $params = array(
 "bio" => $_POST['bio']
 
 	);
+
+if(!empty($_POST['password'])){
+
+$pwdHasher = new PasswordHash(8, FALSE);
+$password = $pwdHasher->HashPassword( $_POST['password'] );
+$params['password'] = $password;
+	
+}
 
 $user->update($params);
 

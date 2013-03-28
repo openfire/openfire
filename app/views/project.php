@@ -46,13 +46,8 @@
             </div>
 
     		<p class="lead summary"><?= $this->project->summary ?></p>
-<div><? if(!empty($user->id)): ?>
-    <a href="/goals/<?= $currentGoal->uuid ?>/fund" role="button" class="btn btn-success">Fund This Project</a>
-<? else: ?>
-<div class='well well-small'><a class="btn disabled btn-success" id='fundProjectButton'>Fund This Project</a>
-
-<p style='text-align:center'> <small>Please <a href='/login'>login</a> to fund this project.</small></p></div>
-<? endif; ?>
+<div>
+    <a href="/goals/<?= $currentGoal->uuid ?>/fund" role="button" class="btn btn-success requiresLogin">Fund This Project</a>
 </div>
 
 
@@ -136,7 +131,7 @@
             </div>
 
             <div style="text-align:center; margin-top: 1em">
-	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success" onClick="_gaq.push(['_trackEvent', 'Fund this Goal', 'Find Click', 'Clicked',, false]);">Fund This Goal</a>
+	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success requiresLogin" onClick="_gaq.push(['_trackEvent', 'Fund this Goal', 'Find Click', 'Clicked',, false]);">Fund This Goal</a>
             </div>
 
   		</div>
@@ -223,7 +218,7 @@ $this->currentGoal->rewards)): ?>
         <? foreach(
 
 $this->currentGoal->rewards as $reward): ?>
-        <div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount || empty($this->amount) || ($reward->numTotal > 0 && $reward->numStillAvailable == 0)): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>'>
+        <div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount || empty($this->amount) || ($reward->numTotal > 0 && $reward->numStillAvailable == 0)): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>' title='Claim This Reward'>
 
                     <h3><? if(($reward->numTotal > 0 && $reward->numStillAvailable != 0) || $reward->numTotal == 0): ?><input type='radio' <? if((!empty($this->amount) && $reward->minAmount <= $this->amount) || empty($this->amount)): ?>disabled='disabled'<? endif; ?> <? if(!empty($this->amount) && $reward->minAmount == $this->amount): ?>checked='checked'<? endif; ?> name='rewardUUID' value='<?= $reward->uuid ?>'><? endif; ?>  $<?= $reward->minAmount ?>: <?= $reward->name ?></h3>
                     <div><?= $reward->description ?></div>

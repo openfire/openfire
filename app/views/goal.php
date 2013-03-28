@@ -1,5 +1,5 @@
 <? global $user; global $embedly; $partials = new Templater(); ?>
-<div class="row-fluid project-vitals">
+<!-- <div class="row-fluid project-vitals">
 
     <div class="span8">
         <h1 class="title" style="text-align:left"><a title="Back to Project" class="back-arrow" href="/projects/<?= $this->project->slug ?>">&larr;</a><?= $this->project->title ?></h1>
@@ -14,13 +14,18 @@
         <p>Created by <br/><a href="/users/<?= $this->project->creator->username ?>"><img src="<?= $this->project->creator->avatar ?>" class="avatar-medium"> <?= $this->project->creator->username ?></a>
         </p>
     </div>
+</div> -->
+<div class='row-fluid'>
+    <div class='span12' style='margin-bottom: 1em'>
+                    <h1 style='line-height: .75em !important'><?= $this->goal->name ?><br>
+            <span class='muted' style='font-size:.5em'>this is a funding goal for project <a href='/projects/<?= $this->project->slug ?>'><?= $this->project->title ?></a></span></h1>
+    </div>
 </div>
-
 <div class="row-fluid">
 	<div class="span8">
         <div class="hero-unit goal-details">
-            <h1><?= $this->goal->name ?></h1>
-            <div class="media">
+
+            <div class="media" style='text-align:center'>
                <? if(!empty($this->goal->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 320; $objs = $embedly->oembed(array('url' => $this->goal->mediaEmbed, 'maxwidth' => '640')); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>    
             </div>
             <div class="social-buttons">
@@ -72,7 +77,7 @@
 
             <p style="text-align:right">
                 <? if(!in_array($this->goal->status, array("success", "failed", "future"))): ?>
-                <a href="/goals/<?= $this->goal->uuid ?>/fund" class="btn btn-success" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a>
+                <a href="/goals/<?= $this->goal->uuid ?>/fund" class="btn btn-success requiresLogin" onClick="_gaq.push(['_trackEvent', 'Fund Button', 'Fund Click', 'Clicked',, false]);">Fund This Goal</a>
             <? else:?>
             <? if($this->goal->status == 'success'): ?><span class='btn btn-success disabled'>Goal Successfully Funded</span><? endif; ?>
             <? if($this->goal->status == 'failed'): ?><span class='btn btn-warning disabled'>Goal Failed</span><? endif; ?>

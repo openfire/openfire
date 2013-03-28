@@ -102,6 +102,7 @@ $template->publish();
 $template = new Templater();
 $template->load('alert');
 $template->type = "error"; $template->message = $error;
+
 $template->publish();
 
 

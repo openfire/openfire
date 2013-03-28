@@ -4,7 +4,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="/css/bootstrap-modal.css" rel="stylesheet" media="screen">
 
 <link href="/css/elusive-webfont.css" rel="stylesheet" media="screen">
 <link href="/css/style.css" rel="stylesheet" media="screen">
@@ -18,7 +17,7 @@
 
 <title>Openfire<? if(!empty($this->title)) echo " | " . $this->title ?></title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> 
-<script src='/app/libraries/min/b=js&f=bootstrap.min.js,holder.js,jquery.form.js,parsley.js,bootstrap-modalmanager.js,bootstrap-modal.js'></script>
+<script src='/app/libraries/min/b=js&f=bootstrap.min.js,holder.js,jquery.form.js,parsley.js,jquery.cookie.js'></script>
 <? if(!empty($this->scripts)): foreach($this->scripts as $url): ?>
 <script src='<?= $url ?>'></script>
 <? endforeach; endif; ?>
