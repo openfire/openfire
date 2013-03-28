@@ -38,7 +38,6 @@ $redirect_uri = "http://" . $_SERVER['SERVER_NAME'] . "/fundingComplete/" . $goa
 // }
 
     $wepay = new WePay($project->wePayAccessToken);
-    print_r($wepay);
 
     // create the checkout
     $response = $wepay->request('checkout/create', array(
