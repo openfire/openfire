@@ -109,8 +109,8 @@ switch($response['auth']['provider']){
 
 		$params['username'] = $response['auth']['info']['nickname'];
 		$params['avatar'] = $response['auth']['info']['image'];
-		$params['location'] = $response['auth']['info']['location'];
-		$params['bio'] = $response['auth']['raw']['bio'];
+		if(!empty($params['location'])) $params['location'] = $response['auth']['info']['location'];
+		if(!empty($params['bio'])) $params['bio'] = $response['auth']['raw']['bio'];
 
 		$params['firstName'] = $response['auth']['info']['first_name'];
 		$params['lastName'] = $response['auth']['info']['last_name'];

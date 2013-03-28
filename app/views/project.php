@@ -136,7 +136,7 @@
             </div>
 
             <div style="text-align:center; margin-top: 1em">
-	           <a href="/goals/<?= $currentGoal->uuid ?>" class="btn btn-large btn-success" onClick="_gaq.push(['_trackEvent', 'Find Out More', 'Find Click', 'Clicked',, false]);">Find Out More</a>
+	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success" onClick="_gaq.push(['_trackEvent', 'Fund this Goal', 'Find Click', 'Clicked',, false]);">Fund This Goal</a>
             </div>
 
   		</div>
