@@ -1,266 +1,183 @@
 <? global $user; global $embedly; $partials = new Templater(); ?>
             <? $currentGoal = new Goal($this->project->currentGoalID) ?>
 
-	<div class="span8 project">
-        <div class="generalInfo hero-unit">
-        	<h1 class="title"><?= $this->project->title ?></h1>
-        	<h3 class="subtitle"><?= $this->project->subtitle ?></h3>
+    <div class='span8 project'>
+        <div class='titling'>
+                <h1 class='title'><?= $this->project->title ?><a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h1>
+                <h3 class='subtitle'><?= $this->project->subtitle ?></h3>
+        </div>
+<ul class='nav nav-tabs project-nav'>
 
-            <!-- updated this guy -->
-        	<div class="media">
-               <? if(!empty($this->project->mediaEmbed)){ $objs = $this->embedly->oembed(array('url' => $this->project->mediaEmbed, 'maxwidth' => '640')); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>   
-            </div>
+    <li class='active'><a href='#about' data-toggle='tab'>Details</a></li>
+    <li><a href='#updates' data-toggle='tab'>Updates <span class='badge'><?= count($this->project->updates) ?></span></a></li>
+    <li><a href='#team' data-toggle='tab'>Team <span class='badge'><?= count($this->project->team) ?></span></a></li>
+</ul>
 
-    	    <div class="social-buttons">
+<div class="tab-content">
+
+    <div id='about' class='about tab-pane active fade in'>
+
+        <div class='media'>
+            <? if(!empty($this->project->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 320; $objs = $embedly->oembed(array('url' => $this->project->mediaEmbed, 'maxwidth' => '640')); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>    
+        </div>
+                            <div style='text-align:center; margin-top: 2em; margin-bottom: 2em'><a href="/goals/<?= $currentGoal->uuid ?>/fund" role="button" data-toggle="modal" class='btn btn-success btn-large requiresLogin'>Fund This Project's Current Goal<br><span style='font-size: 0.75em; font-weight: 300'>$<?= $currentGoal->suggestedAmount ?> Minimum Pledge</small></a></div>
+        <div class='share well well-small'>
 <a class='btn btn-info' href="https://twitter.com/share?url=<?= urlencode('http://' . $_SERVER['SERVER_NAME'] .  '/projects/' . $this->project->slug) ?>
-&text=<?= urlencode($this->project->title . ': ' . $this->project->subtitle . ' via @joinopenfire') ?>" target='_new'><i class='icon-twitter'></i>Share on Twitter</a> <a class='btn btn-info' style='background: #596F90' href='https://www.facebook.com/dialog/feed?app_id=<?= FACEBOOK_APP_ID ?>&
+&text=<?= urlencode($this->project->title . " (via @joinopenfire)") ?>" target='_new'><i class='icon-twitter'></i>Share on Twitter</a> <a class='btn btn-info' style='background: #596F90' href='https://www.facebook.com/dialog/feed?app_id=<?= FACEBOOK_APP_ID ?>&
   link=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>&
   picture=<?= $this->project->icon ?>&
   name=<? urlencode($this->project->title) ?>&
-  caption=<?= urlencode($this->project->title . ": " . $this->project->subtitle) ?>&
+  caption=<?= urlencode($this->project->subtitle) ?>&
   description=<?= urlencode($this->project->summary) ?>&
   redirect_uri=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>' target='_blank'><i class='icon-facebook'></i> Share on Facebook</a> 
-<a class='btn' href='https://plus.google.com/share?url=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>'><i class='icon-googleplus'  style='color: #d34836'></i> Share on Google+</a>
-<!-- <div class='btn btn-link'>
-    <script src="https://apis.google.com/js/plusone.js"></script>
-<g:plus action="share" height="24" annotation="none"></g:plus>
-</div> -->
+<a class='btn' target='_blank' href='https://plus.google.com/share?url=http://<?= $_SERVER['SERVER_NAME'] ?>/projects/<?= $this->project->slug ?>'><i class='icon-googleplus'  style='color: #d34836'></i> Share on Google+</a>
 <div style='display:none'>
     <span itemprop="name"><?= $this->project->title ?></span>
 <span itemprop="description"><?= $this->project->summary ?></span>
-<img itemprop="image" src="http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png">
+<img itemprop="image" src="<?= $this->project->icon ?>">
 <meta property="og:title" content="openfire: <?= $this->project->title ?>" />
-<meta property="og:image" content="http://<?= $_SERVER['SERVER_NAME'] ?>/img/logo.png" />
+<meta property="og:image" content="<?= $this->project->icon ?>" />
 <meta property="og:description" content="<?= $this->project->summary ?>" />
 </div>
-               <!-- AddThis Button BEGIN -->
-<!-- <div class="addthis_toolbox addthis_default_style ">
-<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-<a class="addthis_button_tweet"></a>
-<a class="addthis_button_pinterest_pinit"></a>
-<a class="addthis_counter addthis_pill_style"></a>
 </div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-512e9539719dfdf8"></script> -->
-<!-- AddThis Button END -->
+
+
+            <ul class='stats unstyled'>
+            <li>Creator: <b><a href='#'><?= $this->project->creator->username ?></a></b></li>
+            <li>Launched: <b><?= date("F jS, Y", $this->project->dateAdded) ?></b></li>
+            <li>Total Funds Raised: <b>$<?= $currentGoal->currentAmount ?></b> from <b><?= count($currentGoal->backers) ?></b> backers</li>
+        </ul>
+
+
+
+                <div class='summary'>
+
+               <span class='muted'>Summary:</span> <?= nl2br($this->project->summary) ?>
             </div>
 
-    		<p class="lead summary"><?= $this->project->summary ?></p>
-<div>
-    <a href="/goals/<?= $currentGoal->uuid ?>/fund" role="button" class="btn btn-success requiresLogin">Fund This Project</a>
+
+
+                <hr>
+                <div class='description'>
+<?= nl2br($this->project->description) ?>
 </div>
+    </div>
 
 
-        	<div class="details">
-        		<ul class="nav nav-tabs">
-        			<li class="active">
-        				<a href="#about" data-toggle="tab">About</a>
-        			</li>
-        			<li>
-        				<a href="#updates" data-toggle="tab">Updates</a>
-        			</li>
-        			<li>
-        				<a href="#team" data-toggle="tab">Team</a>
-        			</li>
-        			<li>
-        				<a href="#backers" data-toggle="tab">Backers</a>
-        			</li>
-        		</ul>
-        		<div class="tab-content">
-        	        <div class="tab-pane active" id="about">
-        		 	    <h2>About <?= $this->project->title ?></h2>
-         			 		<?= nl2br($this->project->description) ?> 
+    <div id='updates' class='tab-pane fade in'>
+        <h3>Updates</h3>
+        <ul class='updates unstyled'>
+            <? foreach($this->project->updates as $update): ?>
+            <li class='update<? if($update->public == 0): ?> private muted<? endif ?>'>
+                <h4><a href='/updates/<?= $update->uuid ?>'><?= $update->title ?></a></h4>
+                <div class='meta'>Posted by <a href='/users/<?=$update->user->username ?>'><?= $update->user->username ?></a> on <?= date("F jS, Y", $update->dateAdded) ?> at <?= date("h:ia", $update->dateAdded) ?></div>
+                <div class='body'>
+                    <? if($update->public == 1): ?>
+                    <?= trimtopcount($update->body, 2) ?> <a href='/updates/<?= $update->uuid ?>'>(See more)</a></p>
+                    <? else: ?>
+                    <i>This is a private update for project team members and backers only.</i>
+                <? endif; ?>
+                </div>
+            </li>
+        <? endforeach; ?>
+
+        </ul>
+        <h4 style='text-align:center; margin-bottom: 2em'><a href='#'>See All Updates</a></h4>
+    </div>
+
+    <div id='team' class='tab-pane fade in'>
+        <h3>Team</h3>
+        <ul class='teamMembers unstyled'>
+            <? foreach($this->project->team as $member): ?>
+            <li class='member well well-small'>
+                <div class='row-fluid'>
+                    <div class='span2'>
+                        <a href='#'><img src='<?= $member->avatar ?>'></a>
                     </div>
-        		  
-                <div class="tab-pane" id="updates">
-                	<? foreach($this->project->updates as $update): ?>
-                	<div class='update<? if($update->public == '0') echo " private" ?>'>
-                		<h2><?= $update->title ?> <? if($update->public == '0'): ?><span class='label label-important'>Private</span><? endif; ?></h2>
-                		<div class='body'>
-                		<? if($update->public == '1' || $update->public == '0' && ($this->project->isMember($user) == true || $this->project->isBacker($user) == true)): ?><?= nl2br($update->body) ?><? else: ?><div style='font-weight:bold; margin-left: 2em'>This update is for project backers and team members only.</div><? endif; ?>
-                	</div>
-                	<div class='meta'>Posted by <a href='/users/<?= $update->user->username ?>'><?= $update->user->username ?></a> on <a href='/updates/<?= $update->uuid ?>'><?= date("F jS, Y", $update->dateAdded) ?> at <?= date("h:ia T", $update->dateAdded) ?></a></div>
-                	</div>
-                <? endforeach; ?>
+                    <div class='span10'>
+                        <h3 style='margin:0; line-height: 1em; font-weight:bold'><a href='/users/<?= $member->username ?>'><?= $member->fullName ?></a></h3>
+                        <h4><?= $member->role ?></h4>
+                        <div class='bio'>
+                            <?= nl2br($member->bio) ?>
+                        </div>
+                    </div>
                 </div>
-
-                <div class="tab-pane" id="team">
-                	<? foreach($this->project->team as $member): ?>
-                	<div class='member well well-small'>
-                		<div class='row-fluid'>
-	                		<div class='span1'><img src='<?= $member->avatar ?>' class='span12'></div>
-	                		<div class='span8'><b><a href='/users/<?= $member->username ?>'><?= $member->username ?></a></b>: <?= $member->role ?></div>
-                		</div>
-                	</div>
-                <? endforeach; ?>
-                </div>
-
-                <div class="tab-pane" id="backers">
-                	<? foreach($this->project->backers as $member): ?>
-                	<div class='member well well-small'>
-                		<div class='row-fluid'>
-	                		<div class='span1'><img src='<?= $member->avatar ?>' class='span12'></div>
-	                		<div class='span8'><b><a href='/users/<?= $member->username ?>'><?= $member->username ?></a></b></div>
-                		</div>
-                	</div>
-                <? endforeach; ?>
-                </div>
-
-        	</div>
-
-        </div>
+            </li>
+         <? endforeach; ?>
+        </ul>
     </div>
+
+
+
+
+
+</div>
+    </div>
+<div class='span4 sidebar'>
+    <h2>Goals</h2>
+    <p style='text-align:center'><small><a href="#faq_goal" role="button" data-toggle="modal"><i class='icon-question-sign help-icon'></i> What's the difference between a project and a goal?</a></small></p>
+    <ul class='goals unstyled'>
+        <li class='goal current well well-small'>
+            <h4>Current Goal</h4>
+            <h3><a href='/goals/<?= $currentGoal->uuid ?>'><?= $currentGoal->name ?></a></h3>
+
+            <div class='summary'>
+                <?= nl2br($currentGoal->summary) ?>
+<div style='text-align:right'><a href='/goals/<?= $currentGoal->uuid ?>'>More Info</a></div><br>
+            </div>
+                                                            <div class="progress">
+  <div class="bar bar-success" style="width: <?= $currentGoal->percentComplete ?>%;"></div>
 </div>
 
-<div class="span4 sidebar">
-    <h1>Goals</h1>
-	<div class="funding item widget">
-        <div class="goal mini">
-            <h3> <a href="/goals/<?= $currentGoal->uuid ?>"><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
-        </div>
+                                    <ul class='stats'>
+                            <li><b>$<?= $currentGoal->targetAmount ?></b><br>goal</li>
+                                                <li class="divider-vertical"></li>
 
-        <p><? if(empty($currentGoal->summary)): echo trimtowcount($currentGoal->description, 60) . "..."; else: echo nl2br($currentGoal->summary); endif ?></p>
-        <div class="funding">
-            <div class="funding-vitals">
-                <h3>$<?= $currentGoal->currentAmount ?><span>of $<?= $currentGoal->targetAmount ?> raised</span></h3> 
-                <h3 class="center"><?= count($currentGoal->backers) ?><span>backers</span></h3>
-                <h3><?= $currentGoal->daysUntilTarget ?><span>days to go</span></h3>
-            </div>
-            <div class="progress">
-                <div class="bar" style="width: <? if($currentGoal->percentComplete < 100): echo $currentGoal->percentComplete; else: echo "100"; endif; ?>%;"></div>
-            </div>
+                            <li><b>$<?= $currentGoal->currentAmount ?></b><br> raised</li>
+                                                <li class="divider-vertical"></li>
+                            <li><b><?= count($currentGoal->backers) ?></b><br> backers</li>
+                                                <li class="divider-vertical"></li>
+                            <li><b><?= $currentGoal->daysUntilTarget ?></b><br> days left</li>
+                        </ul>
+                        <br>
+<div style='text-align:center'><a href='/goals/<?= $currentGoal->uuid ?>/fund' class='btn btn-success btn-large'>Fund This Goal<br><span style='font-size: 0.75em; font-weight: 300'>$<?= $currentGoal->suggestedAmount ?> Minimum Pledge</small></a></div>
+        </li>
 
-            <div style="text-align:center; margin-top: 1em">
-	           <a href="/goals/<?= $currentGoal->uuid ?>/fund" class="btn btn-large btn-success requiresLogin" onClick="_gaq.push(['_trackEvent', 'Fund this Goal', 'Find Click', 'Clicked',, false]);">Fund This Goal</a>
-            </div>
+<hr>
+<? foreach($this->project->goals as $goal): if($goal->uuid != $currentGoal->uuid && $goal->uuid != "draft"): ?>
+    <li class='goal <?= $goal->status ?> well well-small'>
+            <h3><a href='/goals/<?= $goal->uuid ?>'><?= $goal->name ?></a> <span style='font-size:0.75em' class='muted'><?= $goal->status ?></span></h3>
+            <? if($goal->status == "future"): ?><p><small><i>This goal has not been started yet.</i></small></p><? endif; ?>
+            <div class='summary'><?= nl2br($goal->summary) ?></div>
 
-  		</div>
-
-		<h3>Rewards</h3>
-        <div class="rewards-summary">
-        	<? foreach($currentGoal->rewards as $reward): ?>
-            <a href="/goals/<?= $currentGoal->uuid ?>/fund?amount=<?= $reward->minAmount ?>">
-                <strong><span style='font-size: 1.5em'>$<?= $reward->minAmount ?>+</span> <?= $reward->name ?></strong> 
-            </a>
-           <? endforeach; ?>
-
-        </div>
-    </div>
-</div>
-<div class="span4 sidebar">
-    	<? foreach($this->project->goals as $goal): if($goal->isCurrent != 1 && !in_array($goal->status, array("draft", "failed"))): ?>
-    <div class="funding item widget goal mini <? if(in_array($goal->status, array("success", "failed","future"))): echo $goal->status . " muted"; endif; ?>">
-
-            <h3> <a href="/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a><? if(in_array($goal->status, array("success", "failed","future"))): ?> <span class="label label-default<? if($goal->status == "success") echo " label-success"; if($goal->status == "failed") echo " label-important"; ?>"><?= ucwords($goal->status) ?></span><? endif; ?></h3>
-
-        <p><?= trimtowcount($goal->description,60) ?>...</p>
-        <? if($goal->status !='future'): ?>
-              <div class="funding">
-            <div class="funding-vitals">
-                <h3>$<?= $goal->currentAmount ?><span>of $<?= $goal->targetAmount ?> raised</span></h3> 
-                <h3 class="center"><?= count($goal->backers) ?><span>backers</span></h3>
-                <h3><?= $goal->daysUntilTarget ?><span>days to go</span></h3>
-            </div>
-            <div class="progress">
-                <div class="bar" style="width: <? if($goal->percentComplete < 100): echo $goal->percentComplete; else: echo "100"; endif; ?>%;"></div>
-            </div>
-        </div>
-    <? endif; ?>
-        </div>
-    <? endif; endforeach; ?>
-
-    </div>
+            <? if($goal->status != "future"): ?>
+            <div class="progress progress-success">
+  <div class="bar" style="width: 100%;"></div>
 </div>
 
-<!-- Funding modal -->
+                                    <ul class='stats'>
+                            <li><b>$5000</b><br>goal</li>
+                                                <li class="divider-vertical"></li>
 
-<div id="fundProject" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <form action='/fundingRedirect' method='post' data-validate='parsley'>
+                            <li><b>$5500</b><br> raised</li>
+                                                <li class="divider-vertical"></li>
+                            <li><b>18</b><br> backers</li>
 
+                        </ul>
+                    <? endif; ?>
+        </li>
+<? endif; endforeach; ?>
+    </ul>
+</div>
+</div>
+<div id="faq_goal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Fund <?= $this->project->title ?></h3>
+    <h3 id="myModalLabel">Help</h3>
   </div>
   <div class="modal-body">
-    <p class='muted'>Your funding will go towards this project's current goal.</p>
-    <div class='goal'>
-        <? $currentGoal = new Goal($this->project->currentGoalID) ?>
-            <h3> <a href="/goals/<?= $currentGoal->uuid ?>" target='_blank'><?= $currentGoal->name ?></a> <span class="label label-warning">Current</span></h3>
-        </div>
-<hr>
-        <p><? if(empty($currentGoal->summary)): echo trimtowcount($currentGoal->description, 60) . "..."; else: echo nl2br($currentGoal->summary); endif ?></p>
-<!--         <div class="funding">
-            <div class="funding-vitals">
-                <h3>$<?= $currentGoal->currentAmount ?><span>of $<?= $currentGoal->targetAmount ?> raised</span></h3> 
-                <h3 class="center"><?= count($currentGoal->backers) ?><span>backers</span></h3>
-                <h3><?= $currentGoal->daysUntilTarget ?><span>days to go</span></h3>
-            </div>
-            <div class="progress">
-                <div class="bar" style="width: <? if($currentGoal->percentComplete < 100): echo $currentGoal->percentComplete; else: echo "100"; endif; ?>%;"></div>
-            </div> -->
-<hr>
-        <input type='hidden' name='goalUUID' value='<?= $this->currentGoal->uuid ?>'>
-        <fieldset>
-            <label for='amount'>Funding Amount</label>
-            <div class="input-prepend input-append">
-  <span class="add-on">$</span><input type='text' style='text-align:right' class='span1' id='amount' name='amount'  data-required='true' data-error-message='You must enter an amount.' value='<? if(!empty(
-
-$this->currentGoal->minAmount) && empty($this->amount)): echo 
-
-$this->currentGoal->minAmount; elseif(!empty($this->amount)): echo $this->amount; else: echo "5"; endif; ?>'><span class="add-on">.00</span>
-</div>
-        </fieldset>
-        <? if(!empty(
-
-$this->currentGoal->rewards)): ?>
-    <legend>Rewards</legend>
-    <fieldset>
-        <? foreach(
-
-$this->currentGoal->rewards as $reward): ?>
-        <div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount || empty($this->amount) || ($reward->numTotal > 0 && $reward->numStillAvailable == 0)): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>' title='Claim This Reward'>
-
-                    <h3><? if(($reward->numTotal > 0 && $reward->numStillAvailable != 0) || $reward->numTotal == 0): ?><input type='radio' <? if((!empty($this->amount) && $reward->minAmount <= $this->amount) || empty($this->amount)): ?>disabled='disabled'<? endif; ?> <? if(!empty($this->amount) && $reward->minAmount == $this->amount): ?>checked='checked'<? endif; ?> name='rewardUUID' value='<?= $reward->uuid ?>'><? endif; ?>  $<?= $reward->minAmount ?>: <?= $reward->name ?></h3>
-                    <div><?= $reward->description ?></div>
-<h3 style='text-align:right'><? if($reward->numTotal > 0): ?><? if($reward->numTotal > 0 && $reward->numStillAvailable != 0): ?><b><?= $reward->numStillAvailable ?></b> of <b><?= $reward->numTotal ?></b> still available<? else: ?>All Gone!<?endif; ?><? else: ?>Unlimited<? endif; ?></h3>
-        </div>
-    <? endforeach; ?>
-    </fieldset>
-
-<? endif; ?>
-
+    <h4>What's the difference between a project and a goal?</h4>
+    <p>An openfire <b>project</b> is the overall, long-term, overarching list of things that a project creator or team is trying to achieve. A <b>goal</b> is one step within the project: a specific actionable thing.</p>
+    <p>You can think of the project as a to-do list, and each goal is an item on that to-do list, which is accomplished when it's funded by people like you.</p>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-        <button class='btn btn-info' type='submit'>Fund This Goal</button>
-
-  </div>
-              </form>
-
 </div>
-
-<!-- /modal -->
-<script>
-$(function() {
-
-
-    
-    $('#amount').blur(function(){
-        var amount = $('#amount').val();
-var available = $(".reward").filter(function() {
-    return  parseInt($(this).attr("data-minAmount")) <= parseInt(amount);
-});
-available.removeClass('muted');
-available.find('input[name="rewardUUID"]').removeAttr('disabled');
-available.first().find('input[name="rewardUUID"]').attr('checked','checked');
-
-var unavailable = $(".reward").filter(function() {
-    return  parseInt($(this).attr("data-minAmount")) > parseInt(amount);
-});
-unavailable.addClass('muted');
-unavailable.find('input[name="rewardUUID"]').attr('disabled','disabled');
-unavailable.first().find('input[name="rewardUUID"]').removeAttr('checked');
-
-});
-});
-</script>

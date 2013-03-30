@@ -42,6 +42,7 @@ $template = new Templater();
 $template->load('header');
 $template->scripts = array("https://js.stripe.com/v1/");
 $template->title = "Fund Goal | " . $goal->name;
+$template->bodyClass = "fund";
 $template->breadcrumbs = array("/projects" => "Projects", "/projects/" . $project->slug => $project->title, "/goals/" . $goal->uuid => $goal->name, "/goals/" . $goal->uuid . "/fund" => "Fund");
 $template->publish();
 
@@ -64,7 +65,8 @@ if(!empty($_GET['amount'])) $template->amount = $_GET['amount'];
 $template->publish(); 
 
 }
-
+$template->load('footer');
+$template->publish();
 
 }
 

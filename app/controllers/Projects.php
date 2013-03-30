@@ -20,6 +20,7 @@ $template = new Templater();
 
 $template->load('header');
 $template->title = $project->title;
+$template->bodyClass = "project";
 $template->breadcrumbs = array("/projects" => "Projects", "/projects/" . $project->slug => $project->title);
 $template->publish();
 

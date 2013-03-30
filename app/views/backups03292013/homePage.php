@@ -20,7 +20,6 @@
           
       </div>
     </div>
-    <hr>
     <div class="row-fluid max1000">
       
       
@@ -28,9 +27,8 @@
         <h2>
           Featured Projects
         </h2>
-        <ul class='thumbnails'>
         <? foreach($this->featuredProjects as $project): ?>
-        <li class="project span4">
+        <div class="project">
              <div class="media">
                     <? if(!empty($project->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 280; $objs = $embedly->oembed(array('url' => $project->mediaEmbed, 'maxwidth' => $this->mediaWidth)); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>  
             </div>
@@ -57,18 +55,16 @@
             </strong>
             raised so far
           </p>
-        </li>
+        </div>
       <? endforeach; ?>
-    </ul>
       </div>
 
       <div class="featuredGoals">
         <h2>
             Featured Project Goals
         </h2>
-        <ul class='thumbnails'>
         <? foreach($this->featuredGoals as $goal): $project = new Project($goal->projectID) ?>
-        <li class="goal span4">
+        <div class="goal">
             <div class="media">
                      <? if(!empty($goal->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 280; $objs = $embedly->oembed(array('url' => $goal->mediaEmbed, 'maxwidth' => $this->mediaWidth)); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>      
             </div>
@@ -85,9 +81,9 @@
             <div class="project-info">
                 <img src="<?= $project->icon ?>" height="50" width="50" /> <a href="/projects/<?= $project->slug ?>"><?= $project->title ?></a>
             </div>
-        </li>
+        </div>
       <? endforeach; ?>
-    </ul>
+
 
       </div>
       <img src="http://ad.retargeter.com/seg?add=659127&t=2" width="1" height="1" />

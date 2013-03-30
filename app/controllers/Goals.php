@@ -15,6 +15,7 @@ $project = new Project($goal->projectID);
 $template = new Templater();
 
 $template->load('header');
+$template->bodyClass = "goal";
 $template->title = $project->title . " | " . $goal->name;
 $template->breadcrumbs = array("/projects" => "Projects", "/projects/" . $project->slug => $project->title, "/projects/" . $project->slug . "/goals/" => "Goals","/projects/" . $project->slug . "/goals/" . $goal->uuid => $goal->name);
 $template->publish();

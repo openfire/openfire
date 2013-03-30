@@ -20,6 +20,7 @@
             }else{
                 $this->percentComplete = 0;
             }
+            if($this->percentComplete > 100) $this->percentComplete = 100;
 
         $this->daysUntilTarget = floor(($this->targetDate - time()) / 86400);
         if($this->daysUntilTarget < 0) $this->daysUntilTarget = 0;

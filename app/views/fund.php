@@ -1,52 +1,41 @@
 <? $project = new Project($this->goal->projectID) ?>
+<div class='fund span8 offset2'>
+<h1>Fund <a href='/goals/<?= $this->goal->uuid ?>'>&quot;<?= $this->goal->name ?>&quot;</a></h1>
+<p>Openfire's payments are processed by <a href='http://www.wepay.com'>WePay</a>, and we never see or retain your credit card information. Your card will be immediately charged upon submission of payment.</p>
+<form action='/fundingRedirect' method='post'>
+    <input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>
+<fieldset>
+    <label for='amount'><b>Funding Amount</b></label>
+    <div class="input-prepend">
+  <span class="add-on">$</span>
+  <input class="input-xlarge" type="text" name='amount' id='amount' placeholder="$5 Minimum Pledge" value='<?= $this->goal->suggestedAmount ?>'>
+</div>
+<br>
+</fieldset>
+<fieldset>
+<h3>Rewards</h3>
+<p>If you select a reward higher than the amount you've entered, the amount will change to reflect the reward amount.</p>
+<fieldset>
+    <label class='radio reward'><input type='radio' name='reward' value='' checked='checked'data-amount='<?= $this->goal->suggestedAmount ?>'> <h4><b>No Reward</b></h4></label>
+    <hr>
+    <? foreach($this->goal->rewards as $reward): ?><label class='radio reward'>
+        <input type='radio' name='reward' value='<?= $reward->id ?>' data-amount='<?= $reward->minAmount ?>'><h4><b>$<?= $reward->minAmount ?></b> <?= $reward->name ?></h4>
+        <?= nl2br($reward->description) ?>
+    </label>
+    <hr>
+ <? endforeach; ?>
+</fieldset>
+<fieldset style='text-align:center'>
+    <button type='submit' class='btn btn-large btn-success'>Continue</button>
+</form>
+
+</div>
 <script>
 $(function() {
-	$('#amount').blur(function(){
-		var amount = $('#amount').val();
-var available = $(".reward").filter(function() {
-    return  parseInt($(this).attr("data-minAmount")) <= parseInt(amount);
-});
-available.removeClass('muted');
-available.find('input[name="rewardUUID"]').removeAttr('disabled');
-available.first().find('input[name="rewardUUID"]').attr('checked','checked');
-
-var unavailable = $(".reward").filter(function() {
-    return  parseInt($(this).attr("data-minAmount")) > parseInt(amount);
-});
-unavailable.addClass('muted');
-unavailable.find('input[name="rewardUUID"]').attr('disabled','disabled');
-unavailable.first().find('input[name="rewardUUID"]').removeAttr('checked');
-
-});
+	$('input[type="radio"]').change(function(){
+		if(parseInt($('#amount').val()) < $(this).attr('data-amount')){
+		$('#amount').val($(this).attr('data-amount'));
+	}
+	});
 });
 </script>
-<div class='span 8'>
-	<h1>Fund <?= $project->title ?> goal &quot;<?= $this->goal->name ?>&quot;</h1>
-	<p>Thanks for funding this goal! Use the form below to choose your funding amount and select your reward (if any).</p><p>Once you fill in this information, you'll be redirected to <a href='http://www.wepay.com'>WePay</a> to complete the transaction.</p>
-	<form action='/fundingRedirect' method='post' data-validate='parsley'>
-		<input type='hidden' name='goalUUID' value='<?= $this->goal->uuid ?>'>
- 		<fieldset>
-			<label for='amount'>Funding Amount</label>
-			<div class="input-prepend input-append">
-  <span class="add-on">$</span><input type='text' style='text-align:right' class='span1' id='amount' name='amount'  data-required='true' data-error-message='You must enter an amount.' value='<? if(!empty($this->goal->minAmount) && empty($this->amount)): echo $this->goal->minAmount; elseif(!empty($this->amount)): echo $this->amount; else: echo "5"; endif; ?>'><span class="add-on">.00</span>
-</div>
-		</fieldset>
-		<? if(!empty($this->goal->rewards)): ?>
-	<legend>Rewards</legend>
-	<fieldset>
-		<? foreach($this->goal->rewards as $reward): ?>
-		<div class='well well-small reward <? if(!empty($this->amount) && $reward->minAmount > $this->amount || empty($this->amount) || ($reward->numTotal > 0 && $reward->numStillAvailable == 0)): ?>muted<? endif; ?>' id = '<?= $reward->uuid ?>' data-minAmount = '<?= $reward->minAmount ?>'>
-
-					<h3><? if(($reward->numTotal > 0 && $reward->numStillAvailable != 0) || $reward->numTotal == 0): ?><input type='radio' <? if((!empty($this->amount) && $reward->minAmount < $this->amount) || empty($this->amount)): ?>disabled='disabled'<? endif; ?> <? if(!empty($this->amount) && $reward->minAmount == $this->amount): ?>checked='checked'<? endif; ?> name='rewardUUID' value='<?= $reward->uuid ?>'><? endif; ?>  $<?= $reward->minAmount ?>: <?= $reward->name ?></h3>
-					<div><?= $reward->description ?></div>
-<h3 style='text-align:right'><? if($reward->numTotal > 0): ?><? if($reward->numTotal > 0 && $reward->numStillAvailable != 0): ?><b><?= $reward->numStillAvailable ?></b> of <b><?= $reward->numTotal ?></b> still available<? else: ?>All Gone!<?endif; ?><? else: ?>Unlimited<? endif; ?></h3>
-		</div>
-	<? endforeach; ?>
-	</fieldset>
-
-<? endif; ?>
-<div class='form-actions'>
-	<button type='submit'>Fund This Goal</button>
-</div>
-	</form>
-</div>

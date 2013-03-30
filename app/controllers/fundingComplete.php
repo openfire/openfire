@@ -52,6 +52,7 @@ if($reward->numTotal != 0) $reward->update(array("numStillAvailable" => ($reward
 $project = new Project($goal->projectID);
 $template = new Templater();
 $template->load('header');
+$template->bodyClass = "fundingComplete";
 $template->title = $project->title . " | " . $goal->name;
 $template->breadcrumbs = array("/projects" => "Projects", "/projects/" . $project->slug => $project->title, "/projects/" . $project->slug . "/goals/" => "Goals","/projects/" . $project->slug . "/goals/" . $goal->uuid => $goal->name, "/projects/" . $project->slug . "/goals/" . $goal->uuid . "/fund" => "Fund","" => "Funding Complete!");
 $template->publish();

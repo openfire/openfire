@@ -1,6 +1,38 @@
 a:hover{text-decoration: none}
 
 
+.project-icon-tiny, .avatar-tiny{
+	width: 16px;
+}
+
+.project-icon-small, .avatar-small{
+	width: 32px;
+}
+
+.project-icon-med, .avatar-med{
+	width: 64px;
+}
+
+.project-icon-large, .avatar-large{
+	width: 128px;
+}
+
+.project-icon-xlarge, .avatar-xlarge{
+	width: 256px;
+}
+
+.project-icon-inline, .avatar-inline{
+	height: 1em;
+}
+
+
+.container-fluid{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+
+
 h1, h2, h3, h4, h5{font-weight: 300}
 
 
@@ -12,18 +44,8 @@ img.avatar{height: 1em;}
 
 .splash{
     background: #ffffff; /* Old browsers */
-background: -moz-linear-gradient(top,  #ffffff 0%, #ffffff 97%, #f2f2f2 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(97%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #ffffff 0%,#ffffff 97%,#f2f2f2 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
-
-border-radius: 0;
-    border: 1px solid #eee;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 2em;
+    margin-bottom: 4em;
 }
 
 .help-icon{
@@ -71,6 +93,8 @@ border-right: 1px solid #ffffff;
     margin-bottom: 2em;
 }
 
+body.project .project, body.project .sidebar, body.goal .goal, body.goal .sidebar, body.fund .fund{margin-top: 2em;}
+
 body.project .titling{
 	text-align:center;
 	margin-bottom: 2em;
@@ -90,6 +114,11 @@ body.project .media{
 body.project .summary, body.project .description{
 	font-weight: 300;
 	margin-top: 2em;
+}
+
+body.project .project .summary, body.goal .summary{
+	font-size: 1.5em;
+	line-height: 2em;
 }
 
 body.project .update{
@@ -170,3 +199,4 @@ body.project li.goal.current{
 	body.project li.member .bio{
 		font-size: 0.9em;
 	}
+
