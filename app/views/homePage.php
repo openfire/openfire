@@ -31,8 +31,8 @@
         <ul class='thumbnails'>
         <? foreach($this->featuredProjects as $project): ?>
         <li class="project span4">
-             <div class="media">
-                    <? if(!empty($project->mediaEmbed)){ if(empty($this->mediaWidth)) $this->mediaWidth = 280; $objs = $embedly->oembed(array('url' => $project->mediaEmbed, 'maxwidth' => $this->mediaWidth)); if(!empty($objs[0]->html)) echo $objs[0]->html; } ?>  
+             <div class="media" style='text-align:center'>
+                    <a title="<?= $project->title ?>" href="/projects/<?= $project->slug ?>"><img src='<?= $project->icon ?>' style='width: 50%;'></a>
             </div>
           <h3>
             <a title="<?= $project->title ?>" href="/projects/<?= $project->slug ?>">
