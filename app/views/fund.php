@@ -21,6 +21,7 @@
     <? foreach($this->goal->rewards as $reward): ?><label class='radio reward'>
         <input type='radio' name='rewardUUID' value='<?= $reward->id ?>' data-amount='<?= $reward->minAmount ?>'><h4><b>$<?= $reward->minAmount ?></b> <?= $reward->name ?></h4>
         <?= nl2br($reward->description) ?>
+                <p style='text-align:right; margin-top: 1em; font-weight: bold'><? if($reward->numTotal > 0): if($reward->numStillAvailable > 0): ?><?= $reward->numStillAvailable ?> of <?= $reward->numTotal ?> still available<? else: ?>All gone!<? endif; else: ?>Unlimited<? endif; ?></p>
     </label>
     <hr>
  <? endforeach; ?>
@@ -33,9 +34,8 @@
 <script>
 $(function() {
     $('input[type="radio"]').change(function(){
-        if(parseInt($('input[name="amount"]').val()) < $(this).attr('data-amount')){
         $('input[name="amount"]').val($(this).attr('data-amount'));
-    }
+
     });
 });
 </script>
