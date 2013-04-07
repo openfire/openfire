@@ -1,0 +1,68 @@
+Fri Apr  5 15:27:21.431 [initandlisten] MongoDB starting : pid=21851 port=27017 dbpath=/data/db/ 64-bit host=openfi.re
+Fri Apr  5 15:27:21.431 [initandlisten] 
+Fri Apr  5 15:27:21.431 [initandlisten] ** WARNING: You are running in OpenVZ. This is known to be broken!!!
+Fri Apr  5 15:27:21.431 [initandlisten] 
+Fri Apr  5 15:27:21.431 [initandlisten] db version v2.4.1
+Fri Apr  5 15:27:21.431 [initandlisten] git version: 1560959e9ce11a693be8b4d0d160d633eee75110
+Fri Apr  5 15:27:21.431 [initandlisten] build info: Linux ip-10-2-29-40 2.6.21.7-2.ec2.v1.2.fc8xen #1 SMP Fri Nov 20 17:48:28 EST 2009 x86_64 BOOST_LIB_VERSION=1_49
+Fri Apr  5 15:27:21.431 [initandlisten] allocator: tcmalloc
+Fri Apr  5 15:27:21.431 [initandlisten] options: { fork: true, logpath: "/var/www/vhosts/openfi.re/dev.openfi.re/mongo.log" }
+Fri Apr  5 15:27:21.434 [initandlisten] journal dir=/data/db/journal
+Fri Apr  5 15:27:21.434 [initandlisten] recover : no journal files present, no recovery needed
+Fri Apr  5 15:27:21.462 [initandlisten] waiting for connections on port 27017
+Fri Apr  5 15:27:21.462 [websvr] admin web console waiting for connections on port 28017
+Fri Apr  5 16:01:04.076 [initandlisten] connection accepted from 127.0.0.1:55340 #5 (1 connection now open)
+Fri Apr  5 16:01:10.508 [FileAllocator] allocating new datafile /data/db/users.ns, filling with zeroes...
+Fri Apr  5 16:01:10.508 [FileAllocator] creating directory /data/db/_tmp
+Fri Apr  5 16:01:10.571 [FileAllocator] done allocating datafile /data/db/users.ns, size: 16MB,  took 0.06 secs
+Fri Apr  5 16:01:10.572 [FileAllocator] allocating new datafile /data/db/users.0, filling with zeroes...
+Fri Apr  5 16:01:10.791 [FileAllocator] done allocating datafile /data/db/users.0, size: 64MB,  took 0.219 secs
+Fri Apr  5 16:01:10.791 [FileAllocator] allocating new datafile /data/db/users.1, filling with zeroes...
+Fri Apr  5 16:01:10.793 [conn5] build index users.__tmp_collection_ { _id: 1 }
+Fri Apr  5 16:01:10.794 [conn5] build index done.  scanned 0 total records. 0 secs
+Fri Apr  5 16:01:10.794 [conn5] command users.$cmd command: { create: "__tmp_collection_" } ntoreturn:1 keyUpdates:0 locks(micros) w:285812 reslen:37 285ms
+Fri Apr  5 16:01:10.794 [conn5] CMD: drop users.__tmp_collection_
+Fri Apr  5 16:01:11.204 [FileAllocator] done allocating datafile /data/db/users.1, size: 128MB,  took 0.413 secs
+Fri Apr  5 16:01:11.204 [conn5] command users.$cmd command: { drop: "__tmp_collection_" } ntoreturn:1 keyUpdates:0 locks(micros) w:1383 reslen:130 409ms
+Fri Apr  5 16:01:11.444 [initandlisten] connection accepted from 127.0.0.1:55737 #6 (2 connections now open)
+Fri Apr  5 16:05:18.570 [initandlisten] connection accepted from 127.0.0.1:59219 #7 (3 connections now open)
+Fri Apr  5 16:05:18.572 [conn7] build index users.projects { _id: 1 }
+Fri Apr  5 16:05:18.572 [conn7] build index done.  scanned 0 total records. 0 secs
+Fri Apr  5 16:05:28.977 [conn6] CMD: drop users.projects
+Fri Apr  5 16:05:34.447 [conn5] dropDatabase users starting
+Fri Apr  5 16:05:34.449 [conn5] removeJournalFiles
+Fri Apr  5 16:05:34.533 [conn5] dropDatabase users finished
+Fri Apr  5 16:05:37.926 [FileAllocator] allocating new datafile /data/db/openfire.ns, filling with zeroes...
+Fri Apr  5 16:05:37.986 [FileAllocator] done allocating datafile /data/db/openfire.ns, size: 16MB,  took 0.059 secs
+Fri Apr  5 16:05:37.986 [FileAllocator] allocating new datafile /data/db/openfire.0, filling with zeroes...
+Fri Apr  5 16:05:38.215 [FileAllocator] done allocating datafile /data/db/openfire.0, size: 64MB,  took 0.229 secs
+Fri Apr  5 16:05:38.218 [conn5] build index openfire.__tmp_collection_ { _id: 1 }
+Fri Apr  5 16:05:38.219 [conn5] build index done.  scanned 0 total records. 0 secs
+Fri Apr  5 16:05:38.219 [conn5] command openfire.$cmd command: { create: "__tmp_collection_" } ntoreturn:1 keyUpdates:0 locks(micros) w:292933 reslen:37 292ms
+Fri Apr  5 16:05:38.219 [FileAllocator] allocating new datafile /data/db/openfire.1, filling with zeroes...
+Fri Apr  5 16:05:38.617 [FileAllocator] done allocating datafile /data/db/openfire.1, size: 128MB,  took 0.398 secs
+Fri Apr  5 16:05:38.620 [conn5] CMD: drop openfire.__tmp_collection_
+Fri Apr  5 16:05:42.647 [conn5] build index openfire.users { _id: 1 }
+Fri Apr  5 16:05:42.647 [conn5] build index done.  scanned 0 total records. 0 secs
+Fri Apr  5 16:05:50.243 [conn7] build index openfire.projects { _id: 1 }
+Fri Apr  5 16:05:50.244 [conn7] build index done.  scanned 0 total records. 0.001 secs
+Fri Apr  5 16:05:55.311 [conn6] build index openfire.goals { _id: 1 }
+Fri Apr  5 16:05:55.312 [conn6] build index done.  scanned 0 total records. 0 secs
+Fri Apr  5 16:17:48.614 [initandlisten] connection accepted from 127.0.0.1:41802 #8 (4 connections now open)
+Fri Apr  5 16:17:48.615 [conn8]  authenticate db: admin { authenticate: 1, user: "development", nonce: "1b9138cdaedcd006", key: "7f040a63164d8d7dbced9529b2173643" }
+Fri Apr  5 16:18:30.369 [initandlisten] connection accepted from 127.0.0.1:42470 #9 (5 connections now open)
+Fri Apr  5 16:18:30.369 [conn9]  authenticate db: admin { authenticate: 1, user: "development", nonce: "afff3c0c76ba257c", key: "d77e8e4e58bc69f6df40c9ec57df191a" }
+Fri Apr  5 16:20:50.636 [initandlisten] connection accepted from 127.0.0.1:45006 #10 (6 connections now open)
+Fri Apr  5 16:20:50.636 [conn10]  authenticate db: admin { authenticate: 1, user: "development", nonce: "e26c7c4f3a339d0e", key: "ff4b8383f57e596d285a3c0801f50c01" }
+Fri Apr  5 16:21:22.732 [conn6] dropDatabase monkeyspunk starting
+Fri Apr  5 16:21:22.732 [conn6] removeJournalFiles
+Fri Apr  5 16:21:22.734 [conn6] dropDatabase monkeyspunk finished
+Fri Apr  5 16:21:25.843 [conn5] dropDatabase database starting
+Fri Apr  5 16:21:25.843 [conn5] removeJournalFiles
+Fri Apr  5 16:21:25.847 [conn5] dropDatabase database finished
+Sat Apr  6 15:55:08.361 [conn7] end connection 127.0.0.1:59219 (5 connections now open)
+Sat Apr  6 15:55:08.361 [conn9] end connection 127.0.0.1:42470 (5 connections now open)
+Sat Apr  6 17:38:34.396 [conn8] end connection 127.0.0.1:41802 (3 connections now open)
+Sat Apr  6 17:38:34.396 [conn5] end connection 127.0.0.1:55340 (3 connections now open)
+Sun Apr  7 00:03:39.934 [conn10] end connection 127.0.0.1:45006 (1 connection now open)
+Sun Apr  7 00:03:39.934 [conn6] end connection 127.0.0.1:55737 (1 connection now open)

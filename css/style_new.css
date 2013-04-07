@@ -200,3 +200,11 @@ body.project li.goal.current{
 		font-size: 0.9em;
 	}
 
+
+
+.chart .goal.success, .chart .goal.goal-met{background: #efe;}
+
+.chart .goal.failed{background: #fee;}
+.chart .goal.future{background: #eee;}
+
+.chart .popover{width: 500px;}

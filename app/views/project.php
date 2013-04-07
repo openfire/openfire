@@ -1,11 +1,63 @@
 <? global $user; global $embedly; $partials = new Templater(); ?>
             <? $currentGoal = new Goal($this->project->currentGoalID) ?>
+</div>
+<script>
+$(function() {
+    $('.popovered').popover({placement: get_popover_placement});
 
-    <div class='span8 project'>
-        <div class='titling'>
+    function get_popover_placement(pop, dom_el) {
+      var width = window.innerWidth;
+      if (width<500) return 'bottom';
+      var left_pos = $(dom_el).offset().left;
+      if (width - left_pos > 400) return 'bottom';
+      return 'left';
+    }
+
+    $('input[type="radio"]').change(function(){
+        if(parseInt($('input[name="amount"]').val()) < $(this).attr('data-amount')){
+        $('input[name="amount"]').val($(this).attr('data-amount'));
+    }
+    });
+
+
+});
+</script>
+<div class='row-fluid'>
+            <div class='titling span12'>
                 <h1 class='title'><?= $this->project->title ?><a href="#faq_goal" role="button" data-toggle="modal"class='tooltipped' title='Click here for more info'><i class='icon-question-sign help-icon'></i></a></h1>
                 <h3 class='subtitle'><?= $this->project->subtitle ?></h3>
+             </div>
+        <div class='goalChart span12'>
+            <h4>Goals<br><small class='muted'>Click a goal's name for details</small></h4>
+
+            <table class='chart table table-bordered'>
+                <tbody>
+                <tr>
+            <? foreach($this->project->goals as $goal): if($goal->status != "draft"): ?>
+            <td style='cursor:pointer' class='popovered goal <?= slugify($goal->status) ?><? if($goal->isCurrent == 0) echo " muted"; ?>' style='width: <?= 100 / count($this->project->goals) ?>%' data-title='<h3><a href="/goals/<?= $goal->uuid ?>"><?= $goal->name ?></a></h3>' data-trigger='click' data-html='true' data-content='<div class="goal"><span class="label"><?= ucwords($goal->status) ?></span>
+                <div class="summary"><?= nl2br(htmlspecialchars($goal->summary, ENT_QUOTES)) ?></div><br><div class="progress progress-success">
+  <div class="bar" style="width: <?= $goal->percentComplete ?>%;"></div>
+</div>
+
+                                    <ul class="stats">
+                            <li><b>$<?= $goal->targetAmount ?></b><br>goal</li>
+                                                <li class="divider-vertical"></li>
+
+                            <li><b>$<?= $goal->currentAmount ?></b><br> raised</li>
+                                                <li class="divider-vertical"></li>
+                            <li><b><?= count($goal->backers) ?></b><br> backers</li>
+
+                        </ul></div>'>
+                <b><?= $goal->name ?></b> <? if($goal->isCurrent == 1) echo "<span class='label'>Current</span>"; ?>
+
+            </td>
+        <? endif; endforeach; ?>
+    </tbody>
+            </table>
         </div>
+    </div>
+    <div class='span8 project'>
+
 <ul class='nav nav-tabs project-nav'>
 
     <li class='active'><a href='#about' data-toggle='tab'>Details</a></li>
@@ -113,61 +165,56 @@
 
 </div>
     </div>
-<div class='span4 sidebar'>
-    <h2>Goals</h2>
-    <p style='text-align:center'><small><a href="#faq_goal" role="button" data-toggle="modal"><i class='icon-question-sign help-icon'></i> What's the difference between a project and a goal?</a></small></p>
-    <ul class='goals unstyled'>
-        <li class='goal current well well-small'>
-            <h4>Current Goal</h4>
-            <h3><a href='/goals/<?= $currentGoal->uuid ?>'><?= $currentGoal->name ?></a></h3>
-
-            <div class='summary'>
-                <?= nl2br($currentGoal->summary) ?>
-<div style='text-align:right'><a href='/goals/<?= $currentGoal->uuid ?>'>More Info</a></div><br>
-            </div>
-                                                            <div class="progress">
-  <div class="bar bar-success" style="width: <?= $currentGoal->percentComplete ?>%;"></div>
+<div class='span4 goal sidebar'>
+ <h3>Fund This Project's Current Goal</h3>
+<p style='text-align:center'><small><a href="#faq_goal" role="button" data-toggle="modal"><i class='icon-question-sign help-icon'></i> What's the difference between a project and a goal?</a></small></p>
+    <div class='well well-small'>
+        <h3><?= $currentGoal->name ?></h3>
+        <div class='summary'><?= nl2br($currentGoal->summary) ?></div>
+<div class="progress small">
+  <div class="bar bar-success" style="width: <?= $this->currentGoal->percentComplete ?>%;"></div>
 </div>
 
                                     <ul class='stats'>
-                            <li><b>$<?= $currentGoal->targetAmount ?></b><br>goal</li>
+                            <li><b>$<?= $this->currentGoal->targetAmount ?></b><br>goal</li>
                                                 <li class="divider-vertical"></li>
 
-                            <li><b>$<?= $currentGoal->currentAmount ?></b><br> raised</li>
+                            <li><b>$<?= $this->currentGoal->currentAmount ?></b><br> raised</li>
                                                 <li class="divider-vertical"></li>
-                            <li><b><?= count($currentGoal->backers) ?></b><br> backers</li>
+                            <li><b><?= count($this->currentGoal->backers) ?></b><br> backers</li>
                                                 <li class="divider-vertical"></li>
-                            <li><b><?= $currentGoal->daysUntilTarget ?></b><br> days left</li>
+                            <li><b><?= $this->currentGoal->daysUntilTarget ?></b><br> days left</li>
                         </ul>
-                        <br>
-<div style='text-align:center'><a href='/goals/<?= $currentGoal->uuid ?>/fund' class='btn btn-success btn-large'>Fund This Goal<br><span style='font-size: 0.75em; font-weight: 300'>$<?= $currentGoal->suggestedAmount ?> Minimum Pledge</small></a></div>
-        </li>
-
 <hr>
-<? foreach($this->project->goals as $goal): if($goal->uuid != $currentGoal->uuid && $goal->uuid != "draft"): ?>
-    <li class='goal <?= $goal->status ?> well well-small'>
-            <h3><a href='/goals/<?= $goal->uuid ?>'><?= $goal->name ?></a> <span style='font-size:0.75em' class='muted'><?= $goal->status ?></span></h3>
-            <? if($goal->status == "future"): ?><p><small><i>This goal has not been started yet.</i></small></p><? endif; ?>
-            <div class='summary'><?= nl2br($goal->summary) ?></div>
-
-            <? if($goal->status != "future"): ?>
-            <div class="progress progress-success">
-  <div class="bar" style="width: 100%;"></div>
+<form action='/fundingRedirect' method='post'>
+    <input type='hidden' name='goalUUID' value='<?= $this->currentGoal->uuid ?>'>
+<fieldset>
+    <label for='amount'><b>Funding Amount</b></label>
+    <div class="input-prepend">
+  <span class="add-on">$</span>
+  <input class="input-xlarge" type="text" id='amount' name='amount' placeholder="$5 Minimum Pledge" value='<?= $this->currentGoal->suggestedAmount ?>'>
 </div>
+<br>
+</fieldset>
+<fieldset>
+<h3>Rewards</h3>
+<fieldset>
+    <label class='radio reward'><input type='radio' name='rewardUUID' value='0' checked='checked'> <h4><b>No Reward</b></h4></label>
+    <hr>
+    <? foreach($this->currentGoal->rewards as $reward): ?><label class='radio reward'>
+        <input type='radio' data-amount='<?= $reward->minAmount ?>' name='rewardUUID'><h4><b>$<?= $reward->minAmount ?></b> <?= $reward->name ?></h4>
+        <?= nl2br($reward->description) ?>
+    </label>
+    <hr>
+ <? endforeach; ?>
+</fieldset>
+<fieldset style='text-align:center'>
+    <button type='submit' class='btn btn-large btn-success requiresLogin'>Continue</button>
+</form>
 
-                                    <ul class='stats'>
-                            <li><b>$5000</b><br>goal</li>
-                                                <li class="divider-vertical"></li>
-
-                            <li><b>$5500</b><br> raised</li>
-                                                <li class="divider-vertical"></li>
-                            <li><b>18</b><br> backers</li>
-
-                        </ul>
-                    <? endif; ?>
-        </li>
-<? endif; endforeach; ?>
-    </ul>
+</div>
+<div>
+<p><small>Openfire's payments are processed by <a href='http://www.wepay.com'>WePay</a>, and we never see or retain your credit card information. Your card will be immediately charged upon submission of payment.</small></p>
 </div>
 </div>
 <div id="faq_goal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

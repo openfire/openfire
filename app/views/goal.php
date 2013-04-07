@@ -87,17 +87,17 @@
 <fieldset>
 <h3>Rewards</h3>
 <fieldset>
-    <label class='radio reward'><input type='radio' name='reward' value='' checked='checked'> <h4><b>No Reward</b></h4></label>
+    <label class='radio reward'><input type='radio' name='rewardUUID' value='0' checked='checked'> <h4><b>No Reward</b></h4></label>
     <hr>
     <? foreach($this->goal->rewards as $reward): ?><label class='radio reward'>
-        <input type='radio' name='reward'><h4><b>$<?= $reward->minAmount ?></b> <?= $reward->name ?></h4>
+        <input type='radio' data-amount='<?= $reward->minAmount ?>' name='rewardUUID'><h4><b>$<?= $reward->minAmount ?></b> <?= $reward->name ?></h4>
         <?= nl2br($reward->description) ?>
     </label>
     <hr>
  <? endforeach; ?>
 </fieldset>
 <fieldset style='text-align:center'>
-    <button type='submit' class='btn btn-large btn-success'>Continue</button>
+    <button type='submit' class='btn btn-large btn-success requiresLogin'>Continue</button>
 </form>
 
 </div>
@@ -116,3 +116,12 @@
     <p>You can think of the project as a to-do list, and each goal is an item on that to-do list, which is accomplished when it's funded by people like you.</p>
   </div>
 </div>
+<script>
+$(function() {
+    $('input[type="radio"]').change(function(){
+        if(parseInt($('input[name="amount"]').val()) < $(this).attr('data-amount')){
+        $('input[name="amount"]').val($(this).attr('data-amount'));
+    }
+    });
+});
+</script>
