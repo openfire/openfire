@@ -31,15 +31,7 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 $inarray = array();
 foreach($result as $b){
-if(!in_array($b['userID'],$inarray)){
-    $tuser = new User($b['userID']);
-    $tuser->amount = $b['amount'];
-    $tuser->reward = new Reward($b['rewardID']);
-    $tuser->rewardStatus = $b['status'];
- //   $tuser->checkoutID = $b['wePayCheckoutID'];
-$this->backers[] = $tuser;
-$inarray[] = $b['userID'];
-}
+$this->backers[] = new User($b['userID']);
 
 }
 

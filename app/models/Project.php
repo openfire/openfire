@@ -126,7 +126,7 @@ $this->messages[] = new Message($u['id']);
 
 }
 
-function getBackers($offset = 0, $num = 10){
+function getBackers($offset = 0, $num = 999){
 
         global $dbh;
 
