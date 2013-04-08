@@ -15,6 +15,7 @@
 
         global $dbh;
 
+
         if($this->currentAmount > 0){
             $this->percentComplete = ($this->currentAmount / $this->targetAmount) * 100;
             }else{
@@ -31,7 +32,11 @@ $result = $sth->fetchAll(PDO::FETCH_ASSOC);
 
 $inarray = array();
 foreach($result as $b){
-$this->backers[] = new User($b['userID']);
+    $tuser = new User($b['userID']);
+    $tuser->amount = $b['amount'];
+    $tuser->reward = new Reward($b['rewardID']);
+    $tuser->status = $b['status'];
+$this->backers[] = $tuser;
 
 }
 
