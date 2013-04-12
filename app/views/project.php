@@ -169,7 +169,7 @@ $(function() {
  <h3>Fund This Project's Current Goal</h3>
 <p style='text-align:center'><small><a href="#faq_goal" role="button" data-toggle="modal"><i class='icon-question-sign help-icon'></i> What's the difference between a project and a goal?</a></small></p>
     <div class='well well-small'>
-        <h3><?= $currentGoal->name ?></h3>
+        <h3><a href='/goals/<?= $currentGoal->uuid ?>'><?= $currentGoal->name ?></a></h3>
         <div class='summary'><?= nl2br($currentGoal->summary) ?></div>
 <div class="progress small">
   <div class="bar bar-success" style="width: <?= $this->currentGoal->percentComplete ?>%;"></div>
