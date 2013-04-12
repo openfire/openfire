@@ -7,7 +7,7 @@
     <form action='' method='post' data-validate="parsley">
     	<div class='row-fluid'>
     		<div class='span6'>
-    			<h1 style='color:red'>!!! Required !!!</h1>
+    			<h4>Required</h4>
 <input type='hidden' name='avatar' value='<?= $this->params['avatar'] ?>'>
 <input type='hidden' name='type' value='<?= $this->params['type'] ?>'>
 
@@ -36,7 +36,7 @@
 </fieldset>
 </div>
 <div class='span6'>
-<h1 style='color:red'>!!! Optional !!!</h1>
+<h4>Optional</h4>
 <fieldset>
 <label for='location'>Location</label>
 <input type='text' name='location' class='input-xlarge' value='<?= $this->params['location'] ?>'>

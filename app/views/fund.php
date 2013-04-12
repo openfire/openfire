@@ -8,7 +8,7 @@
     <label for='amount'><b>Funding Amount</b></label>
     <div class="input-prepend">
   <span class="add-on">$</span>
-  <input class="input-xlarge" type="text" name='amount' id='amount' placeholder="$5 Minimum Pledge" value='<?= $this->goal->suggestedAmount ?>'>
+  <input class="input-xlarge" type="text" name='amount' id='amount' placeholder="$<?= $this->goal->suggestedAmount ?> Minimum Pledge" value='20'>
 </div>
 <br>
 </fieldset>
