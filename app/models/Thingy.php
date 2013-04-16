@@ -44,8 +44,8 @@ abstract class Thingy {
         $query .= " LIMIT 1";
         $query .= ";";
         $result = $dbh->query($query);
-        $rows = $result->fetchAll(PDO::FETCH_ASSOC);
-        if(count($rows) > 0) foreach($rows[0] as $key=>$value) $this->$key = $value; 
+        $row = $result->fetch(PDO::FETCH_ASSOC);
+        if(!empty($row)) foreach($row as $key=>$value) $this->$key = $value; 
 
     }
 
