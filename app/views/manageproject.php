@@ -290,12 +290,12 @@ var action = "action=" + doIt + "&projectUUID=" + $(this).attr('data-projectUUID
 		<table class='table table-striped'>
 			<thead>
 				<tr>
-					<th>User</th><th>Goal</th><th>Amount</th><th>Reward</th><th>Status</th>
+					<th>User</th><th>Email</th><th>Goal</th><th>Amount</th><th>Reward</th><th>Status</th>
 				</tr>
 			</thead>
 			<tbody>
   <?foreach($this->project->backers as $backer): ?>
-  <tr><td><a href='/users/<?= $backer->username ?>'><img src='<?= $backer->avatar ?>' class='avatar-tiny'> <?= $backer->username ?></td><td><a href='/manageGoal/<?= $backer->goal->uuid ?>'><?= $backer->goal->name ?></a></td><td>$<?= $backer->amount ?></td><td><?= $backer->reward->name ?></td><td><?= $backer->rewardStatus ?></td></tr>
+  <tr><td><a href='/users/<?= $backer->username ?>'><img src='<?= $backer->avatar ?>' class='avatar-tiny'> <?= $backer->username ?></td><td><?= $backer->email ?></td><td><a href='/manageGoal/<?= $backer->goal->uuid ?>'><?= $backer->goal->name ?></a></td><td>$<?= $backer->amount ?></td><td><?= $backer->reward->name ?></td><td><?= $backer->rewardStatus ?></td></tr>
 <? endforeach; ?>
 </tbody>
 </table>
