@@ -1,1 +1,1 @@
-Funding for Openfire projects has been disabled temporarily.
+<h2 style='text-align:center'>Funding for Openfire projects has been disabled temporarily.</h2>
